@@ -734,7 +734,7 @@
    "adding \", \"": "factoids\", \"list",
    "full function": "\"factoids\", \"list\"",
    "alias for code": "\"factoids\", \"list\"",
-   "Text": "A list of commands can be found here: https://obsbot.rodney.io/",
+   "Text": "A list of commands can be found [here](https://github.com/asher-the-thrasher/command-bot/blob/master/readME.md)",
    "code": "#38\n@client.command(aliases=(\"factoids\", \"list\")) \nasync def commands(ctx):\n  field3 = content_fields[38][\"Text\"] \n  embed=discord.Embed(title=\"\", description=field3, color=0x00ff00)\n  await ctx.send(embed=embed)\n\n",
    "combined code": "",
    "copied code": "",
