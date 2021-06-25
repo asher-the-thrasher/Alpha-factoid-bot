@@ -1,2 +1,4 @@
 theme: jekyll-theme-cayman
 title: Alpha Gaming Bot Factoids
+github:
+  is_project_page: false
