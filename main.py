@@ -5,8 +5,8 @@ import discord
 from discord.ext import commands
 from discord.ext.commands.errors import CommandNotFound
 from utils.keep_alive import keep_alive
-from utils.config import command_prefix
-from utils.config import bot_activity
+from editable.config import command_prefix
+from editable.config import bot_activity
 
 import json
 from replit import db
@@ -32,6 +32,7 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
     activity = discord.Activity(name=bot_activity, type=discord.ActivityType.listening)
     await client.change_presence(activity=activity)
+    
 
 
 keys = db.keys()
@@ -59,5 +60,5 @@ async def on_command_error(ctx, error):
   
 
 
-#keep_alive()
+keep_alive()
 client.run(token)

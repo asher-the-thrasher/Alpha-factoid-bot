@@ -1,10 +1,8 @@
 [
-
     {
       "name": "ad",
       "content": "Self-advertisement or advertisement for others is only  allowed on this server in <#474040782995587082>. Please read the rules in the <#477179447485661186> channel."
     },
-
     {
       "name": "admin",
       "content": "Certain games or applications will require OBS Studio to be run with elevated privileges (Administrator) in order to be captured. Running as administrator may also improve OBS performance when gaming.<br>To run as administrator, close OBS Studio, then simply right click the OBS Studio shortcut and select Run as administrator."
@@ -34,14 +32,6 @@
       "content": "An ASIO input plugin is available for OBS: https://github.com/Andersama/obs-asio"
     },
     {
-      "name": "aspectratio",
-      "content": "Black bars on your stream or recording? Read How to select the correct Aspect Ratio for your Recording/Stream and How to do a 16:9 stream with any size of Video-input."
-    },
-    {
-      "name": "audiomonitoring",
-      "content": "To use the Audio Monitoring feature, click Edit -> Advanced Audio Properties and set Audio Monitoring to either Monitor Only, or Monitor and Output. Monitor Only will not output that device's audio to your stream/recording.<br>Audio for that device will be played out of your system default device, unless otherwise specified in Settings -> Audio -> Advanced."
-    },
-    {
       "name": "autoconfig",
       "content": "Please run the OBS auto-configuration tool. To use the auto-config, click on the Tools menu in OBS, select Auto-Configuration Wizard, and then just follow the on-screen directions. You can use this tool to get a set baseline settings for your hardware, and adjust as necessary from there."
     },
@@ -58,16 +48,8 @@
       "content": "If you are having issues with OBS Studio on macOS Big Sur, make sure you have updated to the latest version, as many of the issues were resolved in v26.1.2.<br>Select Help -> Check For Updates in OBS, or the newest version can be manually downloaded here: https://obsproject.com/download"
     },
     {
-      "name": "blackscreen",
-      "content": "If you are trying to stream or record with OBS and are getting a black screen, make sure you have added the appropriate source to capture what you are trying to show. Window, Game, and Display capture are the three most common capture sources. If you have already added a capture source, and OBS is still black, please grab your current log and link it here.<br>Help -> Log Files -> Upload Current Log"
-    },
-    {
       "name": "blame",
       "content": "It's Dagaz's fault."
-    },
-    {
-      "name": "bluetooth",
-      "content": "If your audio is muting when you launch OBS, and you're using a Bluetooth headset, it's caused by the underlying design of Bluetooth. To fix this, you can either switch to a wired headset, don't use the Bluetooth headset's mic, or set your sound to go through the HFP device for your headset.<br>Note: HFP offers lower sound quality."
     },
     {
       "name": "botrepo",
@@ -142,18 +124,6 @@
       "content": "Please post a link to a clean log with profiler information. To make a clean log with profiler information, follow these steps:<br>1) Restart OBS.<br>2) Start your stream/recording for ~30 seconds, and stop it again. Make sure you replicate any issues as best you can, which means having any games/apps open and captured, etc.<br>3) Restart OBS again, and then select Help > Log Files > Upload Last Log File. Copy the URL and paste it here.<br>(Note: If you do not see an obsproject.com URL, you will need to update OBS Studio to version 22+.)"
     },
     {
-      "name": "clog",
-      "content": "A current log file is required to help fix your issue. Please post a link to your current log file.<br>In OBS select Help > Log Files > Upload Current Log File.<br>Click Copy URL and then paste the link here."
-    },
-    {
-      "name": "clogimage",
-      "content": "https://i.imgur.com/oL0BZjn.png"
-    },
-    {
-      "name": "commands",
-      "content": "A list of commands can be found here: https://obsbot.rodney.io/"
-    },
-    {
       "name": "conflicts",
       "content": "Some third-party applications can conflict with OBS and cause issues, such as failing Game or Window capture, audio issues, and at worst crashes with OBS. For a full list, check here: https://obsproject.com/wiki/Known-Conflicts"
     },
@@ -220,10 +190,6 @@
     {
       "name": "docki",
       "content": "https://i.imgur.com/YANZ4RG.png "
-    },
-    {
-      "name": "dockimac",
-      "content": "https://i.imgur.com/DbpZ44G.png "
     },
     {
       "name": "docks",
@@ -314,10 +280,6 @@
       "content": "For help with Elgato products, please submit a ticket with them directly at https://help.elgato.com/hc/en-us/requests/new. They also have a community Discord server."
     },
     {
-      "name": "english",
-      "content": "Welcome to the official OBS Community Discord server! Unfortunately, our support volunteers can only provide support in English. Most of our support documents and guides are also only in English. If you feel comfortable using a service like Google Translate, feel free to use that to send messages to us. We'll do our best to understand your intent, and we'll try to help you as much as we can. <:google_translate:679963430438043747> Translate"
-    },
-    {
       "name": "error",
       "content": "Please provide the full text of the error message. Press Alt+PrtScr while the error window is selected to copy it to your clipboard, then paste it into this chat window."
     },
@@ -356,10 +318,6 @@
     {
       "name": "fpslimit",
       "content": "Running a game without vertical sync or a frame rate limiter will frequently cause performance issues (both your game and OBS) because your GPU will be maxed out. Enable vsync or set a reasonable frame rate limit that your GPU can handle without hitting 100% usage. If that's not enough you may also need to turn down some of the video quality options in the game.<br>For more technical details and alternate fixes, see our guide: https://obsproject.com/wiki/GPU-overload-issues"
-    },
-    {
-      "name": "framedrops",
-      "content": "Dropped frames? Disconnecting?<br>Follow the troubleshooting steps in our [Connection Issues guide](https://obsproject.com/wiki/Dropped-Frames-and-General-Connection-Issues)."
     },
     {
       "name": "free",
@@ -446,20 +404,12 @@
       "content": "As of OBS Studio 25, you can import Scene Collections from other applications, including OBS Classic, XSplit, and Streamlabs.<br>In OBS Studio, open the \"Scene Collection\" menu along the top<br>Choose \"Import\"<br>If asked to \"Automatically Search for Scene Collections\", choose \"Yes\" ^<br>Use the checkboxes \u2705 on the left to choose what to import<br>Press \"Import\" along the bottom<br>Switch to the newly imported Collection via the \"Scene Collection\" menu<br>^ If the dialog did not appear, or you previously selected \"No\", go to Settings -> General -> Importers and enable \"Search known locations..\""
     },
     {
-      "name": "invite",
-      "content": "https://obsproject.com/discord"
-    },
-    {
       "name": "killernic",
       "content": "Killer's Firewall is known for its poor performance and issues when trying to stream. Please download the driver only package from http://support.killernetworking.com/software/, completely uninstall all Killer NIC items and install their Driver only package."
     },
     {
       "name": "kraken",
       "content": "Problems getting the Razer Kraken working? Make sure you're using the 64-bit version of OBS. If you're stuck on a 32-bit system or the 64bit OBS still doesn't work, try disabling the Kraken launcher in msconfig's Startup tab (press WinKey+R, type \"msconfig\" in the box and press Enter) and reboot your pc."
-    },
-    {
-      "name": "laptopdisplay",
-      "content": "If you're using OBS Studio 27+ on Windows 10 1809 or earlier, your system must be configured to run OBS on a specific GPU, depending on the type of capture you are trying to do.<br>[Click here](https://obsproject.com/wiki/Laptop-Troubleshooting) for instructions on how to configure your system."
     },
     {
       "name": "lastlog",
@@ -530,10 +480,6 @@
       "content": "Close OBS<br>Manually update obs-ndi via this link<br>Run this script<br>Try running OBS again"
     },
     {
-      "name": "macosversions",
-      "content": "For High Sierra (10.13) & newer, use OBS Studio 25+ (recommended)<br>Older versions<br>Update macOS if you can. We no longer provide support for these older versions.<br>For Sierra (10.12), use OBS 24.0.6<br>For El Capitan (10.11), use OBS 21.1.1<br>For Yosemite (10.10), use OBS 20.1.0"
-    },
-    {
       "name": "macpermission",
       "content": "Please ensure OBS has permissions to access your microphone & capture devices.<br>1) Select System Preferences from the Apple menu.<br>2) Click the icon labelled Security & Privacy.<br>3) Click the Privacy tab at the top.<br>4) In the lefthand column, click on 'Microphone', 'Camera', 'Screen recording' or 'Accessibility' to manage app permissions.<br>5) Tick the box for OBS"
     },
@@ -568,10 +514,6 @@
     {
       "name": "mic",
       "content": "To filter out background noise, use the Noise Suppression filter which is included in OBS Studio 26.0.0+"
-    },
-    {
-      "name": "minecraft",
-      "content": "To capture Minecraft Java Edition, make sure the Game Capture \"Mode\" is set to \"Capture specific window\", and select javaw/minecraft in the \"Window\" drop down.<br>If you are still having issues please follow our [Minecraft capture guide](https://obsproject.com/wiki/Minecraft-Not-Working-With-Game-Capture)"
     },
     {
       "name": "mixer",
@@ -616,10 +558,6 @@
     {
       "name": "nginx",
       "content": "Setting up your own nginx RTMP server (Linux-based guide): http://obsproject.com/forum/threads/12891/<br>Pre-built nginx Windows binaries: https://github.com/illuspas/nginx-rtmp-win32"
-    },
-    {
-      "name": "nightly",
-      "content": "Nightly builds are available for those who wish to test new features.<br>Note that they may not be stable and are not digitally signed. The latter may cause game capture not to work with certain games or cause AV software to block some features.<br>To download the latest nightly build for Windows, [click here](https://obsbot.rodney.io/%nightly_url%)<br>To download the latest nightly build for macOS, [click here](https://obsbot.rodney.io/%mac_nightly_url%)"
     },
     {
       "name": "nvafx",
@@ -925,10 +863,6 @@
       "content": "A basic guide to improve your microphone quality can be found here: https://obsproject.com/forum/resources/514/"
     },
     {
-      "name": "volunteers",
-      "content": "OBS is a completely free, open source application made by volunteers, and support is also provided for free by community volunteers in their spare time."
-    },
-    {
       "name": "vs2017",
       "content": "Visual Studio 2019 runtimes are required by the plugins that come with OBS Studio.<br>Download and install both vc2019redist_x86.exe and vc2019redist_x64.exe from https://obsproject.com/visual-studio-2019-runtimes"
     },
@@ -1063,4 +997,64 @@
       "name": "report",
       "content": "**How to Make a Server Report**<br>Reports should be made in #\u2503reports-server-issues To make a server report you will need: <br>- A screenshot of the problem interaction <br>- The user's ID (not their tag)* <br><br>* If you're not sure how to get the user ID, here's a quick guide: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-I     <br><br>Thank you for helping to improve our server!"
     },
-]
+    {
+      "name": "log",
+      "content": "A current log file is required to help fix your issue. Please post a link to your current log file.<br>In OBS select Help > Log Files > Upload Current Log File.<br>Click Copy URL and then paste the link here."
+    },
+    {
+      "name": "logi",
+      "content": "https://i.imgur.com/oL0BZjn.png"
+    },
+    {
+      "name": "ar",
+      "content": "Black bars on your stream or recording? Read How to select the correct Aspect Ratio for your Recording/Stream and How to do a 16:9 stream with any size of Video-input."
+    },
+    {
+      "name": "am",
+      "content": "To use the Audio Monitoring feature, click Edit -> Advanced Audio Properties and set Audio Monitoring to either Monitor Only, or Monitor and Output. Monitor Only will not output that device's audio to your stream/recording.<br>Audio for that device will be played out of your system default device, unless otherwise specified in Settings -> Audio -> Advanced."
+    },
+    {
+      "name": "bs",
+      "content": "If you are trying to stream or record with OBS and are getting a black screen, make sure you have added the appropriate source to capture what you are trying to show. Window, Game, and Display capture are the three most common capture sources. If you have already added a capture source, and OBS is still black, please grab your current log and link it here.<br>Help -> Log Files -> Upload Current Log!"
+    },
+    {
+      "name": "bt",
+      "content": "If your audio is muting when you launch OBS, and you're using a Bluetooth headset, it's caused by the underlying design of Bluetooth. To fix this, you can either switch to a wired headset, don't use the Bluetooth headset's mic, or set your sound to go through the HFP device for your headset.<br>Note: HFP offers lower sound quality."
+    },
+    {
+      "name": "macdocki",
+      "content": "https://i.imgur.com/DbpZ44G.png "
+    },
+    {
+      "name": "english",
+      "content": "Welcome to the official Alpha Gaming Community Discord server! Unfortunately, our support volunteers can only provide support in English. Most of our support documents and guides are also only in English. If you feel comfortable using a service like Google Translate, feel free to use that to send messages to us. We'll do our best to understand your intent, and we'll try to help you as much as we can. [Translate](https://translate.google.com/?sl=en&tl=es&text=Welcome%20to%20the%20official%20Alpha%20Gaming%20Community%20Discord%20server!%20Unfortunately%2C%20our%20support%20volunteers%20can%20only%20provide%20support%20in%20English.%20Most%20of%20our%20support%20documents%20and%20guides%20are%20also%20only%20in%20English.%20If%20you%20feel%20comfortable%20using%20a%20service%20like%20Google%20Translate%2C%20feel%20free%20to%20use%20that%20to%20send%20messages%20to%20us.%20We%27ll%20do%20our%20best%20to%20understand%20your%20intent%2C%20and%20we%27ll%20try%20to%20help%20you%20as%20much%20as%20we%20can.&op=translate) "
+    },
+    {
+      "name": "dropped",
+      "content": "Dropped frames? Disconnecting?<br>Follow the troubleshooting steps in our [Connection Issues guide](https://obsproject.com/wiki/Dropped-Frames-and-General-Connection-Issues)."
+    },
+    {
+      "name": "invite",
+      "content": "https://discord.gg/alphagaming"
+    },
+    {
+      "name": "laptop",
+      "content": "If you're using OBS Studio 27+ on Windows 10 1809 or earlier, your system must be configured to run OBS on a specific GPU, depending on the type of capture you are trying to do.<br>[Click here](https://obsproject.com/wiki/Laptop-Troubleshooting) for instructions on how to configure your system."
+    },
+    {
+      "name": "macversions",
+      "content": "For High Sierra (10.13) & newer, use OBS Studio 25+ (recommended)<br>Older versions<br>Update macOS if you can. We no longer provide support for these older versions.<br>For Sierra (10.12), use OBS 24.0.6<br>For El Capitan (10.11), use OBS 21.1.1<br>For Yosemite (10.10), use OBS 20.1.0"
+    },
+    {
+      "name": "mc",
+      "content": "To capture Minecraft Java Edition, make sure the Game Capture \"Mode\" is set to \"Capture specific window\", and select javaw/minecraft in the \"Window\" drop down.<br>If you are still having issues please follow our [Minecraft capture guide](https://obsproject.com/wiki/Minecraft-Not-Working-With-Game-Capture)"
+    },
+    {
+      "name": "volunteers",
+      "content": "The Alpha Gaming discord server support is provided for free by community volunteers in their spare time."
+    },
+    {
+      "name": "commands",
+      "content": "A list of commands can be found [here](https://github.com/asher-the-thrasher/Alpha-factoid-bot/blob/master/readME.md)"
+    },
+  ]

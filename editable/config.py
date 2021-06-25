@@ -15,7 +15,7 @@ channel_whitelist = [general_help, stream_software, pc_help, audio_help, testing
 _analysis_colour = 0x5a7474
 
 
-command_prefix="!"
+command_prefix="$"
 
 
 #what the bot is listening to
@@ -23,4 +23,5 @@ command_prefix="!"
 bot_activity = "your problems"
 
 #roles that can change the bot
-bot_commander = "admin"
+bot_commander = 730975302167167108
+another_role = 857766098732187658
