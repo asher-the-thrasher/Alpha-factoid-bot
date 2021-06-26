@@ -1,0 +1,4 @@
+**/__pycache__/
+.env
+editable/blacklisted_links.json
+editable/whitelisted_links.json
