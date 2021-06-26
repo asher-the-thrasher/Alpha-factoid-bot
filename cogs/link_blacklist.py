@@ -7,6 +7,7 @@ from discord.utils import get
 
 from editable.config import link_role_whitelist, bot_commander, another_role
 
+from cogs.mute import MuteCog
 
 class LinkBlacklist(Cog):
     def __init__(self, bot):
@@ -48,6 +49,7 @@ class LinkBlacklist(Cog):
                 embed_buider = discord.Embed(title="Message Delted (Banned Link)", description=message.content, color=0xFF0000)
                 embed_buider.add_field(name="User: " + str(message.author), value="ID: " + str(message.author.id), inline=False)
 
+                await MuteCog.mute(MuteCog, message, message.author, "30s", "Self promotion")
                 await message.channel.send("message deleted")
                 await self.bot.get_channel(851970921501687828).send(embed=embed_buider)
 
