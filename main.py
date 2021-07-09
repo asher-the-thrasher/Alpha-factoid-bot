@@ -5,13 +5,13 @@ import os
 import discord
 from discord.ext import commands
 from discord.ext.commands.errors import CommandNotFound, MissingAnyRole
-from dotenv import load_dotenv
 
 from editable.config import bot_activity
 from editable.config import command_prefix
 
+from cogs.mute import UnMuteCog
+
 # secret bot token
-load_dotenv()
 token = os.environ['token']
 intents = discord.Intents.default()
 intents.members = True
@@ -31,6 +31,7 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
     activity = discord.Activity(name=bot_activity, type=discord.ActivityType.listening)
     await client.change_presence(activity=activity)
+    UnMuteCog.doThisEveryTenSeconds.start(UnMuteCog, client)
 
 
 @client.event

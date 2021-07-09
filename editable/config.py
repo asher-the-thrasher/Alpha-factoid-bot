@@ -13,7 +13,7 @@ channel_whitelist = [general_help, stream_software, pc_help, audio_help, testing
 
 # embed color for analysis
 _analysis_colour = 0x5a7474
-
+mod_color = 0xFF0000
 
 command_prefix = "?"
 
@@ -35,4 +35,8 @@ unicorn_squad = 599870749271916556
 
 link_role_whitelist = [botadmin, smart_peepo, alpha_mod, unicorn_squad]
 
-Muted_role = "Muted"
+# Role assigned when someone is muted
+Muted_role = 854885126944587817
+
+# Link where certain links are allowed
+share_content = 851970921501687828
