@@ -15,10 +15,9 @@ from replit import db
 
 # secret bot token
 token = os.environ['token']
-intents = discord.Intents.default()
-intents.members = True
+intents = discord.Intents.all()
 client = commands.Bot(command_prefix=command_prefix, intents=intents)
-
+#client.remove_command('help')
 
 #import cogs
 for file in os.listdir("cogs"):
@@ -32,6 +31,8 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
     activity = discord.Activity(name=bot_activity, type=discord.ActivityType.listening)
     await client.change_presence(activity=activity)
+    #UnMuteCog.doThisEveryTenSeconds.start(UnMuteCog, client)
+    channel = 849649811241173075
     
 
 

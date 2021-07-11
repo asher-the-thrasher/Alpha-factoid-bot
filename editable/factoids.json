@@ -1433,12 +1433,6 @@
       "content": "_CLIFF NOTES_\n- ISO as low as possible (iso should ideally be under 800, if that's too dark you need more light) \n- aperture (f) as wide open as possible (with kit lens) \n- shutter speed twice the fps \n- custom white balance \n- make sure your camera is in movie mode \n- don't leave anything on auto"
     }
   ],
-  "collab": [
-    {
-      "name": "collab",
-      "content": "Hi to find collab partners, or even just others to game with, head to #\u2503find-a-collab !\n\nIf you can't see it, that's because you don't have the Content Creator role yet. \nGo to #\u2503join-the-creators and follow the instructions  ;)"
-    }
-  ],
   "grow": [
     {
       "name": "grow",
@@ -1586,13 +1580,19 @@
   "commands": [
     {
       "name": "commands",
-      "content": "A list of commands can be found [here](https://github.com/asher-the-thrasher/Alpha-factoid-bot/blob/master/readME.md)"
+      "content": "A list of commands can be found [here](https://asher-the-thrasher.github.io/Alpha-factoid-bot/)"
     }
   ],
-  "asheraskedmeto": [
+  "credit": [
     {
-      "name": "asheraskedmeto",
-      "content": "I made this command because Asher asked me to"
+      "name": "credit",
+      "content": "Many of the commands in this server are from the OBS Studio Discord, we appreciate them for allowing us to use their commands!"
+    }
+  ],
+  "collab": [
+    {
+      "name": "collab",
+      "content": "Hi to find collab partners, or even just others to game with, head to <#526512748604031027> ! If you can't see it, that's because you don't have the Content Creator role yet. Go to <#827759085280690197> and follow the instructions  \ud83d\ude09"
     }
   ]
 }

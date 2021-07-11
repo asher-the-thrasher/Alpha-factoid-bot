@@ -15,7 +15,7 @@ channel_whitelist = [general_help, stream_software, pc_help, audio_help, testing
 _analysis_colour = 0x5a7474
 
 
-command_prefix="$"
+command_prefix="?"
 
 
 #what the bot is listening to

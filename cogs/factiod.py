@@ -90,7 +90,7 @@ class factoids(commands.Cog):
       return
 
   @commands.command()
-  async def mod(self, ctx, name: str.lower=None, *, message=None):
+  async def modify(self, ctx, name: str.lower=None, *, message=None):
     
     try:
       if name == None:
@@ -154,7 +154,7 @@ class factoids(commands.Cog):
       return
 
   @commands.command()
-  async def ren(self, ctx, name: str.lower=None, new_name: str.lower=None):
+  async def rename(self, ctx, name: str.lower=None, new_name: str.lower=None):
     try:
       await commands.has_any_role(bot_commander, another_role).predicate(ctx)
       if name == None:
@@ -197,7 +197,21 @@ class factoids(commands.Cog):
       await ctx.send('You do not have permissions to use that command')
       return
 
-    
+  """@commands.command()
+  async def help(self, ctx):
+    try:
+
+      await commands.has_any_role(bot_commander, another_role).predicate(ctx)
+      embed=discord.Embed(title="Moderator Commands",description="", colour=0xf81af3)
+      #embed.add_field(name=f"{command_prefix}add - Add a command", value="$add [name] [message]", inline=True)
+      await ctx.send(embed)
+
+
+
+    except discord.ext.commands.errors.MissingAnyRole:
+      await ctx.send('You do not have permissions to use that command')
+      return"""
+
 
 
 def setup(client):
