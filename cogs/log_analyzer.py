@@ -6,8 +6,9 @@ from discord import Embed, Colour
 from discord.ext.commands import Cog
 from discord.ext.commands.bot import Bot
 
-from utils.rate_limit import RateLimiter
 from editable.config import channel_whitelist
+from utils.rate_limit import RateLimiter
+
 
 class LogAnalyzer(Cog):
     _log_download_failed = '\U00002757'
@@ -151,7 +152,7 @@ class LogAnalyzer(Cog):
                 embed.add_field(
                     name='Analyser Report',
                     inline=False,
-                    value= f'[**Click here for solutions / full analysis**]({anal_url})')
+                    value=f'[**Click here for solutions / full analysis**]({anal_url})')
 
                 # include filtered log in case SE or FTL spam is detected
                 if 'obsproject.com' in log_url and any(elem in log_content for elem in self._filtered_log_needles):
@@ -191,5 +192,7 @@ class LogAnalyzer(Cog):
             else:
                 # Raise if status >= 400
                 r.raise_for_status()
+
+
 def setup(client):
-  client.add_cog(LogAnalyzer(client))
+    client.add_cog(LogAnalyzer(client))
