@@ -200,4 +200,4 @@ class factoids(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(factoids(client))
+  client.add_cog(factoids(client))

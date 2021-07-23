@@ -38,12 +38,12 @@ async def create_mute(ctx, member: discord.Member=None, time=None, *, reason=Non
           return
 
       unmute_time = (datetime.now() + dt.timedelta(seconds=seconds))
+      member_id = member.id
 
       #muting
       muted = ctx.guild.get_role(Muted_role)
       await member.add_roles(muted, reason=reason)
 
-      member_id = member.id
       db[f"!?!?!?!? {member_id}"] = str(unmute_time)
 
 class MuteCog(commands.cog.Cog):
@@ -96,22 +96,6 @@ class UnMuteCog(commands.Cog):
   def __init__(self, client):
       self.client = client
 
-  
-  """@commands.Cog.listener
-  async def on_member_join(self, member):
-    #try:
-      member_id = member.id
-      value = db[f"!?!?!?!? {member_id}"]
-      if value is None:
-        return
-      guild = member.get_guild(guild_id)
-      muted = ctx.guild.get_role(Muted_role)
-      await member.add_roles(muted, reason=reason)
-    #except:"""
-
-      
-
-
   #manual unmute
   @commands.command()
   @commands.has_permissions(manage_messages=True)
@@ -134,19 +118,22 @@ class UnMuteCog(commands.Cog):
 
   @tasks.loop(seconds=10)
   async def doThisEveryTenSeconds(self, client):
-    
     members_muted = db.prefix("!?!?!?!? ")
+    
     if len(members_muted) > 0:
       for member in members_muted:
         value = db[member]
         value_time = str(value)
         current_time  = str(datetime.now())
+
         if value_time < current_time:
           guild = client.get_guild(guild_id)
           member = member[9:]
-          member = guild.get_member(int(member))
+          member = guild.get_member(int(member))          
           muted_id = guild.get_role(Muted_role)
+
           await member.remove_roles(muted_id, reason=None, atomic=True)
+          
           del db[f"!?!?!?!? {str(member.id)}"]
 
   @commands.command()
@@ -203,4 +190,3 @@ class UnMuteCog(commands.Cog):
 def setup(client):
   client.add_cog(UnMuteCog(client))
   client.add_cog(MuteCog(client))
-

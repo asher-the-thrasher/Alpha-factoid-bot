@@ -11,9 +11,14 @@ from editable.config import command_prefix
 
 from cogs.mute import UnMuteCog
 
+from replit import db
+from editable.config import Muted_role
+from editable.config import guild_id
+
 # secret bot token
 token = os.environ['token']
-intents = discord.Intents.all()
+intents = discord.Intents.default()
+intents.members = True
 client = commands.Bot(command_prefix=command_prefix, intents=intents)
 
 # import cogs
@@ -42,6 +47,21 @@ async def on_command_error(ctx, error):
         return
     raise error
 
+
+@client.event
+async def on_member_join(member):
+  try:
+    member_id = member.id
+    value = db[f"!?!?!?!? {member_id}"]
+    
+    if value is None:
+      return
+    
+    guild = client.get_guild(guild_id)
+    muted = guild.get_role(Muted_role)
+    await member.add_roles(muted, reason="attempted mute evasion")
+  except:
+    return
 
 #keep_alive()
 client.run(token)

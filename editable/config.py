@@ -17,11 +17,11 @@ mod_color = 0xFF0000
 
 command_prefix = "?"
 
-guild_id = 849649811241173072
+guild_id = 473253164884295699
 
 # what the bot is listening to
 # remember, the message already has "listening to " so fill in the blank
-bot_activity = "you"
+bot_activity = "Streambeats"
 
 # roles that can change the bot
 bot_commander = 730975302167167108
@@ -32,11 +32,14 @@ botadmin = 857766098732187658
 smart_peepo = 526611856237002753
 alpha_mod = 473307193731579915
 unicorn_squad = 599870749271916556
+harris = 473299663718580230
 
-link_role_whitelist = [botadmin, smart_peepo, alpha_mod, unicorn_squad]
+link_role_whitelist = [botadmin, smart_peepo, alpha_mod, unicorn_squad, harris]
 
 # Role assigned when someone is muted
-Muted_role = 854885126944587817
+Muted_role = 784909458664194058
 
 # Link where certain links are allowed
-share_content = 851970921501687828
+share_content = 863992156037316648
+
+log_channel = 599865939781091343

@@ -5,7 +5,7 @@ from discord.ext import commands
 from discord.ext.commands import Cog, command
 from discord.utils import get
 
-from editable.config import link_role_whitelist, bot_commander, another_role, alpha_mod, share_content
+from editable.config import link_role_whitelist, bot_commander, another_role, alpha_mod, share_content, log_channel
 
 from cogs.mute import create_mute
 
@@ -41,7 +41,8 @@ class LinkBlacklist(Cog):
                         pass
 
                 # allows certain links to be allowed in a certain channel
-                if (message.channel.id == share_content) and (blacklisted.get(b_link)[0].get("sharable") == "yes"):
+                if (message.channel.id == share_content) or (blacklisted.get(b_link)[0].get("sharable") == "yes"):
+                  print("test")
                   pass
 
                 # Establishes a reason for the common ones
@@ -58,7 +59,7 @@ class LinkBlacklist(Cog):
                 embed_buider.set_footer(text=f"  User: {str(message.author)}\nID: {str(message.author.id)}",  icon_url = message.author.avatar_url)
 
                 # To bot log channel
-                await self.bot.get_channel(849649811241173075).send(embed=embed_buider)
+                await self.bot.get_channel(log_channel).send(embed=embed_buider)
 
                 await message.delete()
 
@@ -209,5 +210,5 @@ def writing_to_json(data, file):
         json.dump(data, outfile, indent=2)
 
 
-def setup(client):
-    client.add_cog(LinkBlacklist(client))
+#def setup(client):
+    #client.add_cog(LinkBlacklist(client))
