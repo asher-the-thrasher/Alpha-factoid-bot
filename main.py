@@ -1,10 +1,12 @@
-# A Discord bot that analyzes OBS log files for the Alpha Gaming discord
+# A Discord bot for the Alpha Gaming discord
 # Contributors: Asher_The_Thrasher, Goldeneyes, Awkward Potato, Spartichaos
 import os
 
 import discord
 from discord.ext import commands
 from discord.ext.commands.errors import CommandNotFound, MissingAnyRole
+
+from utils.keep_alive import keep_alive
 
 from editable.config import bot_activity
 from editable.config import command_prefix
@@ -15,11 +17,14 @@ from replit import db
 from editable.config import Muted_role
 from editable.config import guild_id
 
+from discord_slash import SlashCommand
+
+
 # secret bot token
 token = os.environ['token']
-intents = discord.Intents.default()
-intents.members = True
+intents = discord.Intents().all()
 client = commands.Bot(command_prefix=command_prefix, intents=intents)
+slash = SlashCommand(client, sync_commands = True, sync_on_cog_reload = True,)
 
 # import cogs
 for file in os.listdir("cogs"):
@@ -29,12 +34,17 @@ for file in os.listdir("cogs"):
 
         client.load_extension(f"cogs.{file[:-3]}")
 
+#@client.event
+#async def on_component(ctx: ComponentContext):
+  #print("recieved")
 
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
+    
     activity = discord.Activity(name=bot_activity, type=discord.ActivityType.listening)
     await client.change_presence(activity=activity)
+    
     UnMuteCog.doThisEveryTenSeconds.start(UnMuteCog, client)
 
 
@@ -62,6 +72,6 @@ async def on_member_join(member):
     await member.add_roles(muted, reason="attempted mute evasion")
   except:
     return
-
-#keep_alive()
+    
+keep_alive()
 client.run(token)

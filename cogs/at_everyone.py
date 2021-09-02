@@ -4,12 +4,15 @@ from discord.utils import get
 import discord
 import json
 
-from editable.config import log_channel
+from utils.bot_log import log_message
 from cogs.mute import create_mute
+
+mass_pings = ["@everyone", "@here"]
+bad_mentions = [179980876027789312]
 
 def writing_to_json(data):
     with open('editable/bad_users.json', 'w') as outfile:
-        json.dump(data, outfile, indent=2)
+      json.dump(data, outfile, indent=2)
 
 class at_everyone(Cog):
   def __init__(self, bot):
@@ -20,6 +23,8 @@ class at_everyone(Cog):
     if message.author.bot:
           return
 
+    delete_message = False
+
     # Checks if user is allowed to post links
     for roles in link_role_whitelist:
         roles = get(message.guild.roles, id=roles)
@@ -28,8 +33,9 @@ class at_everyone(Cog):
         if role in message.author.roles:
             return
 
-    if "@everyone" in message.content:
-        await message.delete()
+    for word in mass_pings:
+      if word in message.content.lower():
+        delete_message = True
 
         with open("editable/bad_users.json") as json_file:
           data = json.load(json_file)
@@ -38,7 +44,7 @@ class at_everyone(Cog):
           await deal_with_infractions(message, self.bot)
 
         else:
-          await message.channel.send(f"Hey {message.author.mention}, looks like you've tried to ping everyone. This is your only warning, if you do it again, you will be removed from the server :)")
+          await message.channel.send(f"Hey {message.author.mention}, looks like you've tried to ping `{word}`. This is your only warning, if you do it again, you will be removed from the server. <:cheems:840763597508313109> ")
 
           data["users"].append({
             "author": message.author.id,
@@ -47,24 +53,30 @@ class at_everyone(Cog):
 
           writing_to_json(data)
 
-    if "@here" in message.content.split():
-        await message.delete()
+    if message.mentions:
+      for user in bad_mentions:
+        mentioned = self.bot.get_user(user)
+        if mentioned in message.mentions:
+          delete_message = True
 
-        with open("editable/bad_users.json") as json_file:
-          data = json.load(json_file)
+          with open("editable/bad_users.json") as json_file:
+            data = json.load(json_file)
 
-        if str(message.author.id) in data["users"].__str__():
-          await deal_with_infractions(message, self.bot)
+          if str(message.author.id) in data["users"].__str__():
+            await deal_with_infractions(message, self.bot)
 
-        else:
-          await message.channel.send(f"Hey {message.author.mention}, looks like you've tried to ping 'here'. This is your only warning, if you do it again, you will be removed from the server :)")
+          else:
+            await message.channel.send(f"Hello {message.author.mention}, looks like you've tried to ping {mentioned.name}. They have kindly requested not to be pinged, thank you! Unfortanetly, if you do it again, you will be removed from the server. Kapeesh? <:cheems:840763597508313109> ")
 
-          data["users"].append({
-            "author": message.author.id,
-            "infractions": 1
-          })
+            data["users"].append({
+              "author": message.author.id,
+              "infractions": 1
+            })
 
-          writing_to_json(data)
+            writing_to_json(data)
+
+    if delete_message:
+      await message.delete()
 
 def setup(client):
     client.add_cog(at_everyone(client))
@@ -79,16 +91,14 @@ async def deal_with_infractions(ctx, bot):
 
         writing_to_json(data)
 
-        embed_buider = discord.Embed(title="Mass Ping ({infractions} infractions)".format(**user), description=ctx.content, color=0xFF0000)
-        embed_buider.add_field(name="channel", value="<#" + str(ctx.channel.id) + ">", inline=False)
-        embed_buider.set_footer(text=f"  User: {str(ctx.author)}\nID: {str(ctx.author.id)}",  icon_url = ctx.author.avatar_url)
+        await log_message(bot, 
+        "Mass Ping ({infractions} infractions)".format(**user),
+        ctx.content, ctx.author, ctx.channel)
                 
-        await bot.get_channel(log_channel).send(embed=embed_buider)
-
         if user["infractions"] == 2:
           await create_mute(ctx=ctx, member=ctx.author, time="3d", reason="Mass Ping")
 
-          return await ctx.channel.send(f"Sadly, {ctx.author.mention} tried to mass ping everyone after being warned. They have now been muted.")
-
+          return await ctx.channel.send(f"Sadly, {ctx.author.mention} tried to break the rules after being warned. They have now been muted.")
+        
         if user["infractions"] >= 3:
           await ctx.author.kick(reason="@.everyone 3+ times")

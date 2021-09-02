@@ -8,6 +8,8 @@ from editable.config import another_role
 from editable.config import bot_commander
 from editable.config import command_prefix
 
+from discord_slash.utils.manage_components import create_button, create_actionrow
+from discord_slash.model import ButtonStyle
 
 def writing_to_json(data):
     with open('editable/factoids.json', 'w') as outfile:
@@ -23,7 +25,6 @@ class factoids(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-
         if message.content.lower().startswith(command_prefix):
             msg_parts = message.content[1:].split()
             factoid_name = msg_parts[0].lower()
@@ -46,17 +47,42 @@ class factoids(commands.Cog):
 
             embed = discord.Embed(title="", description=factoid, colour=0xf81af3)
 
+            button = False
+            if "here]" in factoid.lower():
+              button = True
+
+              for words in factoid.split():
+                if "here](" in words.lower():
+                  if "[here](" in words.lower():
+                    url = words[7:]
+                  else:
+                    url = words[6:]
+                  url = url[:-1]
+
+                  actions = create_actionrow(create_button(style=ButtonStyle.URL, url=url, label=f'Click Here'))
+
             if message.reference and embed is not None:
+              if button:
+                return await message.channel.send(embed=embed, reference=reference, mention_author=True, components=[actions])
+              else:
                 return await message.channel.send(embed=embed, reference=reference, mention_author=True)
 
             elif user_mention and embed is not None:
+              if button:
+                return await message.channel.send(user_mention, embed=embed, components=[actions])
+              else:
                 return await message.channel.send(user_mention, embed=embed)
+
             else:
+              if button:
+                return await message.channel.send(embed=embed, components=[actions])
+              else:
                 return await message.channel.send(embed=embed)
 
 
         else:
-            return
+          return
+
 
     @commands.command()
     async def add(self, ctx, name: str.lower = None, *, message=None):
@@ -83,7 +109,7 @@ class factoids(commands.Cog):
             db[f"{name}"] = f"{message}"
 
             await ctx.send(f'Factoid "{name}" has been added.')
-            channel = ctx.guild.get_channel(526610701394116628)
+            channel = self.client.guild.get_channel(863992167264682005)
             return await channel.send(
                 f'Factoid "{name}" has been added, please redo the readME.md file and commit and push the changes {self.tator} and {self.asher}.')
         except discord.ext.commands.errors.MissingAnyRole:
@@ -122,7 +148,7 @@ class factoids(commands.Cog):
             db[f"{name}"] = f"{message}"
 
             await ctx.send(f'Factoid "{name}" has been updated.')
-            channel = ctx.guild.get_channel(526610701394116628)
+            channel = self.client.guild.get_channel(863992167264682005)
             return await channel.send(
                 f'Factoid "{name}" has been updated, please redo the readME.md file and commit and push the changes {self.tator} and {self.asher}.')
         except discord.ext.commands.errors.MissingAnyRole:
@@ -148,7 +174,7 @@ class factoids(commands.Cog):
             del db[f"{name}"]
 
             await ctx.send(f'Factoid "{name}" has been deleted.')
-            channel = ctx.guild.get_channel(526610701394116628)
+            channel = self.client.guild.get_channel(863992167264682005)
             return await channel.send(
                 f'Factoid "{name}" has been deleted, please redo the readME.md file and commit and push the changes {self.tator} and {self.asher}.')
         except discord.ext.commands.errors.MissingRole:
@@ -191,7 +217,7 @@ class factoids(commands.Cog):
             db[f"{new_name}"] = f"{message}"
 
             await ctx.send(f'Factoid "{name}" has been renamed to "{new_name}".')
-            channel = ctx.guild.get_channel(526610701394116628)
+            channel = self.bot.guild.get_channel(863992167264682005)
             return await channel.send(
                 f'Factoid "{name}" has been renamed to "{new_name}", please redo the readME.md file and commit and push the changes {self.tator} and {self.asher}.')
         except discord.ext.commands.errors.MissingAnyRole:

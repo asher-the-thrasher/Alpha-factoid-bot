@@ -71,12 +71,6 @@
       "content": "If you are having issues with OBS Studio on macOS Big Sur, make sure you have updated to the latest version, as many of the issues were resolved in v26.1.2.\nSelect Help -> Check For Updates in OBS, or the newest version can be manually downloaded here: https://obsproject.com/download"
     }
   ],
-  "blame": [
-    {
-      "name": "blame",
-      "content": "It's Dagaz's fault."
-    }
-  ],
   "botrepo": [
     {
       "name": "botrepo",
@@ -383,12 +377,6 @@
       "content": "Editor functionality is not something that is currently in scope for OBS development at this time. While editing features would be nice, the main focus on development in OBS right now is on improving OBS's streaming and recording features, and we're happy to leave the editing step for other, more specialized programs to handle. Here is a good list of editing software that we recommend you check out: https://obsproject.com/wiki/Post-Production-Tools-You-Can-Use"
     }
   ],
-  "editors": [
-    {
-      "name": "editors",
-      "content": "List of free software for editing - https://discord.com/channels/473253164884295699/788520412299395114/788572536925323275"
-    }
-  ],
   "electron": [
     {
       "name": "electron",
@@ -513,12 +501,6 @@
     {
       "name": "gpl",
       "content": "The source code for OBS Studio is released under the GPLv2 license. Effectively, that means that anyone can read, use, or modify the code for their own purposes, but if they distribute a program using that modified code, they must also make the source code available to whoever uses that program."
-    }
-  ],
-  "gpu": [
-    {
-      "name": "gpu",
-      "content": "If you are experiencing issues with performance while playing games, or just in general while using OBS, your GPU may be overloaded for the settings you are trying to use. Please check our GPU overload guide for ideas why this may be happening, and steps you can take to correct it."
     }
   ],
   "gpua": [
@@ -885,12 +867,6 @@
     {
       "name": "periscope",
       "content": "The community has created a guide for streaming to Periscope with OBS: https://obsproject.com/forum/resources/508/"
-    }
-  ],
-  "ping": [
-    {
-      "name": "ping",
-      "content": "Butt sandwiches!"
     }
   ],
   "plugins": [
@@ -1547,12 +1523,6 @@
       "content": "Dropped frames? Disconnecting?\nFollow the troubleshooting steps in our [Connection Issues guide](https://obsproject.com/wiki/Dropped-Frames-and-General-Connection-Issues)."
     }
   ],
-  "invite": [
-    {
-      "name": "invite",
-      "content": "https://discord.gg/alphagaming"
-    }
-  ],
   "laptop": [
     {
       "name": "laptop",
@@ -1593,6 +1563,60 @@
     {
       "name": "collab",
       "content": "Hi to find collab partners, or even just others to game with, head to <#526512748604031027> ! If you can't see it, that's because you don't have the Content Creator role yet. Go to <#827759085280690197> and follow the instructions  \ud83d\ude09"
+    }
+  ],
+  "connect": [
+    {
+      "name": "connect",
+      "content": "[click here](https://www.youtube.com/watch?v=sQnhk2JIeGs) to connect your twitch to discord"
+    }
+  ],
+  "editors": [
+    {
+      "name": "editors",
+      "content": "Hi, for a list of software you can use to edit photos and videos or create designs, [Click Here](https://discord.com/channels/473253164884295699/788520412299395114/788572536925323275)\nHappy editing!"
+    }
+  ],
+  "blame": [
+    {
+      "name": "blame",
+      "content": "It's Dagaz's fault."
+    }
+  ],
+  "invite": [
+    {
+      "name": "invite",
+      "content": "https://discord.gg/alphagaming"
+    }
+  ],
+  "900p": [
+    {
+      "name": "900p",
+      "content": "Streaming at 900p is not recommended as the twitch player cannot properly handle it. [Click here](https://www.reddit.com/r/Twitch/comments/fx5wbc/fix_strange_lines_on_stream/) for more information. It is recommended to stick to 720p or 1080p or if you really must 936p or 864p."
+    }
+  ],
+  "gpu": [
+    {
+      "name": "gpu",
+      "content": "If you are experiencing issues with performance while playing games, or just in general while using OBS, your GPU may be overloaded for the settings you are trying to use. Please check our GPU overload guide for ideas why this may be happening, and steps you can take to correct it. [Click here](https://obsproject.com/wiki/GPU-overload-issues) for guide"
+    }
+  ],
+  "me": [
+    {
+      "name": "me",
+      "content": "me"
+    }
+  ],
+  "top5q": [
+    {
+      "name": "top5q",
+      "content": "**Harris Heller's Top 5 Terrible FAQs**\n__Should I go full time?__\nhttps://youtu.be/OGOtnO2zwfg?t=154\n\n__Which platform should I stream on?__\nhttps://youtu.be/OGOtnO2zwfg?t=283\n\n__Should I buy A or B?__\nhttps://youtu.be/OGOtnO2zwfg?t=366\n\n__Should I buy a webcam or a full camera?__\nhttps://youtu.be/OGOtnO2zwfg?t=406\n\n__Should I show my face on cam?__\nhttps://youtu.be/OGOtnO2zwfg?t=506"
+    }
+  ],
+  "dblevel": [
+    {
+      "name": "dblevel",
+      "content": "**How to get to the levels tab and set to decibels in Windows**\nWindows button > type \"change system sounds\" > recording tab > select your mic > go to properties > levels tab > right click the blue slider > change to decibels.\n\nPost a screenshot after."
     }
   ]
 }

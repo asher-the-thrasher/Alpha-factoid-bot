@@ -1,6 +1,6 @@
 **/__pycache__/
 .env
-editable/blacklisted_links.json
-editable/whitelisted_links.json
+editable/links.json
 editable/bad_users.json
+.breakpoint
 .replit
