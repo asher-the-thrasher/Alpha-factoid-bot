@@ -66,7 +66,7 @@ class at_everyone(Cog):
             await deal_with_infractions(message, self.bot)
 
           else:
-            await message.channel.send(f"Hello {message.author.mention}, looks like you've tried to ping {mentioned.name}. They have kindly requested not to be pinged, thank you! Unfortanetly, if you do it again, you will be removed from the server. Kapeesh? <:cheems:840763597508313109> ")
+            await message.channel.send(f"Hello {message.author.mention}, looks like you've tried to ping {mentioned.name}. They have kindly requested not to be pinged, thank you! Unfortunately, if you do it again, you will be removed from the server. Kapeesh? <:cheems:840763597508313109> ")
 
             data["users"].append({
               "author": message.author.id,

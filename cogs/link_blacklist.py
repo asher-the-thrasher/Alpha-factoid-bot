@@ -100,7 +100,7 @@ class LinkBlacklist(Cog):
                 await message.channel.send(embed=muted_embed)
                 
                 # mutes
-                await create_mute(ctx=message, member=message.author, time="1m", reason="Blacklisted Link")
+                await create_mute(ctx=message, member=message.author, time="3d", reason="Blacklisted Link")
 
     @command()
     async def bl(self, ctx, link: str.lower = None):

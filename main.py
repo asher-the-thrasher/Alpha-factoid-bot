@@ -10,6 +10,8 @@ from utils.keep_alive import keep_alive
 
 from editable.config import bot_activity
 from editable.config import command_prefix
+from cogs.bot_raid_prevention import RaidProt
+
 
 from cogs.mute import UnMuteCog
 
@@ -17,14 +19,12 @@ from replit import db
 from editable.config import Muted_role
 from editable.config import guild_id
 
-from discord_slash import SlashCommand
 
 
 # secret bot token
 token = os.environ['token']
 intents = discord.Intents().all()
 client = commands.Bot(command_prefix=command_prefix, intents=intents)
-slash = SlashCommand(client, sync_commands = True, sync_on_cog_reload = True,)
 
 # import cogs
 for file in os.listdir("cogs"):
@@ -46,6 +46,8 @@ async def on_ready():
     await client.change_presence(activity=activity)
     
     UnMuteCog.doThisEveryTenSeconds.start(UnMuteCog, client)
+    RaidProt.user_join_reset.start(RaidProt)
+    await RaidProt.writing_to_users_joined(users_joined=0,mods_warned=0,users_banned = 0,banlock = 0)
 
 
 @client.event

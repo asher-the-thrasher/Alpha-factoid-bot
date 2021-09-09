@@ -121,8 +121,8 @@ class UnMuteCog(commands.Cog):
 
     if len(members_muted) > 0:
       for member in members_muted:
-        value = db[member]
-        value_time = str(value)
+        unmute_time = db[member]
+        value_time = str(unmute_time)
         current_time  = str(datetime.now())
 
         if value_time < current_time:
