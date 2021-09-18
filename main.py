@@ -8,16 +8,18 @@ from discord.ext.commands.errors import CommandNotFound, MissingAnyRole
 
 from utils.keep_alive import keep_alive
 
-from editable.config import bot_activity
-from editable.config import command_prefix
+from editable.config import configure
+bot_activity=configure.bot_activity 
+command_prefix=configure.command_prefix
+Muted_role=configure.Muted_role
+guild_id=configure.guild_id
 from cogs.bot_raid_prevention import RaidProt
 
 
 from cogs.mute import UnMuteCog
 
 from replit import db
-from editable.config import Muted_role
-from editable.config import guild_id
+from discord_slash import SlashCommand
 
 
 
@@ -25,22 +27,21 @@ from editable.config import guild_id
 token = os.environ['token']
 intents = discord.Intents().all()
 client = commands.Bot(command_prefix=command_prefix, intents=intents)
+slash = SlashCommand(client, sync_commands=True)
+
 
 # import cogs
 for file in os.listdir("cogs"):
     if file.endswith(".py"):
-        if file == "factiod.py":
-            continue
 
         client.load_extension(f"cogs.{file[:-3]}")
 
-#@client.event
-#async def on_component(ctx: ComponentContext):
-  #print("recieved")
+client.load_extension(f"editable.config")
+
 
 @client.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    print(f'We have logged in as {client.user} which is in {str(len(client.guilds))} guilds whose prefix is {command_prefix}')
     
     activity = discord.Activity(name=bot_activity, type=discord.ActivityType.listening)
     await client.change_presence(activity=activity)
@@ -58,6 +59,7 @@ async def on_command_error(ctx, error):
         await ctx.send('You do not have permissions to use that command')
         return
     raise error
+
 
 
 @client.event

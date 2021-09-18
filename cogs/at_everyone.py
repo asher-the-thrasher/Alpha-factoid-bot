@@ -1,5 +1,6 @@
 from discord.ext.commands import Cog
-from editable.config import link_role_whitelist
+from editable.config import configure
+link_role_whitelist = configure.link_role_whitelist
 from discord.utils import get
 import discord
 import json

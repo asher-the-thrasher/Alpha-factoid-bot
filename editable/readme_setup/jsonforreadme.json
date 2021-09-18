@@ -48,10 +48,6 @@
       "content": "If you are having issues with OBS Studio on macOS Big Sur, make sure you have updated to the latest version, as many of the issues were resolved in v26.1.2.<br>Select Help -> Check For Updates in OBS, or the newest version can be manually downloaded here: https://obsproject.com/download"
     },
     {
-      "name": "blame",
-      "content": "It's Dagaz's fault."
-    },
-    {
       "name": "botrepo",
       "content": "You wouldn't want to see my code."
     },
@@ -256,10 +252,6 @@
       "content": "Editor functionality is not something that is currently in scope for OBS development at this time. While editing features would be nice, the main focus on development in OBS right now is on improving OBS's streaming and recording features, and we're happy to leave the editing step for other, more specialized programs to handle. Here is a good list of editing software that we recommend you check out: https://obsproject.com/wiki/Post-Production-Tools-You-Can-Use"
     },
     {
-      "name": "editors",
-      "content": "List of free software for editing - https://discord.com/channels/473253164884295699/788520412299395114/788572536925323275"
-    },
-    {
       "name": "electron",
       "content": "In order to capture most electron applications using window capture you have to disable hardware acceleration first."
     },
@@ -342,10 +334,6 @@
     {
       "name": "gpl",
       "content": "The source code for OBS Studio is released under the GPLv2 license. Effectively, that means that anyone can read, use, or modify the code for their own purposes, but if they distribute a program using that modified code, they must also make the source code available to whoever uses that program."
-    },
-    {
-      "name": "gpu",
-      "content": "If you are experiencing issues with performance while playing games, or just in general while using OBS, your GPU may be overloaded for the settings you are trying to use. Please check our GPU overload guide for ideas why this may be happening, and steps you can take to correct it."
     },
     {
       "name": "gpua",
@@ -592,10 +580,6 @@
       "content": "The community has created a guide for streaming to Periscope with OBS: https://obsproject.com/forum/resources/508/"
     },
     {
-      "name": "ping",
-      "content": "Butt sandwiches!"
-    },
-    {
       "name": "plugins",
       "content": "How to install plugins: https://obsproject.com/forum/resources/421/<br>List of available plugins: https://obsproject.com/forum/resources/categories/6/"
     },
@@ -768,7 +752,7 @@
     },
     {
       "name": "testembeds",
-      "content": null
+      "content": "None"
     },
     {
       "name": "themes",
@@ -954,10 +938,6 @@
       "content": "_CLIFF NOTES_<br>- ISO as low as possible (iso should ideally be under 800, if that's too dark you need more light) <br>- aperture (f) as wide open as possible (with kit lens) <br>- shutter speed twice the fps <br>- custom white balance <br>- make sure your camera is in movie mode <br>- don't leave anything on auto"
     },
     {
-      "name": "collab",
-      "content": "Hi to find collab partners, or even just others to game with, head to #\u2503find-a-collab !<br><br>If you can't see it, that's because you don't have the Content Creator role yet. <br>Go to #\u2503join-the-creators and follow the instructions  ;)"
-    },
-    {
       "name": "grow",
       "content": "Hi, <br><br>Since Twitch has horrible discoverability, you're going to find it very hard to grow from streaming alone. You need to be making content on other, more discoverable platforms and funnel those viewers to Twitch. <br>Platforms like YouTube (YT, FB, TikTok, etc) help grow your brand and create an interest in you and/or your content hanging out with you in a live stream. <br><br>Live interaction is Twitch's strength, so you'd need to see the strengths and weaknesses of each platform, and use them accordingly. <br><br>_Here are some Alpha Gaming Vids to watch if you haven't already:_<br>- 25 Twitch Tips in 10 mins: https://www.youtube.com/watch?v=si7VS8dVSZA <br>- Top 5 Streaming Mistakes: https://www.youtube.com/watch?v=8tjJpUkGGBw"
     },
@@ -1034,10 +1014,6 @@
       "content": "Dropped frames? Disconnecting?<br>Follow the troubleshooting steps in our [Connection Issues guide](https://obsproject.com/wiki/Dropped-Frames-and-General-Connection-Issues)."
     },
     {
-      "name": "invite",
-      "content": "https://discord.gg/alphagaming"
-    },
-    {
       "name": "laptop",
       "content": "If you're using OBS Studio 27+ on Windows 10 1809 or earlier, your system must be configured to run OBS on a specific GPU, depending on the type of capture you are trying to do.<br>[Click here](https://obsproject.com/wiki/Laptop-Troubleshooting) for instructions on how to configure your system."
     },
@@ -1055,6 +1031,50 @@
     },
     {
       "name": "commands",
-      "content": "A list of commands can be found [here](https://github.com/asher-the-thrasher/Alpha-factoid-bot/blob/master/readME.md)"
+      "content": "A list of commands can be found [here](https://asher-the-thrasher.github.io/Alpha-factoid-bot/)"
     },
-  ]
+    {
+      "name": "credit",
+      "content": "Many of the commands in this server are from the OBS Studio Discord, we appreciate them for allowing us to use their commands!"
+    },
+    {
+      "name": "collab",
+      "content": "Hi to find collab partners, or even just others to game with, head to <#526512748604031027> ! If you can't see it, that's because you don't have the Content Creator role yet. Go to <#827759085280690197> and follow the instructions  \ud83d\ude09"
+    },
+    {
+      "name": "connect",
+      "content": "[click here](https://www.youtube.com/watch?v=sQnhk2JIeGs) to connect your twitch to discord"
+    },
+    {
+      "name": "editors",
+      "content": "Hi, for a list of software you can use to edit photos and videos or create designs, [Click Here](https://discord.com/channels/473253164884295699/788520412299395114/788572536925323275)<br>Happy editing!"
+    },
+    {
+      "name": "blame",
+      "content": "It's Dagaz's fault."
+    },
+    {
+      "name": "invite",
+      "content": "https://discord.gg/alphagaming"
+    },
+    {
+      "name": "900p",
+      "content": "Streaming at 900p is not recommended as the twitch player cannot properly handle it. [Click here](https://www.reddit.com/r/Twitch/comments/fx5wbc/fix_strange_lines_on_stream/) for more information. It is recommended to stick to 720p or 1080p or if you really must 936p or 864p."
+    },
+    {
+      "name": "gpu",
+      "content": "If you are experiencing issues with performance while playing games, or just in general while using OBS, your GPU may be overloaded for the settings you are trying to use. Please check our GPU overload guide for ideas why this may be happening, and steps you can take to correct it. [Click here](https://obsproject.com/wiki/GPU-overload-issues) for guide"
+    },
+    {
+      "name": "me",
+      "content": "me"
+    },
+    {
+      "name": "top5q",
+      "content": "**Harris Heller's Top 5 Terrible FAQs**<br>__Should I go full time?__<br>https://youtu.be/OGOtnO2zwfg?t=154<br><br>__Which platform should I stream on?__<br>https://youtu.be/OGOtnO2zwfg?t=283<br><br>__Should I buy A or B?__<br>https://youtu.be/OGOtnO2zwfg?t=366<br><br>__Should I buy a webcam or a full camera?__<br>https://youtu.be/OGOtnO2zwfg?t=406<br><br>__Should I show my face on cam?__<br>https://youtu.be/OGOtnO2zwfg?t=506"
+    },
+    {
+      "name": "dblevel",
+      "content": "**How to get to the levels tab and set to decibels in Windows**<br>Windows button > type \"change system sounds\" > recording tab > select your mic > go to properties > levels tab > right click the blue slider > change to decibels.<br><br>Post a screenshot after."
+    },
+]

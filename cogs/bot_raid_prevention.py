@@ -5,7 +5,11 @@ import discord
 from discord.ext.commands import command, Cog
 from discord.utils import get
 
-from editable.config import log_channel, admins, guild_id, modmod
+from editable.config import configure
+log_channel=configure.log_channel
+admins=configure.admins
+guild_id=configure.guild_id
+modmod=configure.modmod
 from discord.ext.tasks import loop
 
 
@@ -18,16 +22,24 @@ class RaidProt(Cog):
             data = json.loads(json_file.read())
 
             if users_joined is None:
-                data['users_joined'] = users_joined
+              data['users_joined'] = data['users_joined']
+            else:
+              data['users_joined'] = users_joined
 
             if mods_warned is None:
-                data['mods_warned'] = mods_warned
+              data['mods_warned'] = data['mods_warned']
+            else:
+              data['mods_warned'] = mods_warned
 
             if users_banned is None:
-                data['mods_warned'] = users_banned
+              data['users_banned'] = data['users_banned']
+            else:
+              data["users_banned"] = users_banned
 
             if banlock is None:
-                data['banlock'] = users_banned
+              data['banlock'] = data['banlock']
+            else:
+              data['banlock'] = banlock
 
             with open('editable/users_joined.json', 'w') as outfile:
                 json.dump(data, outfile, indent=2)
@@ -40,13 +52,19 @@ class RaidProt(Cog):
                 return int(data['users_joined'])
 
             if mods_warned is True:
-                return int(data['mods_warned'])
+                if int(data['mods_warned']) ==0:
+                  return False
+                if int(data['mods_warned']) ==1:
+                  return True
 
             if users_banned is True:
                 return int(data['users_banned'])
 
             if banlock is True:
-                return int(data['banlock'])
+                if int(data['banlock']) ==0:
+                  return False
+                if int(data['banlock']) ==1:
+                  return True
 
     @loop(seconds=60)
     async def user_join_reset(self):
@@ -56,13 +74,12 @@ class RaidProt(Cog):
         if banlock is False and mods_warned is False:
             await RaidProt.writing_to_users_joined(users_joined=0)
 
-            print("restart")
 
-    @command()
+    """@command()
     async def joined(self, ctx):
         file_content = await RaidProt.reading_from_users_joined(users_joined=True)
         users_joined = file_content + 3
-        await RaidProt.writing_to_users_joined(users_joined=users_joined)
+        await RaidProt.writing_to_users_joined(users_joined=users_joined)"""
 
     @Cog.listener()
     async def on_member_join(self, member):
@@ -70,17 +87,16 @@ class RaidProt(Cog):
             users_joined = await RaidProt.reading_from_users_joined(users_joined=True)
             users_joined = users_joined + 1
             await RaidProt.writing_to_users_joined(users_joined=users_joined)
-
         lock = await RaidProt.reading_from_users_joined(banlock=True)
-
+        users_joined = await RaidProt.reading_from_users_joined(users_joined=True)
         mods_warned = await RaidProt.reading_from_users_joined(mods_warned=True)
 
         if (users_joined == 4 and not lock) or (not mods_warned and users_joined >= 5):
             await RaidProt.writing_to_users_joined(mods_warned=1)
             emoji = '\N{THUMBS UP SIGN}'
             embed_builder = discord.Embed(title=f"Potential Bot Raid ({users_joined} Users)",
-                                          description=f"An unusually high number of users with default profile pictures have joined the server in a 1 minute window, if you would like to turn on Ban Lock use ?banlock. If you believe this warning warning is a false positive, react with {emoji} so you get warned the next time there is a suspected raid.",
-                                          color=0xf5c242)
+            description=f"An unusually high number of users with default profile pictures have joined the server in a 1 minute window, if you would like to turn on Ban Lock use ?banlock. If you believe this warning warning is a false positive, react with {emoji} so you get warned the next time there is a suspected raid.",
+            color=0xf5c242)
             self.warning_raid = await self.client.get_channel(log_channel).send(f"<@&{modmod}>", embed=embed_builder)
             await self.warning_raid.add_reaction(emoji)
 

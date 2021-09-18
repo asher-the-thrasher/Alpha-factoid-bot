@@ -1,6 +1,11 @@
 from discord.ext.commands import Cog, command
 import discord
 import random
+from editable.config import configure
+link_role_whitelist=configure.link_role_whitelist
+from discord.utils import get
+
+
 
 potato_images = [
   "https://i5.walmartimages.ca/images/Large/094/507/6000200094507.jpg",
@@ -25,6 +30,32 @@ class random_cogs(Cog):
   async def ping(self, ctx):
     ping = int(self.bot.latency * 1000)
     return await ctx.channel.send(f"It has been {ping} ms")
+
+
+
+  @command()
+  async def send(self, ctx,channel_send: discord.TextChannel = None,*,message):
+    if not is_admin(ctx):
+      return
+    if not channel_send:
+      return await ctx.send("No channel specified")
+    await self.bot.get_channel(channel_send.id).send(message)
+    
+
+
+def is_admin(ctx):
+  allowed = False
+  for roles in link_role_whitelist:
+    roles = get(ctx.guild.roles, id=roles)
+    role = discord.utils.find(lambda r: r.name == str(roles), ctx.guild.roles)
+    
+    if role in ctx.author.roles:
+      allowed = True
+        
+  if allowed:
+    return True
+  else:
+    return False    
 
 def setup(client):
   client.add_cog(random_cogs(client))

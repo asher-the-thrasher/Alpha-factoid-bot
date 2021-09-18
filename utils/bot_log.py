@@ -1,5 +1,6 @@
 import discord
-from editable.config import log_channel
+from editable.config import configure
+log_channel=configure.log_channel
 
 async def log_message(bot, title, body, user=None, channel=None, color=0xFF0000):
   embed_buider = discord.Embed(title=title, description=body, color=color)

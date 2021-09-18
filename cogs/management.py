@@ -1,6 +1,8 @@
 import discord
 from discord.ext.commands import Cog,command,has_any_role
-from editable.config import another_role, bot_commander
+from editable.config import configure  
+another_role=configure.another_role
+bot_commander=configure.bot_commander
 import os
 
 

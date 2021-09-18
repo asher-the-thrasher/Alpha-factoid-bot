@@ -6,14 +6,17 @@ import datetime as dt
 from datetime import datetime
 
 from replit import db
-from editable.config import Muted_role
-from editable.config import guild_id
+from editable.config import configure  
+Muted_role=configure.Muted_role
+guild_id=configure.guild_id
+link_role_whitelist=configure.link_role_whitelist
+bot_commander=configure.bot_commander
+another_role=configure.another_role
+alpha_mod=configure.alpha_mod
 
 from discord.utils import get
 
 from utils.bot_log import log_message
-from editable.config import link_role_whitelist
-from editable.config import bot_commander, another_role, alpha_mod
 
 #base from https://www.codegrepper.com/code-examples/python/discord.py+mute
 #Timed mute this format: 1d, 20s, 30m, etc..

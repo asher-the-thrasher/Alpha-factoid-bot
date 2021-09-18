@@ -3,10 +3,11 @@ import json
 import discord
 from discord.ext import commands
 from replit import db
+import os
 
-from editable.config import another_role
-from editable.config import bot_commander
-from editable.config import command_prefix
+from editable.config import configure 
+another_role=configure.another_role
+bot_commander=configure.bot_commander
 
 from discord_slash.utils.manage_components import create_button, create_actionrow
 from discord_slash.model import ButtonStyle
@@ -16,72 +17,20 @@ def writing_to_json(data):
         json.dump(data, outfile, indent=2)
 
 
+async def reload(self):
+
+  for file in os.listdir("cogs"):
+    if file.endswith(".py"):
+      file = f"cogs.{file[:-3]}"
+      self.client.reload_extension(file)
+
 class factoids(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.writing_to_json = writing_to_json
-        self.tator = '<@334067992465899520>'
-        self.asher = '<@691724738841804843>'
-
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        if message.content.lower().startswith(command_prefix):
-            msg_parts = message.content[1:].split()
-            factoid_name = msg_parts[0].lower()
-            try:
-                factoid = db[f"{factoid_name}"]
-            except KeyError:
-                return
-
-            reference = message.reference
-            message_parts = message.content[1:].split()
-            # attempt to delete the message requesting the factoid if it's within a reply and only contains command
-            if message.reference and len(message_parts) == 1:
-                await message.delete(delay=0.0)
-
-            # if users are mentioned (but it's not a reply), mention them in the bot reply as well
-            user_mention = None
-
-            if message.mentions and not reference:
-                user_mention = ' '.join(user.mention for user in message.mentions)
-
-            embed = discord.Embed(title="", description=factoid, colour=0xf81af3)
-
-            button = False
-            if "here]" in factoid.lower():
-              button = True
-
-              for words in factoid.split():
-                if "here](" in words.lower():
-                  if "[here](" in words.lower():
-                    url = words[7:]
-                  else:
-                    url = words[6:]
-                  url = url[:-1]
-
-                  actions = create_actionrow(create_button(style=ButtonStyle.URL, url=url, label=f'Click Here'))
-
-            if message.reference and embed is not None:
-              if button:
-                return await message.channel.send(embed=embed, reference=reference, mention_author=True, components=[actions])
-              else:
-                return await message.channel.send(embed=embed, reference=reference, mention_author=True)
-
-            elif user_mention and embed is not None:
-              if button:
-                return await message.channel.send(user_mention, embed=embed, components=[actions])
-              else:
-                return await message.channel.send(user_mention, embed=embed)
-
-            else:
-              if button:
-                return await message.channel.send(embed=embed, components=[actions])
-              else:
-                return await message.channel.send(embed=embed)
 
 
-        else:
-          return
+              
 
 
     @commands.command()
@@ -92,9 +41,20 @@ class factoids(commands.Cog):
                 return await ctx.send(f'No name specified!')
             if message == None:
                 return await ctx.send(f'No message specified!')
-            keys = db.keys()
+            with open("cogs/factoids_execution.py", "r") as fp:
+              line_number = 0
+              list_of_results = []
 
-            if name in keys:
+              string = f'async def {name}(self,message,*,extra_text=""):'
+              for line in fp:
+                line_number += 1
+                if string in line:
+                  list_of_results.append(line_number)
+                  
+
+
+
+            if list_of_results:
                 return await ctx.send(f'The specified name "{name}" already exists as a factoid!')
 
             with open('editable/factoids.json') as json_file:
@@ -106,12 +66,15 @@ class factoids(commands.Cog):
             })
             writing_to_json(data)
 
-            db[f"{name}"] = f"{message}"
+            with open('cogs/factoids_execution.py') as python_file:
+              data = python_file.readlines()
+              data[8] = f'\n    @commands.command()\n    async def {name}(self,message,*,extra_text=""):\n      factoid = "{message}"\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'
+            with open('cogs/factoids_execution.py', 'w') as file:
+              file.writelines(data)   
+
 
             await ctx.send(f'Factoid "{name}" has been added.')
-            channel = self.client.guild.get_channel(863992167264682005)
-            return await channel.send(
-                f'Factoid "{name}" has been added, please redo the readME.md file and commit and push the changes {self.tator} and {self.asher}.')
+            await reload(self)
         except discord.ext.commands.errors.MissingAnyRole:
             await ctx.send('You do not have permissions to use that command')
             return
@@ -125,16 +88,47 @@ class factoids(commands.Cog):
             if message == None:
                 return await ctx.send(f'No message specified!')
             await commands.has_any_role(bot_commander, another_role).predicate(ctx)
-            keys = db.keys()
-            if not name or name not in keys:
+            with open("cogs/factoids_execution.py", "r") as fp:
+              line_number = 0
+              list_of_results = []
+
+              string = f'async def {name}(self,message,*,extra_text=""):'
+              for line in fp:
+                line_number += 1
+                if string in line:
+                  list_of_results.append(line_number)
+                  
+
+
+
+            if not name or not list_of_results:
                 return await ctx.send(f'The specified name "{name}" does not exist!')
             name = name
+
+
+            with open('cogs/factoids_execution.py') as python_file:
+              data = python_file.readlines()
+              for line in list_of_results:
+                del data[line+2]
+                del data[line+1]
+                del data[line]
+                del data[line-1]
+                del data[line-2]
+            
+                
+
+              data[8] = f'\n    @commands.command()\n    async def {name}(self,message,*,extra_text=""):\n      factoid = "{message}"\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'
+            with open('cogs/factoids_execution.py', 'w') as file:
+              file.writelines(data)   
+
+
             with open('editable/factoids.json') as data_file:
                 data = json.load(data_file)
-            data.pop(name)
+                data.pop(name)
             writing_to_json(data)
 
-            del db[f"{name}"]
+
+
 
             with open('editable/factoids.json') as json_file:
                 data = json.load(json_file)
@@ -145,12 +139,10 @@ class factoids(commands.Cog):
             })
             writing_to_json(data)
 
-            db[f"{name}"] = f"{message}"
 
             await ctx.send(f'Factoid "{name}" has been updated.')
-            channel = self.client.guild.get_channel(863992167264682005)
-            return await channel.send(
-                f'Factoid "{name}" has been updated, please redo the readME.md file and commit and push the changes {self.tator} and {self.asher}.')
+            await reload(self)
+
         except discord.ext.commands.errors.MissingAnyRole:
             await ctx.send('You do not have permissions to use that command')
             return
@@ -161,22 +153,45 @@ class factoids(commands.Cog):
             await commands.has_any_role(bot_commander, another_role).predicate(ctx)
             if name == None:
                 return await ctx.send(f'No name specified!')
-            keys = db.keys()
-            if name not in keys:
-                return await ctx.send(f'The specified factoid name "{name}" does not exist')
 
+
+            with open("cogs/factoids_execution.py", "r") as fp:
+              line_number = 0
+              list_of_results = []
+
+              string = f'async def {name}(self,message,*,extra_text=""):'
+              for line in fp:
+                line_number += 1
+                if string in line:
+                  list_of_results.append(line_number)
+                  
+
+
+
+            if not name or not list_of_results:
+                return await ctx.send(f'The specified name "{name}" does not exist!')
+            name = name
+
+
+            with open('cogs/factoids_execution.py') as python_file:
+              data = python_file.readlines()
+              for line in list_of_results:
+                del data[line+2]
+                del data[line+1]
+                del data[line]
+                del data[line-1]
+                del data[line-2]
+            with open('cogs/factoids_execution.py', 'w') as file:
+              file.writelines(data)  
             name = name
             with open('editable/factoids.json') as data_file:
                 data = json.load(data_file)
             data.pop(name)
             writing_to_json(data)
 
-            del db[f"{name}"]
 
             await ctx.send(f'Factoid "{name}" has been deleted.')
-            channel = self.client.guild.get_channel(863992167264682005)
-            return await channel.send(
-                f'Factoid "{name}" has been deleted, please redo the readME.md file and commit and push the changes {self.tator} and {self.asher}.')
+            await reload(self)
         except discord.ext.commands.errors.MissingRole:
             await ctx.send('You do not have permissions to use that command')
             return
@@ -189,21 +204,62 @@ class factoids(commands.Cog):
                 return await ctx.send(f'No name specified!')
             if new_name == None:
                 return await ctx.send(f'No new name specified!')
-            keys = db.keys()
-            if name not in keys:
+
+            with open("cogs/factoids_execution.py", "r") as fp:
+              line_number = 0
+              list_of_results_name = []
+
+              string = f'async def {name}(self,message,*,extra_text=""):'
+              for line in fp:
+                line_number += 1
+                if string in line:
+                  list_of_results_name.append(line_number)
+
+            if not list_of_results_name:
                 return await ctx.send(f'The specified name "{name}" does not exist!')
-            if new_name in keys:
+            
+            
+            with open("cogs/factoids_execution.py", "r") as fp:
+              line_number = 0
+              list_of_results_new_name = []
+
+              string = f'async def {new_name}(self,message,*,extra_text=""):'
+              for line in fp:
+                line_number += 1
+                if string in line:
+                  list_of_results_new_name.append(line_number)
+
+            if list_of_results_new_name:
                 return await ctx.send(f'The specified new name "{new_name}" already exist as factoid!')
-            message = db[f"{name}"]
+            
+
+            with open('cogs/factoids_execution.py') as python_file:
+              data = python_file.readlines()
+              for line in list_of_results_name:
+                message = data[line][17:-2]
+
             name = name
             new_name = new_name
+            with open('cogs/factoids_execution.py') as python_file:
+              data = python_file.readlines()
+              for line in list_of_results_name:
+                del data[line+2]
+                del data[line+1]
+                del data[line]
+                del data[line-1]
+                del data[line-2]
+            
+                
+
+              data[8] = f'\n    @commands.command()\n    async def {new_name}(self,message,*,extra_text=""):\n      factoid = "{message}"\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'
+            with open('cogs/factoids_execution.py', 'w') as file:
+              file.writelines(data)   
 
             with open('editable/factoids.json') as data_file:
                 data = json.load(data_file)
             data.pop(name)
             writing_to_json(data)
 
-            del db[f"{name}"]
 
             with open('editable/factoids.json') as json_file:
                 data = json.load(json_file)
@@ -214,12 +270,11 @@ class factoids(commands.Cog):
             })
             writing_to_json(data)
 
-            db[f"{new_name}"] = f"{message}"
 
             await ctx.send(f'Factoid "{name}" has been renamed to "{new_name}".')
-            channel = self.bot.guild.get_channel(863992167264682005)
-            return await channel.send(
-                f'Factoid "{name}" has been renamed to "{new_name}", please redo the readME.md file and commit and push the changes {self.tator} and {self.asher}.')
+            await reload(self)
+
+
         except discord.ext.commands.errors.MissingAnyRole:
             await ctx.send('You do not have permissions to use that command')
             return

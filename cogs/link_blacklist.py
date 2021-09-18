@@ -9,7 +9,10 @@ from discord.utils import get
 from discord_slash.utils.manage_components import create_select, create_select_option, create_actionrow
 from discord_slash.context import ComponentContext
 
-from editable.config import link_role_whitelist, bot_commander, another_role, alpha_mod, share_content, admins, HelpPics
+from editable.config import configure 
+link_role_whitelist=configure.link_role_whitelist 
+share_content=configure.share_content
+admins=configure.admins
 
 from cogs.mute import create_mute
 

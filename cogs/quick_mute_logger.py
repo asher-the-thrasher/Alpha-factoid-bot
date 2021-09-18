@@ -1,9 +1,11 @@
 from discord.ext.commands import Cog
 from discord_slash import  model,context, cog_ext
-from editable.config import watch_list,guild_ids
+from editable.config import configure
+watch_list=configure.watch_list
+guild_ids=configure.guild_ids
+link_role_whitelist=configure.link_role_whitelist
 from cogs.mute import create_mute
 import discord
-from editable.config import link_role_whitelist
 from discord.utils import get
 from utils.bot_log import log_message
 
@@ -13,7 +15,7 @@ class Slash(Cog):
   def __init__(self, bot):
     self.bot = bot
 
-  @cog_ext.cog_context_menu(target=model.ContextMenuType.USER,name="mute",guild_ids=[guild_ids])
+  @cog_ext.cog_context_menu(target=model.ContextMenuType.USER,name="mute",guild_ids=guild_ids)
             
   async def mute(self, ctx: context.MenuContext):
     allowed_to_use = False
@@ -41,7 +43,7 @@ class Slash(Cog):
     await log_message(self.bot, f"User Muted ({time})", f"**REASON:** {reason}", member, ctx.channel)
     
   # Auto creates a log in #watch-list
-  @cog_ext.cog_context_menu(target=model.ContextMenuType.MESSAGE,name="Auto-Log",guild_ids=[guild_ids])
+  @cog_ext.cog_context_menu(target=model.ContextMenuType.MESSAGE,name="Auto-Log",guild_ids=guild_ids)
   async def log_message(self, ctx: context.MenuContext):
     allowed_to_use = False
     for roles in link_role_whitelist:
