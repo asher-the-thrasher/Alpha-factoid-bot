@@ -87,7 +87,7 @@ class MuteCog(commands.cog.Cog):
       muted_embed = discord.Embed(title="", description=f"**{member} was muted **| {time} - {reason}", color = 0xFF0000)
       await ctx.send(embed=muted_embed)
 
-      await log_message(self.bot, f"User Muted ({time})", f"**REASON:** {reason}", member, ctx.channel)
+      await log_message(self.bot, f"User Muted ({time})", f"**REASON:** {reason}", member, ctx.channel, ctx.author)
       
 class UnMuteCog(commands.Cog):
   def __init__(self, client):
@@ -111,7 +111,7 @@ class UnMuteCog(commands.Cog):
 
     await ctx.send(embed=muted_embed)
 
-    await log_message(self.client, "User Manually Unmuted", f"User {member.name} has been unmuted by {ctx.author}", member, color=0x00ff00)
+    await log_message(self.client, "User Manually Unmuted", f"User {member.name} has been manually unmuted", member, moderator = ctx.author)
 
     return
 
@@ -138,7 +138,7 @@ class UnMuteCog(commands.Cog):
           
             await log_message(client, "User Unmuted (Auto)", f"User <@{member_id}> has been unmuted", user, color=0x00ff00)
           else:
-            await log_message(client, "User Unmuted (Auto)", f"User <@{member_id}> has been unmuted", color=0x00ff00)
+            await log_message(client, "User Unmuted (Auto)", f"User <@{member_id}> has been unmuted",  color=0x00ff00)
 
           del db[member]
 

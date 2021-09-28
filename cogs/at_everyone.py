@@ -96,7 +96,7 @@ async def deal_with_infractions(ctx, bot):
 
         await log_message(bot, 
         "Mass Ping ({infractions} infractions)".format(**user),
-        ctx.content, ctx.author, ctx.channel)
+        ctx.content, ctx.author, ctx.channel, moderator=bot.user)
                 
         if user["infractions"] == 2:
           await create_mute(ctx=ctx, member=ctx.author, time="3d", reason="Mass Ping")

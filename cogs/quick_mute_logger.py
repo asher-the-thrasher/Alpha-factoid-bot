@@ -63,7 +63,6 @@ class Slash(Cog):
     user = ctx.target_message.author
     channel = ctx.target_message.channel
     color=0x00ff00
-    #async def log_message(self, title, body, user=None, channel=None, color=0x00ff00):
     embed_buider = discord.Embed(title=title, description=body, color=color)
     if channel:
       embed_buider.add_field(name="channel", value=f"<#{channel.id}>", inline=False)

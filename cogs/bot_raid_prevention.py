@@ -12,6 +12,7 @@ admins=configure.admins
 guild_id=configure.guild_id
 modmod=configure.modmod
 from discord.ext.tasks import loop
+from utils.bot_log import log_message
 
 
 class RaidProt(Cog):
@@ -99,7 +100,7 @@ class RaidProt(Cog):
             description=f"An unusually high number of users with default profile pictures have joined the server in a 1 minute window, if you would like to turn on Ban Lock use ?banlock. If you believe this warning warning is a false positive, react with {emoji} so you get warned the next time there is a suspected raid.",
             color=0xf5c242)
             embed_builder.timestamp = datetime.now()
-
+            
             self.warning_raid = await self.client.get_channel(log_channel).send(f"<@&{modmod}>", embed=embed_builder)
             await self.warning_raid.add_reaction(emoji)
 
@@ -217,6 +218,8 @@ class RaidProt(Cog):
             description=f"The raid protection system has been activated and will ban all new members with a default profile picture. To turn off the raid protection system, send ?banunlock")
             
             await message.edit(embed=embed_builder)
+            await log_message(self.client, title=f"Raid protection banning system", body=f"The raid protection system has been activated and will ban all new members with a default profile picture. To turn off the raid protection system, send ?banunlock", user=None, channel=None, moderator = ctx.author)
+            
 
     @command(name="banunlock")
     async def ban_unlock(self, ctx):
