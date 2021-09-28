@@ -94,14 +94,14 @@ async def deal_with_infractions(ctx, bot):
 
         writing_to_json(data)
 
-        await log_message(bot, 
-        "Mass Ping ({infractions} infractions)".format(**user),
-        ctx.content, ctx.author, ctx.channel, moderator=bot.user)
+
                 
         if user["infractions"] == 2:
+          await log_message(bot, "Mass Ping Mute ({infractions} infractions)".format(**user),ctx.content, ctx.author, ctx.channel, moderator=bot.user)
           await create_mute(ctx=ctx, member=ctx.author, time="3d", reason="Mass Ping")
 
           return await ctx.channel.send(f"Sadly, {ctx.author.mention} tried to break the rules after being warned. They have now been muted.")
         
         if user["infractions"] >= 3:
+          await log_message(bot, "Mass Ping Kick ({infractions} infractions)".format(**user),ctx.content, ctx.author, ctx.channel, moderator=bot.user)
           await ctx.author.kick(reason="@.everyone 3+ times")

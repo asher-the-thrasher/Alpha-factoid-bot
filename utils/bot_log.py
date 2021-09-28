@@ -6,9 +6,9 @@ from datetime import datetime
 async def log_message(bot, title, body, user=None, channel=None, moderator = None,color=0xFF0000):
   embed_buider = discord.Embed(title=title, description=body, color=color)
   if channel:
-    embed_buider.add_field(name="channel", value=f"<#{channel.id}>", inline=False)
+    embed_buider.add_field(name="Channel", value=f"<#{channel.id}>", inline=False)
   if moderator:
-    embed_buider.add_field(name="Moderator", value=f"<#{moderator}>", inline=False)    
+    embed_buider.add_field(name="Moderator", value=f"{moderator.mention}", inline=False)    
   if user:
     embed_buider.set_footer(text=f"  User: {str(user)}\nID: {str(user.id)}",  icon_url = user.avatar_url)
   embed_buider.timestamp = datetime.now()

@@ -111,7 +111,7 @@ class UnMuteCog(commands.Cog):
 
     await ctx.send(embed=muted_embed)
 
-    await log_message(self.client, "User Manually Unmuted", f"User {member.name} has been manually unmuted", member, moderator = ctx.author)
+    await log_message(self.client, "User Manually Unmuted", f"{member.mention} has been manually unmuted", member, moderator = ctx.author)
 
     return
 
@@ -136,9 +136,9 @@ class UnMuteCog(commands.Cog):
 
             await user.remove_roles(muted_id, reason=None, atomic=True)
           
-            await log_message(client, "User Unmuted (Auto)", f"User <@{member_id}> has been unmuted", user, color=0x00ff00)
+            await log_message(client, "User Unmuted (Auto)", f"User {user.mention} has been unmuted", user, color=0x00ff00)
           else:
-            await log_message(client, "User Unmuted (Auto)", f"User <@{member_id}> has been unmuted",  color=0x00ff00)
+            await log_message(client, "User Unmuted (Auto)", f"User {user.mention} has been unmuted",  color=0x00ff00)
 
           del db[member]
 
