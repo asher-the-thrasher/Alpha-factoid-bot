@@ -1517,12 +1517,6 @@
       "content": "Welcome to the official Alpha Gaming Community Discord server! Unfortunately, our support volunteers can only provide support in English. Most of our support documents and guides are also only in English. If you feel comfortable using a service like Google Translate, feel free to use that to send messages to us. We'll do our best to understand your intent, and we'll try to help you as much as we can. [Translate](https://translate.google.com/?sl=en&tl=es&text=Welcome%20to%20the%20official%20Alpha%20Gaming%20Community%20Discord%20server!%20Unfortunately%2C%20our%20support%20volunteers%20can%20only%20provide%20support%20in%20English.%20Most%20of%20our%20support%20documents%20and%20guides%20are%20also%20only%20in%20English.%20If%20you%20feel%20comfortable%20using%20a%20service%20like%20Google%20Translate%2C%20feel%20free%20to%20use%20that%20to%20send%20messages%20to%20us.%20We%27ll%20do%20our%20best%20to%20understand%20your%20intent%2C%20and%20we%27ll%20try%20to%20help%20you%20as%20much%20as%20we%20can.&op=translate) "
     }
   ],
-  "dropped": [
-    {
-      "name": "dropped",
-      "content": "Dropped frames? Disconnecting?\nFollow the troubleshooting steps in our [Connection Issues guide](https://obsproject.com/wiki/Dropped-Frames-and-General-Connection-Issues)."
-    }
-  ],
   "laptop": [
     {
       "name": "laptop",
@@ -1557,12 +1551,6 @@
     {
       "name": "credit",
       "content": "Many of the commands in this server are from the OBS Studio Discord, we appreciate them for allowing us to use their commands!"
-    }
-  ],
-  "collab": [
-    {
-      "name": "collab",
-      "content": "Hi to find collab partners, or even just others to game with, head to <#526512748604031027> ! If you can't see it, that's because you don't have the Content Creator role yet. Go to <#827759085280690197> and follow the instructions  \ud83d\ude09"
     }
   ],
   "connect": [
@@ -1617,6 +1605,24 @@
     {
       "name": "dblevel",
       "content": "**How to get to the levels tab and set to decibels in Windows**\nWindows button > type \"change system sounds\" > recording tab > select your mic > go to properties > levels tab > right click the blue slider > change to decibels.\n\nPost a screenshot after."
+    }
+  ],
+  "collab": [
+    {
+      "name": "collab",
+      "content": "__**Where did the collab channel go?**__\n\nEverywhere! With the new changes to the server come a bigger emphasis on growing a proper community, so we encourage you to make real connections and foster collaborations in any of the community channels.\n\nNot sure how to proceed? You can always start with getting to know people in <#479468642858434560>!"
+    }
+  ],
+  "ddu": [
+    {
+      "name": "ddu",
+      "content": "[Click here](https://www.guru3d.com/files-details/display-driver-uninstaller-download.html) to download the Display Driver Uninstaller. \nDownload this, it's a utility that will do a clean uninstall of the drivers, then download the most recent ones for your GPU and install them\n[How to use](https://www.reddit.com/r/buildapc/comments/990b3x/can_i_have_a_step_by_step_on_how_to_use_ddu_to/)"
+    }
+  ],
+  "connection": [
+    {
+      "name": "connection",
+      "content": "\"\"Dropped frames? Disconnecting?\\nFollow the troubleshooting steps in our [Connection Issues guide](https://obsproject.com/wiki/Dropped-Frames-and-General-Connection-Issues).\"\""
     }
   ]
 }

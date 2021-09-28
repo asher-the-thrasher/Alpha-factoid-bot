@@ -1,7 +1,5 @@
 import discord
-from discord import Message
 from discord.ext import commands, tasks
-import asyncio
 import datetime as dt
 from datetime import datetime
 
@@ -157,52 +155,48 @@ class UnMuteCog(commands.Cog):
           for member in members_muted:
             member_id = member[9:]
 
-            # # this is really dumb
-            # if time.day - datetime.now().day > 0:
-            #   days_remaning = time.day - datetime.now().day
-            # else:
-            #   days_remaning = 0
-            
-            # if time.hour - datetime.now().hour > 0:
-            #   hours_remaning = time.hour - datetime.now().hour
-            # elif time.hour - datetime.now().hour < 0:
-            #   hours_remaning = 24 + (time.hour - datetime.now().hour)
-            # else:
-            #   hours_remaning = 0
-
-            # if time.minute - datetime.now().minute > 0:
-            #   minutes_remaning = time.minute - datetime.now().minute
-            # elif time.minute - datetime.now().minute < 0:
-            #   minutes_remaning = 60 + time.minute - datetime.now().minute
-            # else:
-            #   minutes_remaning = 0
-
-            # if time.second - datetime.now().second > 0:
-            #   seconds_remaning = time.second - datetime.now().second
-            # elif time.second - datetime.now().second < 0:
-            #   seconds_remaning = 60 + time.second - datetime.now().second
-            # else:
-            #   seconds_remaning = 0
-            # time_remaning = (f"{days_remaning} days, {hours_remaning} hours, {minutes_remaning} minutes, {seconds_remaning} seconds")
-            # print(time_remaning)
-            #print(member)
             
             user = ctx.guild.get_member(int(member_id))
             if user:
               db[member]
-              #unmute_time = datetime.strptime(db[member], '%Y-%m-%d %H-%M-%S-%f')
-              #current_time = datetime.strptime(datetime.now(), '%Y-%m-%d %H-%M-%S-%f')
+              unmute_time = datetime.strptime(db[member], '%Y-%m-%d %H:%M:%S.%f')
+              current_time = datetime.now()
+              
+              time_to_unmute = unmute_time - current_time
 
-              #print(unmute_time - datetime.now())
+              days = str(time_to_unmute).split(", ")[0]
+              if ":" in days:
+                days = ""
+              hours = str(time_to_unmute)[-15:-13]
+              min = str(time_to_unmute)[-12:-10]
+              sec =str(time_to_unmute)[-9:-7]
+              if hours == "0" and not days and min =="0":
+                unmuting_time = f"{sec} seconds"
+                muted.append(f"<@{str(user.id)}> - {unmuting_time}")
 
-              muted.append(f"<@{str(user.id)}> - {db[member]}")
+              elif hours == "0" and not days:
+
+                unmuting_time = f"{min} minutes, {sec} seconds"
+                muted.append(f"<@{str(user.id)}> - {unmuting_time}")
+
+              elif not days:
+                unmuting_time = f"{hours} hours, {min} minutes, {sec} seconds"
+                muted.append(f"<@{str(user.id)}> - {unmuting_time}")
+
+
+
+              else:
+                unmuting_time = f"{days}, {hours} hours, {min} minutes, {sec} seconds"           
+                muted.append(f"<@{str(user.id)}> - {unmuting_time}")
           
             
             
-            # + " - Unmuted: " + time_remaning)
+
+
           embed_buider = discord.Embed(title="Muted Users", description='\n'.join(muted), color=0xFF0000)
+          embed_buider.timestamp = datetime.now()
           return await ctx.send(embed=embed_buider)
-        ctx.send("No users muted")
+        await ctx.send("No users muted")
 
     except discord.ext.commands.errors.MissingRole:
         return  

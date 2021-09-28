@@ -75,9 +75,11 @@ class at_everyone(Cog):
             })
 
             writing_to_json(data)
-
-    if delete_message:
-      await message.delete()
+    try:
+      if delete_message:
+        await message.delete()
+    except: 
+      return
 
 def setup(client):
     client.add_cog(at_everyone(client))

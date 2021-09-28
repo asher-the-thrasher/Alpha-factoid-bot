@@ -12,30 +12,30 @@ class configure(Cog):
   a_new_testing_server_guild_id = 849649811241173072
   ag_guild_id = 473253164884295699
   guild_id = ag_guild_id
-  guild_ids = a_new_testing_server_guild_id#,ag_guild_id
+  guild_ids = a_new_testing_server_guild_id,ag_guild_id
 
 
 
   # Role assigned when someone is muted
   a_new_testing_server_muted_role_id = 854885126944587817
   AG_muted_role_id = data["muted_role"]
-  Muted_role = a_new_testing_server_muted_role_id
+  Muted_role = AG_muted_role_id
 
 
   # Link where certain links are allowed
   AG_share_content_id = data["share_your_content"] 
   a_new_testing_server_share_content_id = 863992156037316648
-  share_content = a_new_testing_server_share_content_id
+  share_content = AG_share_content_id
 
 
   AG_log_id = data["senpaibot"]
   a_new_testing_server_log_id = 863992167264682005
-  log_channel = a_new_testing_server_log_id
+  log_channel = AG_log_id
 
 
   AG_watch_list_id = data["watch_list"] 
   a_new_testing_server_watch_list_id = 881994339184672829
-  watch_list = a_new_testing_server_watch_list_id
+  watch_list = AG_watch_list_id
 
 
 

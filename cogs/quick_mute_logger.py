@@ -40,7 +40,7 @@ class Slash(Cog):
     muted_embed = discord.Embed(title="", description=f"**{member} was muted **| {time} - {reason}", color = 0xFF0000)
     await ctx.send(embed=muted_embed)
 
-    await log_message(self.bot, f"User Muted ({time})", f"**REASON:** {reason}", member, ctx.channel)
+    await log_message(self.bot, f"User Muted ({time})", f"**REASON:** {reason}", member, ctx.channel,moderator=ctx.author)
     
   # Auto creates a log in #watch-list
   @cog_ext.cog_context_menu(target=model.ContextMenuType.MESSAGE,name="Auto-Log",guild_ids=guild_ids)

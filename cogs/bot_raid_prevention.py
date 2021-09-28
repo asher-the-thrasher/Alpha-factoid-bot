@@ -4,6 +4,7 @@ import json
 import discord
 from discord.ext.commands import command, Cog
 from discord.utils import get
+from datetime import datetime
 
 from editable.config import configure
 log_channel=configure.log_channel
@@ -97,6 +98,8 @@ class RaidProt(Cog):
             embed_builder = discord.Embed(title=f"Potential Bot Raid ({users_joined} Users)",
             description=f"An unusually high number of users with default profile pictures have joined the server in a 1 minute window, if you would like to turn on Ban Lock use ?banlock. If you believe this warning warning is a false positive, react with {emoji} so you get warned the next time there is a suspected raid.",
             color=0xf5c242)
+            embed_builder.timestamp = datetime.now()
+
             self.warning_raid = await self.client.get_channel(log_channel).send(f"<@&{modmod}>", embed=embed_builder)
             await self.warning_raid.add_reaction(emoji)
 
@@ -142,6 +145,8 @@ class RaidProt(Cog):
 
                 if users_banned == 1:
                     embed_builder = discord.Embed(title="Ban Lock On", description=f"Users Banned: {users_banned}")
+                    embed_builder.timestamp = datetime.now()
+
                     users_banned_message = await self.client.get_channel(log_channel).send(embed=embed_builder)
                     self.users_banned_message = users_banned_message
 

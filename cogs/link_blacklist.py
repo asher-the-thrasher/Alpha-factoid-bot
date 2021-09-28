@@ -92,9 +92,13 @@ class LinkBlacklist(Cog):
                   reason_muted = "blacklisted"
 
                 # To bot log channel
-                await log_message(self.bot, "User Muted (Blacklisted Link)", message.content, message.author, message.channel)
+
+                await log_message(self.bot, f"User Muted (3d) - {reason_muted} link", message.content, message.author, message.channel, moderator=self.bot.user)
                 
-                await message.delete()
+                try:
+                  await message.delete()
+                except:
+                  continue
 
                 # replaces their message with an embed
                 muted_embed = discord.Embed(title="", description=f"{message.author.name} just posted a {reason_muted} link and has been sent to naughty corner to think about what they did.", color = 0xFF0000)

@@ -3,35 +3,33 @@ from discord.ext import commands
 from discord_slash.utils.manage_components import create_button, create_actionrow
 from discord_slash.model import ButtonStyle
 
-
 class factoids_execution(commands.Cog):  
+    def __init__(self,client):
+      client.help_command=None
 
+    @commands.command()
+    async def connection(self,message,*,extra_text=""):
+      factoid = """Dropped frames? Disconnecting?\nFollow the troubleshooting steps in our [Connection Issues guide](https://obsproject.com/wiki/Dropped-Frames-and-General-Connection-Issues)."""
+      await factoids_execution.execute(self, message,factoid,extra_text)
+
+    @commands.command()
+    async def ddu(self,message,*,extra_text=""):
+      factoid = """[Click here](https://www.guru3d.com/files-details/display-driver-uninstaller-download.html) to download the Display Driver Uninstaller. \nDownload this, it's a utility that will do a clean uninstall of the drivers, then download the most recent ones for your GPU and install them\n[How to use](https://www.reddit.com/r/buildapc/comments/990b3x/can_i_have_a_step_by_step_on_how_to_use_ddu_to/)"""
+      await factoids_execution.execute(self, message,factoid,extra_text)
+
+    @commands.command()
+    async def collab(self,message,*,extra_text=""):
+      factoid = """__**Where did the collab channel go?**__\nEverywhere! With the new changes to the server come a bigger emphasis on growing a proper community, so we encourage you to make real connections and foster collaborations in any of the community channels.\nNot sure how to proceed? You can always start with getting to know people in <#479468642858434560>!"""
+      await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def dblevel(self,message,*,extra_text=""):
-      factoid = """**How to get to the levels tab and set to decibels in Windows**
-Windows button > type "change system sounds" > recording tab > select your mic > go to properties > levels tab > right click the blue slider > change to decibels.
-
-Post a screenshot after."""
+      factoid = """**How to get to the levels tab and set to decibels in Windows**\nWindows button > type "change system sounds" > recording tab > select your mic > go to properties > levels tab > right click the blue slider > change to decibels.\n\nPost a screenshot after."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def top5q(self,message,*,extra_text=""):
-      factoid = """**Harris Heller's Top 5 Terrible FAQs**
-__Should I go full time?__
-https://youtu.be/OGOtnO2zwfg?t=154
-
-__Which platform should I stream on?__
-https://youtu.be/OGOtnO2zwfg?t=283
-
-__Should I buy A or B?__
-https://youtu.be/OGOtnO2zwfg?t=366
-
-__Should I buy a webcam or a full camera?__
-https://youtu.be/OGOtnO2zwfg?t=406
-
-__Should I show my face on cam?__
-https://youtu.be/OGOtnO2zwfg?t=506"""
+      factoid = """**Harris Heller's Top 5 Terrible FAQs**\n__Should I go full time?__\nhttps://youtu.be/OGOtnO2zwfg?t=154\n\n__Which platform should I stream on?__\nhttps://youtu.be/OGOtnO2zwfg?t=283\n\n__Should I buy A or B?__\nhttps://youtu.be/OGOtnO2zwfg?t=366\n\n__Should I buy a webcam or a full camera?__\nhttps://youtu.be/OGOtnO2zwfg?t=406\n\n__Should I show my face on cam?__\nhttps://youtu.be/OGOtnO2zwfg?t=506"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -61,18 +59,12 @@ https://youtu.be/OGOtnO2zwfg?t=506"""
 
     @commands.command()
     async def editors(self,message,*,extra_text=""):
-      factoid = """Hi, for a list of software you can use to edit photos and videos or create designs, [Click Here](https://discord.com/channels/473253164884295699/788520412299395114/788572536925323275)
-Happy editing!"""
+      factoid = """Hi, for a list of software you can use to edit photos and videos or create designs, [Click Here](https://discord.com/channels/473253164884295699/788520412299395114/788572536925323275)\nHappy editing!"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def connect(self,message,*,extra_text=""):
       factoid = """[click here](https://www.youtube.com/watch?v=sQnhk2JIeGs) to connect your twitch to discord"""
-      await factoids_execution.execute(self, message,factoid,extra_text)
-
-    @commands.command()
-    async def collab(self,message,*,extra_text=""):
-      factoid = """Hi to find collab partners, or even just others to game with, head to <#526512748604031027> ! If you can't see it, that's because you don't have the Content Creator role yet. Go to <#827759085280690197> and follow the instructions  😉"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -92,30 +84,17 @@ Happy editing!"""
 
     @commands.command()
     async def mc(self,message,*,extra_text=""):
-      factoid = """To capture Minecraft Java Edition, make sure the Game Capture "Mode" is set to "Capture specific window", and select javaw/minecraft in the "Window" drop down.
-If you are still having issues please follow our [Minecraft capture guide](https://obsproject.com/wiki/Minecraft-Not-Working-With-Game-Capture)"""
+      factoid = """To capture Minecraft Java Edition, make sure the Game Capture "Mode" is set to "Capture specific window", and select javaw/minecraft in the "Window" drop down.\nIf you are still having issues please follow our [Minecraft capture guide](https://obsproject.com/wiki/Minecraft-Not-Working-With-Game-Capture)"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def macversions(self,message,*,extra_text=""):
-      factoid = """For High Sierra (10.13) & newer, use OBS Studio 25+ (recommended)
-Older versions
-Update macOS if you can. We no longer provide support for these older versions.
-For Sierra (10.12), use OBS 24.0.6
-For El Capitan (10.11), use OBS 21.1.1
-For Yosemite (10.10), use OBS 20.1.0"""
+      factoid = """For High Sierra (10.13) & newer, use OBS Studio 25+ (recommended)\nOlder versions\nUpdate macOS if you can. We no longer provide support for these older versions.\nFor Sierra (10.12), use OBS 24.0.6\nFor El Capitan (10.11), use OBS 21.1.1\nFor Yosemite (10.10), use OBS 20.1.0"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def laptop(self,message,*,extra_text=""):
-      factoid = """If you're using OBS Studio 27+ on Windows 10 1809 or earlier, your system must be configured to run OBS on a specific GPU, depending on the type of capture you are trying to do.
-[Click here](https://obsproject.com/wiki/Laptop-Troubleshooting) for instructions on how to configure your system."""
-      await factoids_execution.execute(self, message,factoid,extra_text)
-
-    @commands.command()
-    async def dropped(self,message,*,extra_text=""):
-      factoid = """Dropped frames? Disconnecting?
-Follow the troubleshooting steps in our [Connection Issues guide](https://obsproject.com/wiki/Dropped-Frames-and-General-Connection-Issues)."""
+      factoid = """If you're using OBS Studio 27+ on Windows 10 1809 or earlier, your system must be configured to run OBS on a specific GPU, depending on the type of capture you are trying to do.\n[Click here](https://obsproject.com/wiki/Laptop-Troubleshooting) for instructions on how to configure your system."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -130,20 +109,17 @@ Follow the troubleshooting steps in our [Connection Issues guide](https://obspro
 
     @commands.command()
     async def bt(self,message,*,extra_text=""):
-      factoid = """If your audio is muting when you launch OBS, and you're using a Bluetooth headset, it's caused by the underlying design of Bluetooth. To fix this, you can either switch to a wired headset, don't use the Bluetooth headset's mic, or set your sound to go through the HFP device for your headset.
-Note: HFP offers lower sound quality."""
+      factoid = """If your audio is muting when you launch OBS, and you're using a Bluetooth headset, it's caused by the underlying design of Bluetooth. To fix this, you can either switch to a wired headset, don't use the Bluetooth headset's mic, or set your sound to go through the HFP device for your headset.\nNote: HFP offers lower sound quality."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def bs(self,message,*,extra_text=""):
-      factoid = """If you are trying to stream or record with OBS and are getting a black screen, make sure you have added the appropriate source to capture what you are trying to show. Window, Game, and Display capture are the three most common capture sources. If you have already added a capture source, and OBS is still black, please grab your current log and link it here.
-Help -> Log Files -> Upload Current Log!"""
+      factoid = """If you are trying to stream or record with OBS and are getting a black screen, make sure you have added the appropriate source to capture what you are trying to show. Window, Game, and Display capture are the three most common capture sources. If you have already added a capture source, and OBS is still black, please grab your current log and link it here.\nHelp -> Log Files -> Upload Current Log!"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def am(self,message,*,extra_text=""):
-      factoid = """To use the Audio Monitoring feature, click Edit -> Advanced Audio Properties and set Audio Monitoring to either Monitor Only, or Monitor and Output. Monitor Only will not output that device's audio to your stream/recording.
-Audio for that device will be played out of your system default device, unless otherwise specified in Settings -> Audio -> Advanced."""
+      factoid = """To use the Audio Monitoring feature, click Edit -> Advanced Audio Properties and set Audio Monitoring to either Monitor Only, or Monitor and Output. Monitor Only will not output that device's audio to your stream/recording.\nAudio for that device will be played out of your system default device, unless otherwise specified in Settings -> Audio -> Advanced."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -158,21 +134,12 @@ Audio for that device will be played out of your system default device, unless o
 
     @commands.command()
     async def log(self,message,*,extra_text=""):
-      factoid = """A current log file is required to help fix your issue. Please post a link to your current log file.
-In OBS select Help > Log Files > Upload Current Log File.
-Click Copy URL and then paste the link here."""
+      factoid = """A current log file is required to help fix your issue. Please post a link to your current log file.\nIn OBS select Help > Log Files > Upload Current Log File.\nClick Copy URL and then paste the link here."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def report(self,message,*,extra_text=""):
-      factoid = """**How to Make a Server Report**
-Reports should be made in #┃reports-server-issues To make a server report you will need: 
-- A screenshot of the problem interaction 
-- The user's ID (not their tag)* 
-
-* If you're not sure how to get the user ID, here's a quick guide: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-I     
-
-Thank you for helping to improve our server!"""
+      factoid = """**How to Make a Server Report**\nReports should be made in #┃reports-server-issues To make a server report you will need: \n- A screenshot of the problem interaction \n- The user's ID (not their tag)* \n\n* If you're not sure how to get the user ID, here's a quick guide: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-I\n\n\nThank you for helping to improve our server!"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -192,8 +159,7 @@ Thank you for helping to improve our server!"""
 
     @commands.command()
     async def sampai(self,message,*,extra_text=""):
-      factoid = """Hi, you can [click here](https://discord.com/channels/473253164884295699/595049244801630248/716746628232380588) to find the invite to Sam's server!
-"""
+      factoid = """Hi, you can [click here](https://discord.com/channels/473253164884295699/595049244801630248/716746628232380588) to find the invite to Sam's server!"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -218,40 +184,17 @@ Thank you for helping to improve our server!"""
 
     @commands.command()
     async def grow(self,message,*,extra_text=""):
-      factoid = """Hi, 
-
-Since Twitch has horrible discoverability, you're going to find it very hard to grow from streaming alone. You need to be making content on other, more discoverable platforms and funnel those viewers to Twitch. 
-Platforms like YouTube (YT, FB, TikTok, etc) help grow your brand and create an interest in you and/or your content hanging out with you in a live stream. 
-
-Live interaction is Twitch's strength, so you'd need to see the strengths and weaknesses of each platform, and use them accordingly. 
-
-_Here are some Alpha Gaming Vids to watch if you haven't already:_
-- 25 Twitch Tips in 10 mins: https://www.youtube.com/watch?v=si7VS8dVSZA 
-- Top 5 Streaming Mistakes: https://www.youtube.com/watch?v=8tjJpUkGGBw"""
+      factoid = """Hi, \n\nSince Twitch has horrible discoverability, you're going to find it very hard to grow from streaming alone. You need to be making content on other, more discoverable platforms and funnel those viewers to Twitch. \nPlatforms like YouTube (YT, FB, TikTok, etc) help grow your brand and create an interest in you and/or your content hanging out with you in a live stream. \n\nLive interaction is Twitch's strength, so you'd need to see the strengths and weaknesses of each platform, and use them accordingly. \n\n_Here are some Alpha Gaming Vids to watch if you haven't already:_\n- 25 Twitch Tips in 10 mins: https://www.youtube.com/watch?v=si7VS8dVSZA \n- Top 5 Streaming Mistakes: https://www.youtube.com/watch?v=8tjJpUkGGBw"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def cliffnotes(self,message,*,extra_text=""):
-      factoid = """_CLIFF NOTES_
-- ISO as low as possible (iso should ideally be under 800, if that's too dark you need more light) 
-- aperture (f) as wide open as possible (with kit lens) 
-- shutter speed twice the fps 
-- custom white balance 
-- make sure your camera is in movie mode 
-- don't leave anything on auto"""
+      factoid = """_CLIFF NOTES_\n- ISO as low as possible (iso should ideally be under 800, if that's too dark you need more light) \n- aperture (f) as wide open as possible (with kit lens) \n- shutter speed twice the fps \n- custom white balance \n- make sure your camera is in movie mode \n- don't leave anything on auto"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def c920(self,message,*,extra_text=""):
-      factoid = """_C920/C922/C930e Best Practices_
- - Exposure should be set to between -7 and -5 
-- Low Light comp should be turned to off
-- Gain should be 0 
-- White balance should be where your skintones are normal 
-- Add a touch of sharpening from default (between 128 and 140) 
-- Add a touch of contrast from default (between 128 and 140)
-- Add a touch of sat from default (between 128 and 140)
-- Add some brightness if the darks are a bit too dark"""
+      factoid = """_C920/C922/C930e Best Practices_\n- Exposure should be set to between -7 and -5 \n- Low Light comp should be turned to off\n- Gain should be 0 \n- White balance should be where your skintones are normal \n- Add a touch of sharpening from default (between 128 and 140) \n- Add a touch of contrast from default (between 128 and 140)\n- Add a touch of sat from default (between 128 and 140)\n- Add some brightness if the darks are a bit too dark"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -261,12 +204,7 @@ _Here are some Alpha Gaming Vids to watch if you haven't already:_
 
     @commands.command()
     async def rule6(self,message,*,extra_text=""):
-      factoid = """__**REMINDER:**__ This is not a marketplace server. We do not allow offering or soliciting of transactions (paid or otherwise) on this server. If two people come to an agreement via DMs to go around this rule, then please note that this is at your own risk. The server is _NOT_ liable for any issues you may face from these transactions.
-
-If you need an artist, we recommend searching on a proper platform such as Fiverr or 99designs, or even Twitter. 
-
-
-PS. Don't ask someone to make you something for free. If you want to learn how to make things yourself, the community is more than willing to help you if you need pointers or specific help with techniques."""
+      factoid = """__**REMINDER:**__ This is not a marketplace server. We do not allow offering or soliciting of transactions (paid or otherwise) on this server. If two people come to an agreement via DMs to go around this rule, then please note that this is at your own risk. The server is _NOT_ liable for any issues you may face from these transactions.\nIf you need an artist, we recommend searching on a proper platform such as Fiverr or 99designs, or even Twitter. \n\n\nPS. Don't ask someone to make you something for free. If you want to learn how to make things yourself, the community is more than willing to help you if you need pointers or specific help with techniques."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -281,8 +219,7 @@ PS. Don't ask someone to make you something for free. If you want to learn how t
 
     @commands.command()
     async def youtubebitrate(self,message,*,extra_text=""):
-      factoid = """You can find YouTube's recommended bitrates for different resolutions here: https://support.google.com/youtube/answer/2853702?hl=en
-Keep in mind that unlike Twitch, YouTube re-encodes your original stream resolution, so you may need a higher bitrate to match the quality you'd normally see. Aim for the higher values in the ranges suggested by YouTube."""
+      factoid = """You can find YouTube's recommended bitrates for different resolutions here: https://support.google.com/youtube/answer/2853702?hl=en\nKeep in mind that unlike Twitch, YouTube re-encodes your original stream resolution, so you may need a higher bitrate to match the quality you'd normally see. Aim for the higher values in the ranges suggested by YouTube."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -292,9 +229,7 @@ Keep in mind that unlike Twitch, YouTube re-encodes your original stream resolut
 
     @commands.command()
     async def younow(self,message,*,extra_text=""):
-      factoid = """YouNow is not compatible with OBS Studio from obsproject.com.
-You will have to use their fork for which we can't provide support.
-Please see https://younow.zendesk.com/hc/articles/206439166"""
+      factoid = """YouNow is not compatible with OBS Studio from obsproject.com.\nYou will have to use their fork for which we can't provide support.\nPlease see https://younow.zendesk.com/hc/articles/206439166"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -304,9 +239,7 @@ Please see https://younow.zendesk.com/hc/articles/206439166"""
 
     @commands.command()
     async def xsplitvcam(self,message,*,extra_text=""):
-      factoid = """The XSplit VCam allows you to remove or blur the background of your webcam without needing a greenscreen or other expensive hardware.
-You can check it out here: [XSplit VCam](https://www.xsplit.com/partners/obs)
-As part of the sponsorship to OBS, the team at XSplit is donating a portion of the proceeds from VCam back to OBS!"""
+      factoid = """The XSplit VCam allows you to remove or blur the background of your webcam without needing a greenscreen or other expensive hardware.\nYou can check it out here: [XSplit VCam](https://www.xsplit.com/partners/obs)\nAs part of the sponsorship to OBS, the team at XSplit is donating a portion of the proceeds from VCam back to OBS!"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -336,20 +269,12 @@ As part of the sponsorship to OBS, the team at XSplit is donating a portion of t
 
     @commands.command()
     async def windowsupdate(self,message,*,extra_text=""):
-      factoid = """If you've installed the Visual C++ Components that OBS Studio requires, but still aren't able to install OBS Studio, you may need to update your Windows installation. To do this, follow these steps.
-1) Open Windows Update. This can be found by searching for Windows Update in the Start Menu, or in the Control Panel.
-2) Install any available updates.
-3) Restart your PC to finish installing updates.
-4) Repeat steps 1-3 until there are absolutely 0 updates remaining.
-Once Windows is fully up to date, try installing OBS again. If that doesn't work, install the UCRT manually: https://support.microsoft.com/en-us/help/3118401/update-for-universal-c-runtime-in-windows"""
+      factoid = """If you've installed the Visual C++ Components that OBS Studio requires, but still aren't able to install OBS Studio, you may need to update your Windows installation. To do this, follow these steps.\n1) Open Windows Update. This can be found by searching for Windows Update in the Start Menu, or in the Control Panel.\n2) Install any available updates.\n3) Restart your PC to finish installing updates.\n4) Repeat steps 1-3 until there are absolutely 0 updates remaining.\nOnce Windows is fully up to date, try installing OBS again. If that doesn't work, install the UCRT manually: https://support.microsoft.com/en-us/help/3118401/update-for-universal-c-runtime-in-windows"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def win10cam(self,message,*,extra_text=""):
-      factoid = """Windows 10's April 2018 Update adds new privacy settings for microphones and cameras, which can block them from use. The camera privacy settings also affect capture cards. These settings are opt-in. To allow apps like OBS to use your microphone or camera again, follow these steps.
-1) Open the Settings app.
-2) Go to Privacy -> Camera for capture cards and webcams, and turn "Allow apps to access your camera" on.
-3) Go to Privacy -> Microphones, and turn "Allow apps to access your microphone" on."""
+      factoid = """Windows 10's April 2018 Update adds new privacy settings for microphones and cameras, which can block them from use. The camera privacy settings also affect capture cards. These settings are opt-in. To allow apps like OBS to use your microphone or camera again, follow these steps.\n1) Open the Settings app.\n2) Go to Privacy -> Camera for capture cards and webcams, and turn "Allow apps to access your camera" on.\n3) Go to Privacy -> Microphones, and turn "Allow apps to access your microphone" on."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -359,8 +284,7 @@ Once Windows is fully up to date, try installing OBS again. If that doesn't work
 
     @commands.command()
     async def websocket(self,message,*,extra_text=""):
-      factoid = """A plugin for controlling OBS via websockets is available here:
-OBS Websockets"""
+      factoid = """A plugin for controlling OBS via websockets is available here:\nOBS Websockets"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -375,8 +299,7 @@ OBS Websockets"""
 
     @commands.command()
     async def vs2017(self,message,*,extra_text=""):
-      factoid = """Visual Studio 2019 runtimes are required by the plugins that come with OBS Studio.
-Download and install both vc2019redist_x86.exe and vc2019redist_x64.exe from https://obsproject.com/visual-studio-2019-runtimes"""
+      factoid = """Visual Studio 2019 runtimes are required by the plugins that come with OBS Studio.\nDownload and install both vc2019redist_x86.exe and vc2019redist_x64.exe from https://obsproject.com/visual-studio-2019-runtimes"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -386,14 +309,12 @@ Download and install both vc2019redist_x86.exe and vc2019redist_x64.exe from htt
 
     @commands.command()
     async def vlcsource(self,message,*,extra_text=""):
-      factoid = """VLC source requires VLC to be installed on your system, with the correct bitness. 32-bit VLC for 32-bit OBS, or 64-bit VLC for 64-bit OBS.
-VLC can be downloaded here: http://www.videolan.org/vlc/"""
+      factoid = """VLC source requires VLC to be installed on your system, with the correct bitness. 32-bit VLC for 32-bit OBS, or 64-bit VLC for 64-bit OBS.\nVLC can be downloaded here: http://www.videolan.org/vlc/"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def vlc(self,message,*,extra_text=""):
-      factoid = """Many default video players do not have good format support. When playing files made with OBS, players like 'Movies & TV' can appear to be missing video or audio. [Download and use VLC](https://www.videolan.org/vlc/index.html) instead for accurate video playback.
-Like OBS, VLC is a free and open source project."""
+      factoid = """Many default video players do not have good format support. When playing files made with OBS, players like 'Movies & TV' can appear to be missing video or audio. [Download and use VLC](https://www.videolan.org/vlc/index.html) instead for accurate video playback.\nLike OBS, VLC is a free and open source project."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -403,23 +324,17 @@ Like OBS, VLC is a free and open source project."""
 
     @commands.command()
     async def virtualcamremove(self,message,*,extra_text=""):
-      factoid = """To uninstall VirtualCam on Windows:
-1) Navigate to: C:\Program Files\obs-studio\data\obs-plugins\win-dshow
-2) Right click virtualcam-uninstall.bat, and Run as Administrator.
-If you have OBS installed in a different directory (or in portable mode), right click your OBS shortcut and choose "Open file location" to track down the location of the obs-studio directory."""
+      factoid = """To uninstall VirtualCam on Windows:\n1) Navigate to: C:\Program Files\obs-studio\data\obs-plugins\win-dshow\n2) Right click virtualcam-uninstall.bat, and Run as Administrator.\nIf you have OBS installed in a different directory (or in portable mode), right click your OBS shortcut and choose "Open file location" to track down the location of the obs-studio directory."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def virtualcam(self,message,*,extra_text=""):
-      factoid = """Windows: OBS v26 and above contains a basic virtual camera. For advanced usage, such as preview or specific scene/source output, try the [third party plugin](https://obsproject.com/forum/resources/obs-virtualcam.949/).
-macOS: OBS v26.1 and above contains a standard virtual camera. Having issues with specific programs? Check [this guide](https://obsproject.com/wiki/MacOS-Virtual-Camera-Compatibility-Guide).
-Linux: OBS v26.1 and above contains a standard virtual camera. v4l2loopback is required, best installed via the v4l2loopback-dkms package."""
+      factoid = """Windows: OBS v26 and above contains a basic virtual camera. For advanced usage, such as preview or specific scene/source output, try the [third party plugin](https://obsproject.com/forum/resources/obs-virtualcam.949/).\nmacOS: OBS v26.1 and above contains a standard virtual camera. Having issues with specific programs? Check [this guide](https://obsproject.com/wiki/MacOS-Virtual-Camera-Compatibility-Guide).\nLinux: OBS v26.1 and above contains a standard virtual camera. v4l2loopback is required, best installed via the v4l2loopback-dkms package."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def vce(self,message,*,extra_text=""):
-      factoid = """The AMD Advanced Media Framework (VCE) encoder plugin is available in OBS Studio as part of the base installation on Windows. If you are having issues using this encoder, first make sure that your drivers are [fully up to date.](https://support.amd.com/en-us/download)
-If updating both drivers and plugin does not work, check the [troubleshooting guide.](https://github.com/obsproject/obs-amd-encoder/wiki/Guide%3A-Troubleshooting)"""
+      factoid = """The AMD Advanced Media Framework (VCE) encoder plugin is available in OBS Studio as part of the base installation on Windows. If you are having issues using this encoder, first make sure that your drivers are [fully up to date.](https://support.amd.com/en-us/download)\nIf updating both drivers and plugin does not work, check the [troubleshooting guide.](https://github.com/obsproject/obs-amd-encoder/wiki/Guide%3A-Troubleshooting)"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -429,17 +344,12 @@ If updating both drivers and plugin does not work, check the [troubleshooting gu
 
     @commands.command()
     async def vcamaudio(self,message,*,extra_text=""):
-      factoid = """Install [VB-Audio CABLE](https://www.vb-audio.com/Cable/index.htm). (A reboot is not required)
-In OBS Studio, go to Settings > Audio and select "CABLE Input" as your Monitoring Device
-Go to Edit > Advanced Audio Properties and enable Audio Monitoring for the audio sources you'd like to stream to Discord.
-In Discord, in Voice & Video settings, select "CABLE Output" instead of your microphone under "Input device".
-Now anything you monitor in OBS Studio will be streamed to Discord. Similar steps will work with other conferencing apps, such as Microsoft Teams or Slack."""
+      factoid = """Install [VB-Audio CABLE](https://www.vb-audio.com/Cable/index.htm). (A reboot is not required)\nIn OBS Studio, go to Settings > Audio and select "CABLE Input" as your Monitoring Device\nGo to Edit > Advanced Audio Properties and enable Audio Monitoring for the audio sources you'd like to stream to Discord.\nIn Discord, in Voice & Video settings, select "CABLE Output" instead of your microphone under "Input device".\nNow anything you monitor in OBS Studio will be streamed to Discord. Similar steps will work with other conferencing apps, such as Microsoft Teams or Slack."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def vac(self,message,*,extra_text=""):
-      factoid = """How to exclude or separate audio sources for a stream or recording: https://obsproject.com/forum/resources/8/
-For a more advanced setup, check out our guide on [Voicemeeter Banana](https://canary.discord.com/channels/473253164884295699/599861521543200789/801271416817319966)"""
+      factoid = """How to exclude or separate audio sources for a stream or recording: https://obsproject.com/forum/resources/8/\nFor a more advanced setup, check out our guide on [Voicemeeter Banana](https://canary.discord.com/channels/473253164884295699/599861521543200789/801271416817319966)"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -449,15 +359,7 @@ For a more advanced setup, check out our guide on [Voicemeeter Banana](https://c
 
     @commands.command()
     async def uvc(self,message,*,extra_text=""):
-      factoid = """Here’s how to install native UVC drivers for your webcam:
-Open Device Manager.
-Expand Imaging devices.
-Locate the name of your camera in the list and right-click on it.
-Select Update Driver Software…
-Click Browse my computer for driver software.
-Click Let me pick from a list of device drivers on my computer.
-Check Show compatible hardware, and then select USB Video Device.
-Click Next and follow the on-screen instructions to update the driver."""
+      factoid = """Here’s how to install native UVC drivers for your webcam:\nOpen Device Manager.\nExpand Imaging devices.\nLocate the name of your camera in the list and right-click on it.\nSelect Update Driver Software…\nClick Browse my computer for driver software.\nClick Let me pick from a list of device drivers on my computer.\nCheck Show compatible hardware, and then select USB Video Device.\nClick Next and follow the on-screen instructions to update the driver."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -492,8 +394,7 @@ Click Next and follow the on-screen instructions to update the driver."""
 
     @commands.command()
     async def twitchbitrate(self,message,*,extra_text=""):
-      factoid = """You can find Twitch's recommended bitrates for different resolutions here: https://stream.twitch.tv/encoding/
-Keep in mind that you shouldn't go above 6000 Kbps, and if you're not partnered don't set your bitrate too high otherwise your viewers may have trouble watching your stream."""
+      factoid = """You can find Twitch's recommended bitrates for different resolutions here: https://stream.twitch.tv/encoding/\nKeep in mind that you shouldn't go above 6000 Kbps, and if you're not partnered don't set your bitrate too high otherwise your viewers may have trouble watching your stream."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -513,9 +414,7 @@ Keep in mind that you shouldn't go above 6000 Kbps, and if you're not partnered 
 
     @commands.command()
     async def themes(self,message,*,extra_text=""):
-      factoid = """OBS Studio supports custom themes!
-Download user made themes: https://obsproject.com/forum/resources/categories/10/
-Learn to make your own themes and where to install themes: https://obsproject.com/wiki/Custom-Themes"""
+      factoid = """OBS Studio supports custom themes!\nDownload user made themes: https://obsproject.com/forum/resources/categories/10/\nLearn to make your own themes and where to install themes: https://obsproject.com/wiki/Custom-Themes"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -555,10 +454,7 @@ Learn to make your own themes and where to install themes: https://obsproject.co
 
     @commands.command()
     async def stalecookie(self,message,*,extra_text=""):
-      factoid = """Exit OBS (make sure OBS is not running)
-Delete the folder %appdata%\obs-studio\plugin_config\obs-browser\obs_profile_cookies
-Start OBS
-Settings -> Stream -> disconnect -> connect"""
+      factoid = """Exit OBS (make sure OBS is not running)\nDelete the folder %appdata%\obs-studio\plugin_config\obs-browser\obs_profile_cookies\nStart OBS\nSettings -> Stream -> disconnect -> connect"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -568,8 +464,7 @@ Settings -> Stream -> disconnect -> connect"""
 
     @commands.command()
     async def speedtest(self,message,*,extra_text=""):
-      factoid = """Speed tests mean very little with regards to streaming and your choice of bitrate. They measure your raw upload speed to a server that's near you (likely run by your local ISP), instead of your stable upload speed to a streaming server. Your stable speed will determine the bitrate you can comfortably stream at.
-The stable speed can be estimated as roughly 70-75% of the speed test result in a lot of cases, however this is by no means a perfect estimate. In reality, it may end up being much worse if there's problems between your ISP and the streaming service."""
+      factoid = """Speed tests mean very little with regards to streaming and your choice of bitrate. They measure your raw upload speed to a server that's near you (likely run by your local ISP), instead of your stable upload speed to a streaming server. Your stable speed will determine the bitrate you can comfortably stream at.\nThe stable speed can be estimated as roughly 70-75% of the speed test result in a lot of cases, however this is by no means a perfect estimate. In reality, it may end up being much worse if there's problems between your ISP and the streaming service."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -579,8 +474,7 @@ The stable speed can be estimated as roughly 70-75% of the speed test result in 
 
     @commands.command()
     async def software(self,message,*,extra_text=""):
-      factoid = """List of software for streaming and recording: https://helping-squad.com/useful-links/
-List of software for editing: http://obsproject.com/forum/resources/234/"""
+      factoid = """List of software for streaming and recording: https://helping-squad.com/useful-links/\nList of software for editing: http://obsproject.com/forum/resources/234/"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -590,20 +484,12 @@ List of software for editing: http://obsproject.com/forum/resources/234/"""
 
     @commands.command()
     async def skype(self,message,*,extra_text=""):
-      factoid = """The recommended way to capture a Skype call is using NDI. Guide: https://www.youtube.com/watch?v=SmmHln-2kZw
-(Note: this does not work with 'Skype for Windows 10', only 'Skype for Windows', which also works on Windows 10)
-As part of OBS Studio 25, you can now Window Capture Skype without disabling hardware acceleration.
-Requirements:
-Windows 10 Version 1903 or newer (open winver.exe to check)
-Window Capture "Capture Method": 'Windows Graphics Capture'"""
+      factoid = """The recommended way to capture a Skype call is using NDI. Guide: https://www.youtube.com/watch?v=SmmHln-2kZw\n(Note: this does not work with 'Skype for Windows 10', only 'Skype for Windows', which also works on Windows 10)\nAs part of OBS Studio 25, you can now Window Capture Skype without disabling hardware acceleration.\nRequirements:\nWindows 10 Version 1903 or newer (open winver.exe to check)\nWindow Capture "Capture Method": 'Windows Graphics Capture'"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def simple(self,message,*,extra_text=""):
-      factoid = """Advanced output mode, while allowing for more fine-tuning of options, does not automatically mean that your stream or recording will have better quality. Often, it can result in lower quality, because it can allow changes to settings that really shouldn't be changed. In most cases, Simple output mode is the best option to get the most out of OBS.
-To change back to Simple output mode:
-1) Go to Settings > Output in OBS.
-2) Change "Output Mode" from "Advanced" to "Simple"."""
+      factoid = """Advanced output mode, while allowing for more fine-tuning of options, does not automatically mean that your stream or recording will have better quality. Often, it can result in lower quality, because it can allow changes to settings that really shouldn't be changed. In most cases, Simple output mode is the best option to get the most out of OBS.\nTo change back to Simple output mode:\n1) Go to Settings > Output in OBS.\n2) Change "Output Mode" from "Advanced" to "Simple"."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -618,10 +504,7 @@ To change back to Simple output mode:
 
     @commands.command()
     async def settings(self,message,*,extra_text=""):
-      factoid = """OBS Studio's settings can be found in the following OS specific locations:
-Windows: WinKey+R > %APPDATA%\obs-studio
-macOS: Cmd+Shift+G > ~/Library/Application Support/obs-studio
-Linux: ~/.config/obs-studio"""
+      factoid = """OBS Studio's settings can be found in the following OS specific locations:\nWindows: WinKey+R > %APPDATA%\obs-studio\nmacOS: Cmd+Shift+G > ~/Library/Application Support/obs-studio\nLinux: ~/.config/obs-studio"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -631,11 +514,7 @@ Linux: ~/.config/obs-studio"""
 
     @commands.command()
     async def se(self,message,*,extra_text=""):
-      factoid = """To cleanly remove the OBS.live plugin:
-Uninstall OBS.Live
-Uninstall OBS Studio (make sure that "User Settings" is not selected)
-Install OBS Studio again from https://obsproject.com/
-Your settings will be saved unless you have selected to delete them during removal."""
+      factoid = """To cleanly remove the OBS.live plugin:\nUninstall OBS.Live\nUninstall OBS Studio (make sure that "User Settings" is not selected)\nInstall OBS Studio again from https://obsproject.com/\nYour settings will be saved unless you have selected to delete them during removal."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -645,8 +524,7 @@ Your settings will be saved unless you have selected to delete them during remov
 
     @commands.command()
     async def scripting(self,message,*,extra_text=""):
-      factoid = """A guide for getting started with development for scripting in OBS can be found on the wiki.
-Additionally, you can find documentation for the scripting API here."""
+      factoid = """A guide for getting started with development for scripting in OBS can be found on the wiki.\nAdditionally, you can find documentation for the scripting API here."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -666,9 +544,7 @@ Additionally, you can find documentation for the scripting API here."""
 
     @commands.command()
     async def requirements(self,message,*,extra_text=""):
-      factoid = """OBS Studio requires a DirectX 10.1 (Windows) or OpenGL 3.3 (Mac, Linux) compatible video card (GPU).
-The CPU requirements vary considerably depending on the chosen encoder, resolution, FPS and your scene complexity.
-Try the Auto Configuration Wizard to find appropriate settings for your specs. See: https://obsproject.com/wiki/System-Requirements"""
+      factoid = """OBS Studio requires a DirectX 10.1 (Windows) or OpenGL 3.3 (Mac, Linux) compatible video card (GPU).\nThe CPU requirements vary considerably depending on the chosen encoder, resolution, FPS and your scene complexity.\nTry the Auto Configuration Wizard to find appropriate settings for your specs. See: https://obsproject.com/wiki/System-Requirements"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -678,8 +554,7 @@ Try the Auto Configuration Wizard to find appropriate settings for your specs. S
 
     @commands.command()
     async def remux(self,message,*,extra_text=""):
-      factoid = """Remuxing allows you to take one video container (FLV, MKV, etc) and make an exact copy of the video and audio in another video container. This process takes seconds, and can be done with any recordings made with OBS by selecting File > Remux Recordings.
-Remuxing is the safest way to get MP4 files for use in editors, or other software which doesn't support FLV or MKV files."""
+      factoid = """Remuxing allows you to take one video container (FLV, MKV, etc) and make an exact copy of the video and audio in another video container. This process takes seconds, and can be done with any recordings made with OBS by selecting File > Remux Recordings.\nRemuxing is the safest way to get MP4 files for use in editors, or other software which doesn't support FLV or MKV files."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -689,15 +564,12 @@ Remuxing is the safest way to get MP4 files for use in editors, or other softwar
 
     @commands.command()
     async def remote(self,message,*,extra_text=""):
-      factoid = """If you'd like to control OBS Studio remotely, you have a few options.
-To control from the web on any device (including phones and computers), use OBS Tablet Remote (requires obs-websocket).
-If you'd prefer a mobile app that works like the Elgato Streamdeck, you can try Touch Portal, UP Deck, or Deckboard."""
+      factoid = """If you'd like to control OBS Studio remotely, you have a few options.\nTo control from the web on any device (including phones and computers), use OBS Tablet Remote (requires obs-websocket).\nIf you'd prefer a mobile app that works like the Elgato Streamdeck, you can try Touch Portal, UP Deck, or Deckboard."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def refresh(self,message,*,extra_text=""):
-      factoid = """Due to Windows' limitations, using multiple displays with different refresh rates will cause performance issues in hardware-accelerated applications, including OBS. You can fix this by setting all displays to the same refresh rate. An easier solution may be to simply use monitors that all have the same refresh rate.
-This problem is fixed in the Windows 10 May 2020 Update, which has started rolling out to users as of May 27, 2020."""
+      factoid = """Due to Windows' limitations, using multiple displays with different refresh rates will cause performance issues in hardware-accelerated applications, including OBS. You can fix this by setting all displays to the same refresh rate. An easier solution may be to simply use monitors that all have the same refresh rate.\nThis problem is fixed in the Windows 10 May 2020 Update, which has started rolling out to users as of May 27, 2020."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -722,8 +594,7 @@ This problem is fixed in the Windows 10 May 2020 Update, which has started rolli
 
     @commands.command()
     async def quicksync(self,message,*,extra_text=""):
-      factoid = """If the Quick Sync option in OBS is unavailable, read http://obsproject.com/forum/resources/82/
-Note that hardware encoders like Quick Sync will produce lower quality compared to x264 at the same bitrate, and are best suited for local recordings rather than streaming."""
+      factoid = """If the Quick Sync option in OBS is unavailable, read http://obsproject.com/forum/resources/82/\nNote that hardware encoders like Quick Sync will produce lower quality compared to x264 at the same bitrate, and are best suited for local recordings rather than streaming."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -733,11 +604,7 @@ Note that hardware encoders like Quick Sync will produce lower quality compared 
 
     @commands.command()
     async def protectedfolders(self,message,*,extra_text=""):
-      factoid = """The Windows Controlled Folder Access setting can prevent OBS from being able to record to your PC. It is recommended that you disable it.
-Click on start and search for Windows Defender Security Center
-Click on Virus & threat protection
-Click the Virus & threat protection settings option
-Turn off the Controlled folder access toggle switch"""
+      factoid = """The Windows Controlled Folder Access setting can prevent OBS from being able to record to your PC. It is recommended that you disable it.\nClick on start and search for Windows Defender Security Center\nClick on Virus & threat protection\nClick the Virus & threat protection settings option\nTurn off the Controlled folder access toggle switch"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -757,9 +624,7 @@ Turn off the Controlled folder access toggle switch"""
 
     @commands.command()
     async def portable(self,message,*,extra_text=""):
-      factoid = """Portable Mode allows the program to save and access configuration data from the program's base folder. To enable portable mode:
-1.) Install/unzip to a custom directory outside of "C:\Program Files (x86)" or "C:\Program Files"
-2.) Then either modify its shortcut with the --portable or -p command line parameter, or create a blank text file named "portable_mode.txt" in the base installation/unzip folder."""
+      factoid = """Portable Mode allows the program to save and access configuration data from the program's base folder. To enable portable mode:\n1.) Install/unzip to a custom directory outside of "C:\Program Files (x86)" or "C:\Program Files"\n2.) Then either modify its shortcut with the --portable or -p command line parameter, or create a blank text file named "portable_mode.txt" in the base installation/unzip folder."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -769,8 +634,7 @@ Turn off the Controlled folder access toggle switch"""
 
     @commands.command()
     async def plugins(self,message,*,extra_text=""):
-      factoid = """How to install plugins: https://obsproject.com/forum/resources/421/
-List of available plugins: https://obsproject.com/forum/resources/categories/6/"""
+      factoid = """How to install plugins: https://obsproject.com/forum/resources/421/\nList of available plugins: https://obsproject.com/forum/resources/categories/6/"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -780,10 +644,7 @@ List of available plugins: https://obsproject.com/forum/resources/categories/6/"
 
     @commands.command()
     async def pause(self,message,*,extra_text=""):
-      factoid = """To enable "Pause Recordings", do the following:
-In Settings -> Output, make sure "Recording quality" is not set to "Same as stream". If you are using advanced output, make sure that the encoder is not set to "(Use stream encoder)".
-If you want, set a Pause hotkey in Settings -> Hotkeys
-Start Recording. While recording, you should see a ⏸ icon next to the Stop Recording button."""
+      factoid = """To enable "Pause Recordings", do the following:\nIn Settings -> Output, make sure "Recording quality" is not set to "Same as stream". If you are using advanced output, make sure that the encoder is not set to "(Use stream encoder)".\nIf you want, set a Pause hotkey in Settings -> Hotkeys\nStart Recording. While recording, you should see a ⏸ icon next to the Stop Recording button."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -813,14 +674,12 @@ Start Recording. While recording, you should see a ⏸ icon next to the Stop Rec
 
     @commands.command()
     async def nvafx(self,message,*,extra_text=""):
-      factoid = """The redistributables required for the NVIDIA Noise Removal filter can be found here: https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/
-Once installed, the NVIDIA Noise Removal option will appear as part of the "Noise Suppression" filter, alongside RNNoise and Speex."""
+      factoid = """The redistributables required for the NVIDIA Noise Removal filter can be found here: https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/\nOnce installed, the NVIDIA Noise Removal option will appear as part of the "Noise Suppression" filter, alongside RNNoise and Speex."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def nginx(self,message,*,extra_text=""):
-      factoid = """Setting up your own nginx RTMP server (Linux-based guide): http://obsproject.com/forum/threads/12891/
-Pre-built nginx Windows binaries: https://github.com/illuspas/nginx-rtmp-win32"""
+      factoid = """Setting up your own nginx RTMP server (Linux-based guide): http://obsproject.com/forum/threads/12891/\nPre-built nginx Windows binaries: https://github.com/illuspas/nginx-rtmp-win32"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -830,19 +689,12 @@ Pre-built nginx Windows binaries: https://github.com/illuspas/nginx-rtmp-win32""
 
     @commands.command()
     async def new(self,message,*,extra_text=""):
-      factoid = """New to OBS? [Check out our 4 step quickstart guide.](https://obsproject.com/wiki/OBS-Studio-Quickstart)
-Want to learn even more? Check out our [in-depth overview.](https://obsproject.com/wiki/OBS-Studio-Overview)
-If you'd prefer to learn with videos, check out these guides made by the community:
-[Nerd or Die's quickstart video guide](https://youtube.com/watch?v=5rlrDIwnGGQ&t=0s&list=PLT3Ure7_kYHwj8oT3AV-pZ4_r7yp6mDg-)
-[EposVox's OBS Master Class](https://youtube.com/watch?v=nK-Mu7nw5EA&list=PLzo7l8HTJNK-IKzM_zDicTd2u20Ab2pAl)"""
+      factoid = """New to OBS? [Check out our 4 step quickstart guide.](https://obsproject.com/wiki/OBS-Studio-Quickstart)\nWant to learn even more? Check out our [in-depth overview.](https://obsproject.com/wiki/OBS-Studio-Overview)\nIf you'd prefer to learn with videos, check out these guides made by the community:\n[Nerd or Die's quickstart video guide](https://youtube.com/watch?v=5rlrDIwnGGQ&t=0s&list=PLT3Ure7_kYHwj8oT3AV-pZ4_r7yp6mDg-)\n[EposVox's OBS Master Class](https://youtube.com/watch?v=nK-Mu7nw5EA&list=PLzo7l8HTJNK-IKzM_zDicTd2u20Ab2pAl)"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def nditools(self,message,*,extra_text=""):
-      factoid = """NDI Tools can be downloaded here:
-Windows
-Windows Analysis Tool
-Mac"""
+      factoid = """NDI Tools can be downloaded here:\nWindows\nWindows Analysis Tool\nMac"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -892,36 +744,22 @@ Mac"""
 
     @commands.command()
     async def media(self,message,*,extra_text=""):
-      factoid = """Curious what video formats are the most performant in OBS?
-Check out [EposVox's in-depth analysis!](https://www.youtube.com/watch?v=X9jMna8KQyA&feature=youtu.be)"""
+      factoid = """Curious what video formats are the most performant in OBS?\nCheck out [EposVox's in-depth analysis!](https://www.youtube.com/watch?v=X9jMna8KQyA&feature=youtu.be)"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def manualpastebin(self,message,*,extra_text=""):
-      factoid = """Go to:
-Windows: `%APPDATA%\obs-studio\logs`
-Linux: `~/.config/obs-studio/logs`
-Mac: `~/Library/Application Support/obs-studio/logs`
-Then copy the contents of the desired log (usually the latest) file to https://pastebin.com/. Save the file on Pastebin at the bottom of the window, then copy the new URL and paste it here."""
+      factoid = """Go to:\nWindows: `%APPDATA%\obs-studio\logs`\nLinux: `~/.config/obs-studio/logs`\nMac: `~/Library/Application Support/obs-studio/logs`\nThen copy the contents of the desired log (usually the latest) file to https://pastebin.com/. Save the file on Pastebin at the bottom of the window, then copy the new URL and paste it here."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def manuallog(self,message,*,extra_text=""):
-      factoid = """Please manually upload your log file.
-(Windows)
-Press `WinKey+R` to open the Run dialog
-Paste the following into the box and hit OK: `%APPDATA%\obs-studio\logs`
-Find the desired log file (usually the latest) and drag/drop it into this channel.
-Linux logs: `~/.config/obs-studio/logs`
-macOS logs: `~/Library/Application Support/obs-studio/logs`"""
+      factoid = """Please manually upload your log file.\n(Windows)\nPress `WinKey+R` to open the Run dialog\nPaste the following into the box and hit OK: `%APPDATA%\obs-studio\logs`\nFind the desired log file (usually the latest) and drag/drop it into this channel.\nLinux logs: `~/.config/obs-studio/logs`\nmacOS logs: `~/Library/Application Support/obs-studio/logs`"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def manualcrash(self,message,*,extra_text=""):
-      factoid = """To find the OBS Studio crash logs, follow these steps:
-Press `WinKey+R` to open the Run dialog
-Type in: `%APPDATA%\obs-studio\crashes` and press Enter
-Upload the desired crash log, usually the latest, directly to this Discord channel by dragging and dropping the file into the chat window"""
+      factoid = """To find the OBS Studio crash logs, follow these steps:\nPress `WinKey+R` to open the Run dialog\nType in: `%APPDATA%\obs-studio\crashes` and press Enter\nUpload the desired crash log, usually the latest, directly to this Discord channel by dragging and dropping the file into the chat window"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -936,20 +774,12 @@ Upload the desired crash log, usually the latest, directly to this Discord chann
 
     @commands.command()
     async def macpermission(self,message,*,extra_text=""):
-      factoid = """Please ensure OBS has permissions to access your microphone & capture devices.
-1) Select System Preferences from the Apple menu.
-2) Click the icon labelled Security & Privacy.
-3) Click the Privacy tab at the top.
-4) In the lefthand column, click on 'Microphone', 'Camera', 'Screen recording' or 'Accessibility' to manage app permissions.
-5) Tick the box for OBS"""
+      factoid = """Please ensure OBS has permissions to access your microphone & capture devices.\n1) Select System Preferences from the Apple menu.\n2) Click the icon labelled Security & Privacy.\n3) Click the Privacy tab at the top.\n4) In the lefthand column, click on 'Microphone', 'Camera', 'Screen recording' or 'Accessibility' to manage app permissions.\n5) Tick the box for OBS"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def macndi(self,message,*,extra_text=""):
-      factoid = """Close OBS
-Manually update obs-ndi via this link
-Run this script
-Try running OBS again"""
+      factoid = """Close OBS\nManually update obs-ndi via this link\nRun this script\nTry running OBS again"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -969,10 +799,7 @@ Try running OBS again"""
 
     @commands.command()
     async def maccrash(self,message,*,extra_text=""):
-      factoid = """A crash log is required to investigate the cause of your issue. Please upload the most recent crash log.
-In Finder, click the Go menu
-Select Go To Folder, and type in ~/Library/Logs/DiagnosticReports/
-Upload the file prefixed obs_ with the most recent date (format is year-month-day)"""
+      factoid = """A crash log is required to investigate the cause of your issue. Please upload the most recent crash log.\nIn Finder, click the Go menu\nSelect Go To Folder, and type in ~/Library/Logs/DiagnosticReports/\nUpload the file prefixed obs_ with the most recent date (format is year-month-day)"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -982,46 +809,32 @@ Upload the file prefixed obs_ with the most recent date (format is year-month-da
 
     @commands.command()
     async def macaudio(self,message,*,extra_text=""):
-      factoid = """OBS Studio for macOS requires a second program to help it capture desktop audio, due to Apple not providing direct audio capture functionality
-Click here for a guide using [BlackHole](https://obsproject.com/forum/resources/1191/)"""
+      factoid = """OBS Studio for macOS requires a second program to help it capture desktop audio, due to Apple not providing direct audio capture functionality\nClick here for a guide using [BlackHole](https://obsproject.com/forum/resources/1191/)"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def mac(self,message,*,extra_text=""):
-      factoid = """Releases of OBS for Mac can be found at http://obsproject.com/download (click the Apple!)
-If you have any issues, please check the forum threads at https://obsproject.com/forum/list/33/
-You must be on macOS 10.13 or later. You can update to version 10.13 of macOS (free!) http://www.apple.com/macos/how-to-upgrade/"""
+      factoid = """Releases of OBS for Mac can be found at http://obsproject.com/download (click the Apple!)\nIf you have any issues, please check the forum threads at https://obsproject.com/forum/list/33/\nYou must be on macOS 10.13 or later. You can update to version 10.13 of macOS (free!) http://www.apple.com/macos/how-to-upgrade/"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def m1ndi(self,message,*,extra_text=""):
-      factoid = """1) Close OBS
-2) Download and install Newtek NDI®️ Studio Monitor and the OBS NDI®️ plugin
-3) Open the Terminal app (you can find it in launchpad, comes pre-installed with every Mac)
-4) Paste the following command into the terminal
-sudo cp "/Applications/NewTek NDI Video Monitor.app/Contents/Frameworks/libndi.4.dylib" /usr/local/lib/libndi.4.dylib
-5) Input your password (note: you will not see the password being put in, but it will be working)
-6) Open OBS and check if NDI appears in the Tools menu"""
+      factoid = """1) Close OBS\n2) Download and install Newtek NDI®️ Studio Monitor and the OBS NDI®️ plugin\n3) Open the Terminal app (you can find it in launchpad, comes pre-installed with every Mac)\n4) Paste the following command into the terminal\nsudo cp "/Applications/NewTek NDI Video Monitor.app/Contents/Frameworks/libndi.4.dylib" /usr/local/lib/libndi.4.dylib\n5) Input your password (note: you will not see the password being put in, but it will be working)\n6) Open OBS and check if NDI appears in the Tools menu"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def lol(self,message,*,extra_text=""):
-      factoid = """To best capture League of Legends, create two scenes.
-In the first scene, add a Window Capture of the LoL launcher/lobby (Windows 7 users should make sure Aero is enabled.).
-In the second scene, add a Game Capture of the game itself (you may need to be in a game to add this for the first time).
-Then configure the Scene Switcher to automatically swap between them."""
+      factoid = """To best capture League of Legends, create two scenes.\nIn the first scene, add a Window Capture of the LoL launcher/lobby (Windows 7 users should make sure Aero is enabled.).\nIn the second scene, add a Game Capture of the game itself (you may need to be in a game to add this for the first time).\nThen configure the Scene Switcher to automatically swap between them."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def logo(self,message,*,extra_text=""):
-      factoid = """High-quality versions of the OBS logo can be found here:
-https://h4ndy.eu/seafile/d/ecaab7abeee84c4aabf1/"""
+      factoid = """High-quality versions of the OBS logo can be found here:\nhttps://h4ndy.eu/seafile/d/ecaab7abeee84c4aabf1/"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def logfolder(self,message,*,extra_text=""):
-      factoid = """To see all of your logs, select Help > Log Files > Show Log Files.
-If you want to manually analyse a log, upload it's contents to a service like Hastebin and use this tool."""
+      factoid = """To see all of your logs, select Help > Log Files > Show Log Files.\nIf you want to manually analyse a log, upload it's contents to a service like Hastebin and use this tool."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1036,10 +849,7 @@ If you want to manually analyse a log, upload it's contents to a service like Ha
 
     @commands.command()
     async def local(self,message,*,extra_text=""):
-      factoid = """For high-quality, no fuss recordings, use the recording quality presets.
-1) Under Settings > Output, set the mode to Simple output.
-2) In the recording section, change the Recording Quality to Indistinguishable Quality
-3) Select your encoder. We recommend a hardware encoder if it is available."""
+      factoid = """For high-quality, no fuss recordings, use the recording quality presets.\n1) Under Settings > Output, set the mode to Simple output.\n2) In the recording section, change the Recording Quality to Indistinguishable Quality\n3) Select your encoder. We recommend a hardware encoder if it is available."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1049,10 +859,7 @@ If you want to manually analyse a log, upload it's contents to a service like Ha
 
     @commands.command()
     async def lastlog(self,message,*,extra_text=""):
-      factoid = """A log file is required to help fix your issue. Please post a link to your last log file.
-In OBS select Help > Log Files > Upload Last Log File.
-Copy the URL and paste it here.
-(Note: If you do not see an obsproject.com URL, you will need to update OBS Studio to version 22+)"""
+      factoid = """A log file is required to help fix your issue. Please post a link to your last log file.\nIn OBS select Help > Log Files > Upload Last Log File.\nCopy the URL and paste it here.\n(Note: If you do not see an obsproject.com URL, you will need to update OBS Studio to version 22+)"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1067,14 +874,7 @@ Copy the URL and paste it here.
 
     @commands.command()
     async def slimport(self,message,*,extra_text=""):
-      factoid = """As of OBS Studio 25, you can import Scene Collections from other applications, including OBS Classic, XSplit, and Streamlabs.
-In OBS Studio, open the "Scene Collection" menu along the top
-Choose "Import"
-If asked to "Automatically Search for Scene Collections", choose "Yes" ^
-Use the checkboxes ✅ on the left to choose what to import
-Press "Import" along the bottom
-Switch to the newly imported Collection via the "Scene Collection" menu
-^ If the dialog did not appear, or you previously selected "No", go to Settings -> General -> Importers and enable 'Search known locations.''"""
+      factoid = """As of OBS Studio 25, you can import Scene Collections from other applications, including OBS Classic, XSplit, and Streamlabs.\nIn OBS Studio, open the "Scene Collection" menu along the top\nChoose "Import"\nIf asked to "Automatically Search for Scene Collections", choose "Yes" ^\nUse the checkboxes ✅ on the left to choose what to import\nPress "Import" along the bottom\nSwitch to the newly imported Collection via the "Scene Collection" menu\n^ If the dialog did not appear, or you previously selected "No", go to Settings -> General -> Importers and enable 'Search known locations.''"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1084,16 +884,12 @@ Switch to the newly imported Collection via the "Scene Collection" menu
 
     @commands.command()
     async def howtoinstall(self,message,*,extra_text=""):
-      factoid = """Instructions on how to install or build OBS Studio can be found here:
-https://obsproject.com/wiki/Install-Instructions"""
+      factoid = """Instructions on how to install or build OBS Studio can be found here:\nhttps://obsproject.com/wiki/Install-Instructions"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def hotkeymode(self,message,*,extra_text=""):
-      factoid = """Game capture sources allow you to use a hotkey mode to capture the currently active window, allowing you to use one game capture source for all of your games and even allowing you to switch games easily. To activate this mode:
-Open the game capture source's properties. (You can do this by double clicking on the source in the sources list)
-Change the game capture's Mode to "Capture foreground window with hotkey"
-In Settings > Hotkeys, set up a hotkey for "Capture foreground window"."""
+      factoid = """Game capture sources allow you to use a hotkey mode to capture the currently active window, allowing you to use one game capture source for all of your games and even allowing you to switch games easily. To activate this mode:\nOpen the game capture source's properties. (You can do this by double clicking on the source in the sources list)\nChange the game capture's Mode to "Capture foreground window with hotkey"\nIn Settings > Hotkeys, set up a hotkey for "Capture foreground window"."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1108,8 +904,7 @@ In Settings > Hotkeys, set up a hotkey for "Capture foreground window"."""
 
     @commands.command()
     async def hags(self,message,*,extra_text=""):
-      factoid = """In Windows, go to ⚙️ Settings → System → Display → Graphics Settings.
-Turn "Hardware-accelerated GPU scheduling" to OFF, then reboot your computer."""
+      factoid = """In Windows, go to ⚙️ Settings → System → Display → Graphics Settings.\nTurn "Hardware-accelerated GPU scheduling" to OFF, then reboot your computer."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1119,31 +914,22 @@ Turn "Hardware-accelerated GPU scheduling" to OFF, then reboot your computer."""
 
     @commands.command()
     async def gpuz(self,message,*,extra_text=""):
-      factoid = """Please download GPU-Z and post a screenshot of the Graphics Card tab. Click the 📷 button in the upper right and select Upload to Free Image Hosting, then post the link here.
-Download link: https://www.techpowerup.com/download/techpowerup-gpu-z/"""
+      factoid = """Please download GPU-Z and post a screenshot of the Graphics Card tab. Click the 📷 button in the upper right and select Upload to Free Image Hosting, then post the link here.\nDownload link: https://www.techpowerup.com/download/techpowerup-gpu-z/"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def gpun(self,message,*,extra_text=""):
-      factoid = """You need to update your NVIDIA drivers. You have 2 ways you can do it:
-Open GeForce Experience if it's installed on your PC. Login, click on DRIVERS, then select Download. Install it fully, then reboot.
-OR
-Manually download your drivers using this link: https://www.geforce.com/drivers
-Make sure to reboot your PC once the drivers are installed."""
+      factoid = """You need to update your NVIDIA drivers. You have 2 ways you can do it:\nOpen GeForce Experience if it's installed on your PC. Login, click on DRIVERS, then select Download. Install it fully, then reboot.\nOR\nManually download your drivers using this link: https://www.geforce.com/drivers\nMake sure to reboot your PC once the drivers are installed."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def gpui(self,message,*,extra_text=""):
-      factoid = """You need to update your Intel video driver. You have 2 ways you can do this:
-Update using the Intel Driver & Support Assistant, available at this link: https://www.intel.com/content/www/us/en/support/detect.html
-Update by selecting the appropriate driver for your OS and GPU, at this link: https://downloadcenter.intel.com/product/80939/Graphics-Drivers
-Always reboot your PC once your drivers are updated, even if you are not prompted to."""
+      factoid = """You need to update your Intel video driver. You have 2 ways you can do this:\nUpdate using the Intel Driver & Support Assistant, available at this link: https://www.intel.com/content/www/us/en/support/detect.html\nUpdate by selecting the appropriate driver for your OS and GPU, at this link: https://downloadcenter.intel.com/product/80939/Graphics-Drivers\nAlways reboot your PC once your drivers are updated, even if you are not prompted to."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def gpudriver(self,message,*,extra_text=""):
-      factoid = """You can perform a clean driver installation for your GPU by following the instructions at http://obsproject.com/forum/resources/65/.
-Using an AMD GPU? Use the AMD Cleanup Utility instead. https://www.amd.com/en/support/kb/faq/gpu-601"""
+      factoid = """You can perform a clean driver installation for your GPU by following the instructions at http://obsproject.com/forum/resources/65/.\nUsing an AMD GPU? Use the AMD Cleanup Utility instead. https://www.amd.com/en/support/kb/faq/gpu-601"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1153,10 +939,7 @@ Using an AMD GPU? Use the AMD Cleanup Utility instead. https://www.amd.com/en/su
 
     @commands.command()
     async def gpua(self,message,*,extra_text=""):
-      factoid = """You need to update your AMD video driver. You have 2 ways you can do this:
-Update using the AMD Driver Auto-Detect Tool, available at this link: https://www.amd.com/en/support/kb/faq/gpu-131
-Update by selecting your specific video card type at this link: https://www.amd.com/en/support
-Always reboot your PC once your drivers are updated, even if you are not prompted to."""
+      factoid = """You need to update your AMD video driver. You have 2 ways you can do this:\nUpdate using the AMD Driver Auto-Detect Tool, available at this link: https://www.amd.com/en/support/kb/faq/gpu-131\nUpdate by selecting your specific video card type at this link: https://www.amd.com/en/support\nAlways reboot your PC once your drivers are updated, even if you are not prompted to."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1166,8 +949,7 @@ Always reboot your PC once your drivers are updated, even if you are not prompte
 
     @commands.command()
     async def git(self,message,*,extra_text=""):
-      factoid = """The GitHub repository for OBS Studio can be found here: obsproject/obs-studio
-The repository for the bot itself can be found here: obsproject/obs-bot"""
+      factoid = """The GitHub repository for OBS Studio can be found here: obsproject/obs-studio\nThe repository for the bot itself can be found here: obsproject/obs-bot"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1177,8 +959,7 @@ The repository for the bot itself can be found here: obsproject/obs-bot"""
 
     @commands.command()
     async def gamecapture(self,message,*,extra_text=""):
-      factoid = """For a starting guide on game capture and its modes, please read [this guide](https://obsproject.com/wiki/Game-Capture-Guide).
-If Game Capture isn't working properly for you and your games, make sure to read this [guide for common solutions](https://obsproject.com/wiki/Game-Capture-Guide#common-resolutions-for-game-capture-issues)."""
+      factoid = """For a starting guide on game capture and its modes, please read [this guide](https://obsproject.com/wiki/Game-Capture-Guide).\nIf Game Capture isn't working properly for you and your games, make sure to read this [guide for common solutions](https://obsproject.com/wiki/Game-Capture-Guide#common-resolutions-for-game-capture-issues)."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1193,8 +974,7 @@ If Game Capture isn't working properly for you and your games, make sure to read
 
     @commands.command()
     async def fpslimit(self,message,*,extra_text=""):
-      factoid = """Running a game without vertical sync or a frame rate limiter will frequently cause performance issues (both your game and OBS) because your GPU will be maxed out. Enable vsync or set a reasonable frame rate limit that your GPU can handle without hitting 100% usage. If that's not enough you may also need to turn down some of the video quality options in the game.
-For more technical details and alternate fixes, see our guide: https://obsproject.com/wiki/GPU-overload-issues"""
+      factoid = """Running a game without vertical sync or a frame rate limiter will frequently cause performance issues (both your game and OBS) because your GPU will be maxed out. Enable vsync or set a reasonable frame rate limit that your GPU can handle without hitting 100% usage. If that's not enough you may also need to turn down some of the video quality options in the game.\nFor more technical details and alternate fixes, see our guide: https://obsproject.com/wiki/GPU-overload-issues"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1204,18 +984,12 @@ For more technical details and alternate fixes, see our guide: https://obsprojec
 
     @commands.command()
     async def firefox(self,message,*,extra_text=""):
-      factoid = """Having trouble window capturing Firefox? You may need to disable hardware acceleration for window capture to work properly. Follow these steps to disable it:
-Open your Firefox Options.
-In the Find in options box, type in hardware.
-Uncheck both Use recommended performance settings and Use hardware acceleration when available.
-Restart Firefox
-Note: Disabling hardware acceleration can cause performance loss on certain web pages."""
+      factoid = """Having trouble window capturing Firefox? You may need to disable hardware acceleration for window capture to work properly. Follow these steps to disable it:\nOpen your Firefox Options.\nIn the Find in options box, type in hardware.\nUncheck both Use recommended performance settings and Use hardware acceleration when available.\nRestart Firefox\nNote: Disabling hardware acceleration can cause performance loss on certain web pages."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def filters(self,message,*,extra_text=""):
-      factoid = """Many options for fine-tuning your video and audio sources in OBS Studio are in the Filters menu. To access this menu, right click on your source (or click the Gear icon next to an audio source) and select Filters.
-For more info, see our guide: https://obsproject.com/wiki/Filters-Guide"""
+      factoid = """Many options for fine-tuning your video and audio sources in OBS Studio are in the Filters menu. To access this menu, right click on your source (or click the Gear icon next to an audio source) and select Filters.\nFor more info, see our guide: https://obsproject.com/wiki/Filters-Guide"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1225,12 +999,7 @@ For more info, see our guide: https://obsproject.com/wiki/Filters-Guide"""
 
     @commands.command()
     async def facebookbitrate(self,message,*,extra_text=""):
-      factoid = """You can find Facebook's recommended bitrates for different resolutions here: https://www.facebook.com/fbgaminghome/creators/best-practices#streamSettings
-However, our general recommendations are:
-1080p60 - 6 Mbps
-1080p30 - 6 Mbps
-720p60 - 6 Mbps
-720p30 - 3-4 Mbps, depending on the game"""
+      factoid = """You can find Facebook's recommended bitrates for different resolutions here: https://www.facebook.com/fbgaminghome/creators/best-practices#streamSettings\nHowever, our general recommendations are:\n1080p60 - 6 Mbps\n1080p30 - 6 Mbps\n720p60 - 6 Mbps\n720p30 - 3-4 Mbps, depending on the game"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1245,10 +1014,7 @@ However, our general recommendations are:
 
     @commands.command()
     async def exclusive(self,message,*,extra_text=""):
-      factoid = """To disable Exclusive Mode:
-1) Right-click the speaker icon in the System Tray and select "Sounds".
-2) In the "Playback" or "Recording" tabs, right click on the audio device(s) you want to change and select "Properties".
-3) Then go to the "Advanced" tab and uncheck both checkboxes."""
+      factoid = """To disable Exclusive Mode:\n1) Right-click the speaker icon in the System Tray and select "Sounds".\n2) In the "Playback" or "Recording" tabs, right click on the audio device(s) you want to change and select "Properties".\n3) Then go to the "Advanced" tab and uncheck both checkboxes."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1263,9 +1029,7 @@ However, our general recommendations are:
 
     @commands.command()
     async def elgatomac(self,message,*,extra_text=""):
-      factoid = """Elgato doesn't provide macOS drivers for the HD, HD60, or HD60 S that work with OBS, so they can't be added as a Video Capture device. For these cards you'll have to capture Elgato's software running in fullscreen via Window Capture.
-However, Elgato now has OBS Link as a new NDI-based workaround tool for the HD 60 S to add OBS compatibility.
-For native macOS support via UVC, please consider the Elgato Cam Link or HD60 S+ ("plus")."""
+      factoid = """Elgato doesn't provide macOS drivers for the HD, HD60, or HD60 S that work with OBS, so they can't be added as a Video Capture device. For these cards you'll have to capture Elgato's software running in fullscreen via Window Capture.\nHowever, Elgato now has OBS Link as a new NDI-based workaround tool for the HD 60 S to add OBS compatibility.\nFor native macOS support via UVC, please consider the Elgato Cam Link or HD60 S+ ("plus")."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1275,12 +1039,7 @@ For native macOS support via UVC, please consider the Elgato Cam Link or HD60 S+
 
     @commands.command()
     async def elgatocrash(self,message,*,extra_text=""):
-      factoid = """If OBS is crashing due to Elgato's drivers, follow these steps (carefully, in order!) to correct it.
-1) Unplug your Elgato device (if USB)
-2) Uninstall all Elgato software and drivers from Add/Remove Programs
-3) Reboot your PC (Very important you do this before trying to install anything else)
-4) Reinstall the Elgato software/drivers
-5) Plug the Elgato card back in (if not already prompted to during the Elgato software installation)"""
+      factoid = """If OBS is crashing due to Elgato's drivers, follow these steps (carefully, in order!) to correct it.\n1) Unplug your Elgato device (if USB)\n2) Uninstall all Elgato software and drivers from Add/Remove Programs\n3) Reboot your PC (Very important you do this before trying to install anything else)\n4) Reinstall the Elgato software/drivers\n5) Plug the Elgato card back in (if not already prompted to during the Elgato software installation)"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1300,8 +1059,7 @@ For native macOS support via UVC, please consider the Elgato Cam Link or HD60 S+
 
     @commands.command()
     async def dynamicbitrate(self,message,*,extra_text=""):
-      factoid = """You can enable Dynamic Bitrate in Settings -> Advanced -> Network -> "Dynamically change bitrate to manage congestion (Beta)"
-When enabled, instead of dropping frames when you have network issues, OBS will automatically reduce your stream quality to compensate. OBS will adjust back to normal once your connection becomes stable."""
+      factoid = """You can enable Dynamic Bitrate in Settings -> Advanced -> Network -> "Dynamically change bitrate to manage congestion (Beta)"\nWhen enabled, instead of dropping frames when you have network issues, OBS will automatically reduce your stream quality to compensate. OBS will adjust back to normal once your connection becomes stable."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1336,17 +1094,7 @@ When enabled, instead of dropping frames when you have network issues, OBS will 
 
     @commands.command()
     async def dpi(self,message,*,extra_text=""):
-      factoid = """Due to issues with how Qt handles high-DPI display scaling, you may encounter some oddities in the OBS Studio UI when using DPI scaling. As a workaround, you can disabled DPI scaling for OBS:
-Close OBS Studio.
-Find your OBS Studio shortcut, either on your desktop or in your start menu (Right click -> Open file location).
-Right click on it and select "Properties".
-Go to the "Compatibility tab".
-Click "Change high DPI settings".
-Tick "Override high DPI scaling behavior".
-In the dropdown, change it to "System (Enhanced)".
-Click OK to exit out of the scaling settings.
-Click OK to save the new properties.
-Launch OBS Studio as you normally would."""
+      factoid = """Due to issues with how Qt handles high-DPI display scaling, you may encounter some oddities in the OBS Studio UI when using DPI scaling. As a workaround, you can disabled DPI scaling for OBS:\nClose OBS Studio.\nFind your OBS Studio shortcut, either on your desktop or in your start menu (Right click -> Open file location).\nRight click on it and select "Properties".\nGo to the "Compatibility tab".\nClick "Change high DPI settings".\nTick "Override high DPI scaling behavior".\nIn the dropdown, change it to "System (Enhanced)".\nClick OK to exit out of the scaling settings.\nClick OK to save the new properties.\nLaunch OBS Studio as you normally would."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1366,8 +1114,7 @@ Launch OBS Studio as you normally would."""
 
     @commands.command()
     async def donate(self,message,*,extra_text=""):
-      factoid = """You can support OBS development by either becoming a patron on the OBS Patreon or by becoming a sponsor on the OBS Open Collective.
-Find out more here: https://obsproject.com/contribute"""
+      factoid = """You can support OBS development by either becoming a patron on the OBS Patreon or by becoming a sponsor on the OBS Open Collective.\nFind out more here: https://obsproject.com/contribute"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1377,9 +1124,7 @@ Find out more here: https://obsproject.com/contribute"""
 
     @commands.command()
     async def docks(self,message,*,extra_text=""):
-      factoid = """You can manage your docks from the View > Docks menu.
-You can toggle docks on and off, or lock or unlock docks to prevent moving and editing.
-You can also reset the UI from this menu to return your docks to their original state (View > Docks > Reset UI)."""
+      factoid = """You can manage your docks from the View > Docks menu.\nYou can toggle docks on and off, or lock or unlock docks to prevent moving and editing.\nYou can also reset the UI from this menu to return your docks to their original state (View > Docks > Reset UI)."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1389,27 +1134,22 @@ You can also reset the UI from this menu to return your docks to their original 
 
     @commands.command()
     async def directx(self,message,*,extra_text=""):
-      factoid = """Missing DirectX components? Download the DirectX Web Installer from http://obsproject.com/go/dxwebsetup
-If the web installer won't work, try the DirectX Dependency Fixer from http://obsproject.com/forum/resources/87/"""
+      factoid = """Missing DirectX components? Download the DirectX Web Installer from http://obsproject.com/go/dxwebsetup\nIf the web installer won't work, try the DirectX Dependency Fixer from http://obsproject.com/forum/resources/87/"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def diagnostic(self,message,*,extra_text=""):
-      factoid = """Please run the OBS Diagnostics Tool to determine if there are any issues with system files that support OBS: https://obsproject.com/downloads/OBSDiag.zip
-Once the tool has been run, screenshot the output (click the window and press the alt+printscreen keys on your keyboard) and post the screenshot (ctrl+v) here."""
+      factoid = """Please run the OBS Diagnostics Tool to determine if there are any issues with system files that support OBS: https://obsproject.com/downloads/OBSDiag.zip\nOnce the tool has been run, screenshot the output (click the window and press the alt+printscreen keys on your keyboard) and post the screenshot (ctrl+v) here."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def destiny2(self,message,*,extra_text=""):
-      factoid = """Bungie has opted to not allow OBS to hook Destiny 2 using Game Capture. See: https://www.bungie.net/en/Help/Article/46101
-You will need to run the game in either windowed fullscreen or borderless windowed and use Window Capture instead."""
+      factoid = """Bungie has opted to not allow OBS to hook Destiny 2 using Game Capture. See: https://www.bungie.net/en/Help/Article/46101\nYou will need to run the game in either windowed fullscreen or borderless windowed and use Window Capture instead."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def deps(self,message,*,extra_text=""):
-      factoid = """Pre-built dependencies: VS2019
-CEF for browser source/panels: x86, x64
-Qt 5.15.2: Windows, macOS"""
+      factoid = """Pre-built dependencies: VS2019\nCEF for browser source/panels: x86, x64\nQt 5.15.2: Windows, macOS"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1424,15 +1164,12 @@ Qt 5.15.2: Windows, macOS"""
 
     @commands.command()
     async def cyberpunk2077(self,message,*,extra_text=""):
-      factoid = """Cyberpunk 2077 is a very resource-intensive game. Additionally, it's also a DirectX 12 game, which means it can have issues with frame pacing.
-To minimize the game's impact on OBS performance, limit the game to a stable frame rate (e.g. 60 FPS) and consider turning down your graphics quality settings."""
+      factoid = """Cyberpunk 2077 is a very resource-intensive game. Additionally, it's also a DirectX 12 game, which means it can have issues with frame pacing.\nTo minimize the game's impact on OBS performance, limit the game to a stable frame rate (e.g. 60 FPS) and consider turning down your graphics quality settings."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def csgo(self,message,*,extra_text=""):
-      factoid = """Valve has implemented a Trusted mode which does not allow OBS to hook CS:GO using Game Capture. Read more in their announcement post. Additionally, they have no plans on allowing OBS in Trusted mode.
-We recommend running the game in either windowed or borderless fullscreen and using a Window Capture source instead.
-Alternately, you can launch the game with -allow_third_party_software ."""
+      factoid = """Valve has implemented a Trusted mode which does not allow OBS to hook CS:GO using Game Capture. Read more in their announcement post. Additionally, they have no plans on allowing OBS in Trusted mode.\nWe recommend running the game in either windowed or borderless fullscreen and using a Window Capture source instead.\nAlternately, you can launch the game with -allow_third_party_software ."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1447,10 +1184,7 @@ Alternately, you can launch the game with -allow_third_party_software ."""
 
     @commands.command()
     async def crashlog(self,message,*,extra_text=""):
-      factoid = """A crash log is required to investigate the cause of your issue. Please upload the last crash log.
-In OBS, click the Help menu
-Select Crash Reports, and then Upload Last Crash Report
-Copy the URL, and paste it to the chat here."""
+      factoid = """A crash log is required to investigate the cause of your issue. Please upload the last crash log.\nIn OBS, click the Help menu\nSelect Crash Reports, and then Upload Last Crash Report\nCopy the URL, and paste it to the chat here."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1480,20 +1214,12 @@ Copy the URL, and paste it to the chat here."""
 
     @commands.command()
     async def cleanprofile(self,message,*,extra_text=""):
-      factoid = """Please post a link to a clean log with profiler information. To make a clean log with profiler information, follow these steps:
-1) Restart OBS.
-2) Start your stream/recording for ~30 seconds, and stop it again. Make sure you replicate any issues as best you can, which means having any games/apps open and captured, etc.
-3) Restart OBS again, and then select Help > Log Files > Upload Last Log File. Copy the URL and paste it here.
-(Note: If you do not see an obsproject.com URL, you will need to update OBS Studio to version 22+.)"""
+      factoid = """Please post a link to a clean log with profiler information. To make a clean log with profiler information, follow these steps:\n1) Restart OBS.\n2) Start your stream/recording for ~30 seconds, and stop it again. Make sure you replicate any issues as best you can, which means having any games/apps open and captured, etc.\n3) Restart OBS again, and then select Help > Log Files > Upload Last Log File. Copy the URL and paste it here.\n(Note: If you do not see an obsproject.com URL, you will need to update OBS Studio to version 22+.)"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def cleanlog(self,message,*,extra_text=""):
-      factoid = """A clean log file is required to help fix your issue. To make a clean log file, please follow these steps:
-1) Restart OBS
-2) Start your stream/recording for at least 30 seconds (or however long it takes for the issue to happen). Make sure you replicate any issues as best you can, which means having any games/apps open and captured, etc.
-3) Stop your stream/recording.
-4) Select Help > Log Files > Upload Current Log File. Copy the URL and paste it here."""
+      factoid = """A clean log file is required to help fix your issue. To make a clean log file, please follow these steps:\n1) Restart OBS\n2) Start your stream/recording for at least 30 seconds (or however long it takes for the issue to happen). Make sure you replicate any issues as best you can, which means having any games/apps open and captured, etc.\n3) Stop your stream/recording.\n4) Select Help > Log Files > Upload Current Log File. Copy the URL and paste it here."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1508,21 +1234,12 @@ Copy the URL, and paste it to the chat here."""
 
     @commands.command()
     async def chrome(self,message,*,extra_text=""):
-      factoid = """As part of OBS Studio 25, you can now Window Capture Google Chrome without disabling hardware acceleration.
-Requirements:
-Windows 10 Version 1903 or newer (open winver.exe to check)
-Window Capture "Capture Method": "Windows Graphics Capture"
-For older versions of Windows, do the following:
-Open Chrome Settings.
-In the Search settings box, type in hardware.
-Ensure that the slider next to the Use hardware acceleration when available option is turned off.
-Click Relaunch to restart Chrome."""
+      factoid = """As part of OBS Studio 25, you can now Window Capture Google Chrome without disabling hardware acceleration.\nRequirements:\nWindows 10 Version 1903 or newer (open winver.exe to check)\nWindow Capture "Capture Method": "Windows Graphics Capture"\nFor older versions of Windows, do the following:\nOpen Chrome Settings.\nIn the Search settings box, type in hardware.\nEnsure that the slider next to the Use hardware acceleration when available option is turned off.\nClick Relaunch to restart Chrome."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def chatdocks(self,message,*,extra_text=""):
-      factoid = """To enable Chat docks for Twitch or Restream, you will need to connect your account via Settings -> Stream.
-If you'd like to enable chat docks for other services, you can use View -> Docks -> Custom Browser Docks. This allows you to include any webpage in OBS."""
+      factoid = """To enable Chat docks for Twitch or Restream, you will need to connect your account via Settings -> Stream.\nIf you'd like to enable chat docks for other services, you can use View -> Docks -> Custom Browser Docks. This allows you to include any webpage in OBS."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1557,17 +1274,12 @@ If you'd like to enable chat docks for other services, you can use View -> Docks
 
     @commands.command()
     async def cam(self,message,*,extra_text=""):
-      factoid = """Guides to getting the most out of your webcam:
-http://obsproject.com/forum/threads/1036/
-https://www.youtube.com/watch?v=6NY8wWo_VBs"""
+      factoid = """Guides to getting the most out of your webcam:\nhttp://obsproject.com/forum/threads/1036/\nhttps://www.youtube.com/watch?v=6NY8wWo_VBs"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def cache(self,message,*,extra_text=""):
-      factoid = """The OBS Browser cache can be found in the following locations:
-Windows: %appdata%\obs-studio\plugin_config\obs-browser
-macOS: ~/Library/Application Support/obs-studio/plugin_config/obs-browser
-Linux: ~/.config/obs-studio/plugin_config/obs-browser"""
+      factoid = """The OBS Browser cache can be found in the following locations:\nWindows: %appdata%\obs-studio\plugin_config\obs-browser\nmacOS: ~/Library/Application Support/obs-studio/plugin_config/obs-browser\nLinux: ~/.config/obs-studio/plugin_config/obs-browser"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1582,8 +1294,7 @@ Linux: ~/.config/obs-studio/plugin_config/obs-browser"""
 
     @commands.command()
     async def browsersource(self,message,*,extra_text=""):
-      factoid = """The Browser Source plugin for Windows and macOS are bundled with the installers, go to http://obsproject.com/download/
-The browser is included in the stable Ubuntu PPA with version 26.0.0"""
+      factoid = """The Browser Source plugin for Windows and macOS are bundled with the installers, go to http://obsproject.com/download/\nThe browser is included in the stable Ubuntu PPA with version 26.0.0"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1593,8 +1304,7 @@ The browser is included in the stable Ubuntu PPA with version 26.0.0"""
 
     @commands.command()
     async def bigsur(self,message,*,extra_text=""):
-      factoid = """If you are having issues with OBS Studio on macOS Big Sur, make sure you have updated to the latest version, as many of the issues were resolved in v26.1.2.
-Select Help -> Check For Updates in OBS, or the newest version can be manually downloaded here: https://obsproject.com/download"""
+      factoid = """If you are having issues with OBS Studio on macOS Big Sur, make sure you have updated to the latest version, as many of the issues were resolved in v26.1.2.\nSelect Help -> Check For Updates in OBS, or the newest version can be manually downloaded here: https://obsproject.com/download"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
@@ -1634,21 +1344,17 @@ Select Help -> Check For Updates in OBS, or the newest version can be manually d
 
     @commands.command()
     async def aero(self,message,*,extra_text=""):
-      factoid = """Windows Aero is a system setting on Windows 7 that enables enhanced graphical effects and allows Window Capture in OBS to function better. Disabling Aero can also improve Display Capture performance. Aero does not need to be enabled or disabled for capture to work on Windows 8 or newer.
-How to enable or disable Aero in Windows 7"""
+      factoid = """Windows Aero is a system setting on Windows 7 that enables enhanced graphical effects and allows Window Capture in OBS to function better. Disabling Aero can also improve Display Capture performance. Aero does not need to be enabled or disabled for capture to work on Windows 8 or newer.\nHow to enable or disable Aero in Windows 7"""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def adminshares(self,message,*,extra_text=""):
-      factoid = """In order to access network shares when OBS is run as administrator, additional configuration of Windows is required:
-https://support.microsoft.com/kb/3035277
-NOTE: This may lower the security of your system, so please make sure you understand the changes before making them."""
+      factoid = """In order to access network shares when OBS is run as administrator, additional configuration of Windows is required:\nhttps://support.microsoft.com/kb/3035277\nNOTE: This may lower the security of your system, so please make sure you understand the changes before making them."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()
     async def admin(self,message,*,extra_text=""):
-      factoid = """Certain games or applications will require OBS Studio to be run with elevated privileges (Administrator) in order to be captured. Running as administrator may also improve OBS performance when gaming.
-To run as administrator, close OBS Studio, then simply right click the OBS Studio shortcut and select Run as administrator."""
+      factoid = """Certain games or applications will require OBS Studio to be run with elevated privileges (Administrator) in order to be captured. Running as administrator may also improve OBS performance when gaming.\nTo run as administrator, close OBS Studio, then simply right click the OBS Studio shortcut and select Run as administrator."""
       await factoids_execution.execute(self, message,factoid,extra_text)
 
     @commands.command()

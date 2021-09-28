@@ -2,15 +2,12 @@ import json
 
 import discord
 from discord.ext import commands
-from replit import db
 import os
 
 from editable.config import configure 
 another_role=configure.another_role
 bot_commander=configure.bot_commander
 
-from discord_slash.utils.manage_components import create_button, create_actionrow
-from discord_slash.model import ButtonStyle
 
 def writing_to_json(data):
     with open('editable/factoids.json', 'w') as outfile:
@@ -68,7 +65,7 @@ class factoids(commands.Cog):
 
             with open('cogs/factoids_execution.py') as python_file:
               data = python_file.readlines()
-              data[8] = f'\n    @commands.command()\n    async def {name}(self,message,*,extra_text=""):\n      factoid = "{message}"\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'
+              data[8] = f'''\n    @commands.command()\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
             with open('cogs/factoids_execution.py', 'w') as file:
               file.writelines(data)   
 
@@ -117,7 +114,7 @@ class factoids(commands.Cog):
             
                 
 
-              data[8] = f'\n    @commands.command()\n    async def {name}(self,message,*,extra_text=""):\n      factoid = "{message}"\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'
+              data[8] = f'''\n    @commands.command()\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
             with open('cogs/factoids_execution.py', 'w') as file:
               file.writelines(data)   
 
@@ -251,7 +248,7 @@ class factoids(commands.Cog):
             
                 
 
-              data[8] = f'\n    @commands.command()\n    async def {new_name}(self,message,*,extra_text=""):\n      factoid = "{message}"\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'
+              data[8] = f'''\n    @commands.command()\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
             with open('cogs/factoids_execution.py', 'w') as file:
               file.writelines(data)   
 

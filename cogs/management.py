@@ -9,8 +9,7 @@ import os
 class disabling_reenableing_cogs(Cog):
   def __init__(self, client):
     self.client = client
-    self.asher = '<@691724738841804843>'
-    self.tator = '<@334067992465899520>'
+
   @command()
   async def shutdown(self, ctx):
     try:
