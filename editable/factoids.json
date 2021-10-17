@@ -185,12 +185,6 @@
       "content": "Some third-party applications can conflict with OBS and cause issues, such as failing Game or Window capture, audio issues, and at worst crashes with OBS. For a full list, check here: https://obsproject.com/wiki/Known-Conflicts"
     }
   ],
-  "contributing": [
-    {
-      "name": "contributing",
-      "content": "To get started with OBS development, read this guide."
-    }
-  ],
   "converter": [
     {
       "name": "converter",
@@ -797,12 +791,6 @@
       "content": "The NDI SDK can be found here: http://pages.newtek.com/NDI-Developers-SDK-Download-Link.html"
     }
   ],
-  "nditools": [
-    {
-      "name": "nditools",
-      "content": "NDI Tools can be downloaded here:\nWindows\nWindows Analysis Tool\nMac"
-    }
-  ],
   "new": [
     {
       "name": "new",
@@ -953,12 +941,6 @@
       "content": "Due to Windows' limitations, using multiple displays with different refresh rates will cause performance issues in hardware-accelerated applications, including OBS. You can fix this by setting all displays to the same refresh rate. An easier solution may be to simply use monitors that all have the same refresh rate.\nThis problem is fixed in the Windows 10 May 2020 Update, which has started rolling out to users as of May 27, 2020."
     }
   ],
-  "remote": [
-    {
-      "name": "remote",
-      "content": "If you'd like to control OBS Studio remotely, you have a few options.\nTo control from the web on any device (including phones and computers), use OBS Tablet Remote (requires obs-websocket).\nIf you'd prefer a mobile app that works like the Elgato Streamdeck, you can try Touch Portal, UP Deck, or Deckboard."
-    }
-  ],
   "remotedebugging": [
     {
       "name": "remotedebugging",
@@ -999,12 +981,6 @@
     {
       "name": "screenshot",
       "content": "How to take a screenshot - http://www.take-a-screenshot.org/"
-    }
-  ],
-  "scripting": [
-    {
-      "name": "scripting",
-      "content": "A guide for getting started with development for scripting in OBS can be found on the wiki.\nAdditionally, you can find documentation for the scripting API here."
     }
   ],
   "scripts": [
@@ -1287,12 +1263,6 @@
     {
       "name": "vulkan",
       "content": "As of OBS v25, Vulkan capture is natively supported on Windows."
-    }
-  ],
-  "websocket": [
-    {
-      "name": "websocket",
-      "content": "A plugin for controlling OBS via websockets is available here:\nOBS Websockets"
     }
   ],
   "wiki": [
@@ -1623,6 +1593,42 @@
     {
       "name": "connection",
       "content": "\"\"Dropped frames? Disconnecting?\\nFollow the troubleshooting steps in our [Connection Issues guide](https://obsproject.com/wiki/Dropped-Frames-and-General-Connection-Issues).\"\""
+    }
+  ],
+  "contributing": [
+    {
+      "name": "contributing",
+      "content": "To get started with OBS development, read [this guide.](https://obsproject.com/wiki/Getting-Started-with-OBS-Studio-Development)"
+    }
+  ],
+  "nditools": [
+    {
+      "name": "nditools",
+      "content": "NDI Tools can be downloaded here:\n[Windows](http://new.tk/NDITools)\n[Windows Analysis Tool](http://new.tk/NDIAnalysis)\n[Mac](http://new.tk/NDITOOLSAPPLE)"
+    }
+  ],
+  "scripting": [
+    {
+      "name": "scripting",
+      "content": "A guide for getting started with development for scripting in OBS can be found on the [wiki](https://obsproject.com/wiki/Getting-Started-With-OBS-Scripting).\nAdditionally, you can find documentation for the scripting API [here](https://obsproject.com/docs/scripting.html)."
+    }
+  ],
+  "blur": [
+    {
+      "name": "blur",
+      "content": "Stop using CBR for recording and use a downscale filter that actually works"
+    }
+  ],
+  "websocket": [
+    {
+      "name": "websocket",
+      "content": "OBS can be controlled remotely with the [obs-websocket](https://obsproject.com/forum/resources/obs-websocket-remote-control-obs-studio-from-websockets.466) plugin.\n\nClick here to [download](https://github.com/Palakis/obs-websocket/releases/latest), or [here](https://github.com/Palakis/obs-websocket#using-obs-websocket) for more info on using it."
+    }
+  ],
+  "remote": [
+    {
+      "name": "remote",
+      "content": "If you'd like to control OBS Studio remotely, you have a few options.\n\nTo control from the web on any device (including phones and computers), use [OBS Tablet Remote](http://t2t2.github.io/obs-tablet-remote/) (requires [obs-websocket](https://obsproject.com/forum/resources/obs-websocket-remote-control-of-obs-studio-made-easy.466/ )).\n\nIf you'd prefer a mobile app that works like the Elgato Streamdeck, you can try [Touch Portal](https://obsproject.com/forum/resources/touch-portal.755/), [UP Deck](https://obsproject.com/forum/resources/up-deck.665/), or [Deckboard](https://obsproject.com/forum/resources/deckboard.704/)."
     }
   ]
 }

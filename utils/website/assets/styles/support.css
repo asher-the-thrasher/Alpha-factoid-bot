@@ -1,0 +1,37 @@
+.welcome {
+  padding-top: 20px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.faq {
+
+}
+
+.discord {
+  padding-left: 20px;
+  text-align: left;
+  font-size: 24px;
+  color: crimson;
+}
+
+.invite {
+  padding-left: 20px;
+  color: crimson;
+}
+
+.invite:hover {
+  color: black;
+}
+
+.Discordlogo {
+  padding-top: 15px;
+  max-width: 10%;
+  height: auto;
+}
+
+.discotext {
+  display: inline;
+  color: crimson;
+  
+}

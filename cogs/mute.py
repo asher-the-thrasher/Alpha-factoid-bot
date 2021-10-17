@@ -136,9 +136,10 @@ class UnMuteCog(commands.Cog):
 
             await user.remove_roles(muted_id, reason=None, atomic=True)
           
-            await log_message(client, "User Unmuted (Auto)", f"User {user.mention} has been unmuted", user, color=0x00ff00)
+            await log_message(client, "User Unmuted (Auto)", f"User {user.name} has been unmuted", user, color=0x00ff00)
           else:
-            await log_message(client, "User Unmuted (Auto)", f"User {user.mention} has been unmuted",  color=0x00ff00)
+            user = client.fetch_user(member_id)
+            await log_message(client, "User Unmuted (Auto)", f"User <@{member_id}> has been unmuted",color=0x00ff00)
 
           del db[member]
 
@@ -160,37 +161,8 @@ class UnMuteCog(commands.Cog):
             if user:
               db[member]
               unmute_time = datetime.strptime(db[member], '%Y-%m-%d %H:%M:%S.%f')
-              current_time = datetime.now()
-              
-              time_to_unmute = unmute_time - current_time
-
-              days = str(time_to_unmute).split(", ")[0]
-              if ":" in days:
-                days = ""
-              hours = str(time_to_unmute)[-15:-13]
-              min = str(time_to_unmute)[-12:-10]
-              sec =str(time_to_unmute)[-9:-7]
-              if hours == "0" and not days and min =="0":
-                unmuting_time = f"{sec} seconds"
-                muted.append(f"<@{str(user.id)}> - {unmuting_time}")
-
-              elif hours == "0" and not days:
-
-                unmuting_time = f"{min} minutes, {sec} seconds"
-                muted.append(f"<@{str(user.id)}> - {unmuting_time}")
-
-              elif not days:
-                unmuting_time = f"{hours} hours, {min} minutes, {sec} seconds"
-                muted.append(f"<@{str(user.id)}> - {unmuting_time}")
-
-
-
-              else:
-                unmuting_time = f"{days}, {hours} hours, {min} minutes, {sec} seconds"           
-                muted.append(f"<@{str(user.id)}> - {unmuting_time}")
-          
-            
-            
+              unmuting_time = int(unmute_time.timestamp())
+              muted.append(f"<@{str(user.id)}> - <t:{unmuting_time}:R>")
 
 
           embed_buider = discord.Embed(title="Muted Users", description='\n'.join(muted), color=0xFF0000)

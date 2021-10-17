@@ -12,6 +12,9 @@ replit = "^3.1.0"
 python-dotenv = "^0.18.0"
 "discord.py" = "^1.7.3"
 discord-py-interactions = "^3.0.2"
+Quart = "^0.15.1"
+Quart-Discord = "^2.1.4"
+Flask-Discord = "^0.1.64"
 
 [tool.poetry.dev-dependencies]
 

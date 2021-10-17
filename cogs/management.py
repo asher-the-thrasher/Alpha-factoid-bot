@@ -33,11 +33,12 @@ class reload(Cog):
   def __init__(self, client):
     self.client = client
 
-  @command()
+  @command(alias='update')
   async def reload(self, ctx):
     try:
       await has_any_role(bot_commander, another_role).predicate(ctx)
       await reloading(self)
+      
       return await ctx.channel.send(f"All of the cogs have been reloaded.")
     except discord.ext.commands.errors.MissingAnyRole:
       await ctx.send('You do not have permissions to use that command')
@@ -49,7 +50,12 @@ async def reloading(self):
     if file.endswith(".py"):
       file = f"cogs.{file[:-3]}"
       self.client.reload_extension(file)
-  
+  self.client.reload_extension(f"editable.config")
+  from editable.config import configure
+  command_prefix = configure.command_prefix
+
+  self.client.command_prefix = command_prefix
+
 
 
 def setup(client):

@@ -55,7 +55,7 @@ class configure(Cog):
   scott = 847871832383422525
   Sam = 486335848808448000
   Lemonaid = 604482335022514196
-  modmod = ["modmod"]
+  modmod = data["modmod"]
 
   link_role_whitelist = [botadmin, smart_peepo, alpha_mod, modmod, unicorn_squad, harris, scott, Sam, Lemonaid]
 

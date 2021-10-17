@@ -8,8 +8,9 @@ async def log_message(bot, title, body, user=None, channel=None, moderator = Non
   if channel:
     embed_buider.add_field(name="Channel", value=f"<#{channel.id}>", inline=False)
   if moderator:
-    embed_buider.add_field(name="Moderator", value=f"{moderator.mention}", inline=False)    
+    embed_buider.add_field(name="Moderator", value=f"{moderator.mention}", inline=True)    
   if user:
+    embed_buider.add_field(name="User", value=f"{user.mention}", inline=True)    
     embed_buider.set_footer(text=f"  User: {str(user)}\nID: {str(user.id)}",  icon_url = user.avatar_url)
   embed_buider.timestamp = datetime.now()
 
