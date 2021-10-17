@@ -82,7 +82,7 @@ class at_everyone(Cog):
       return
 
 def setup(client):
-    client.add_cog(at_everyone(client))
+    print("skipping") #client.add_cog(at_everyone(client))
 
 async def deal_with_infractions(ctx, bot):
     with open("editable/bad_users.json") as json_file:

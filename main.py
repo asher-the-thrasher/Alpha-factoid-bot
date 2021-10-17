@@ -26,7 +26,7 @@ from discord_slash import SlashCommand
 # secret bot token
 token = os.environ['token']
 intents = discord.Intents().all()
-client = commands.Bot(command_prefix=command_prefix, intents=intents)
+client = commands.Bot(command_prefix=command_prefix, intents=intents,case_insensitive= True,strip_after_prefix=True)
 slash = SlashCommand(client, sync_commands=True)
 
 
@@ -41,7 +41,15 @@ client.load_extension(f"editable.config")
 
 @client.event
 async def on_ready():
-    print(f'We have logged in as {client.user} which is in {str(len(client.guilds))} guilds whose prefix is {command_prefix}')
+    names = ""
+    try:
+        members = (await client.application_info()).team.members
+        for member in members: 
+            names = f"{names}, {member}"
+    except:
+        names = client.owner
+    
+    print(f'We have logged in as {client.user} which is in {str(len(client.guilds))} guilds whose prefix is {command_prefix} owned by {names}')
     
     activity = discord.Activity(name=bot_activity, type=discord.ActivityType.listening)
     await client.change_presence(activity=activity)
@@ -53,12 +61,18 @@ async def on_ready():
 
 @client.event
 async def on_command_error(ctx, error):
+
     if isinstance(error, CommandNotFound):
         return
     if isinstance(error, MissingAnyRole):
         await ctx.send('You do not have permissions to use that command')
         return
+    else:
+        channel= await client.fetch_channel(894977926523666482)
+        await channel.send(f"An error has occured in the bot\n\n {error}")
     raise error
+
+
 
 
 

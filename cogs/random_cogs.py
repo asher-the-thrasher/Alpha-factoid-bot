@@ -3,6 +3,7 @@ import discord
 import random
 from editable.config import configure
 link_role_whitelist=configure.link_role_whitelist
+admins = configure.admins
 from discord.utils import get
 
 
@@ -40,12 +41,45 @@ class random_cogs(Cog):
     if not channel_send:
       return await ctx.send("No channel specified")
     await self.bot.get_channel(channel_send.id).send(message)
+    emoji = '\N{THUMBS UP SIGN}'
+    await ctx.message.add_reaction(emoji)
     
+    
+  @command()
+  async def embed(self, ctx,channel_send: discord.TextChannel = None,*,title):
+    if not admin(ctx):
+      return
+    if not channel_send:
+      return await ctx.send("No channel specified")
+    await ctx.send("What message would you like to send?")
+    def check(m):
+      if m.author == ctx.author and m.channel == ctx.channel:
+        return m
 
+    msg = await self.bot.wait_for('message', check=check)
+    embed_builder = discord.Embed(title = title, description = msg.content, color = 0x3498db)
+    await self.bot.get_channel(channel_send.id).send(embed=embed_builder)
+    
+    emoji = '\N{THUMBS UP SIGN}'
+    await msg.add_reaction(emoji)
 
 def is_admin(ctx):
   allowed = False
   for roles in link_role_whitelist:
+    roles = get(ctx.guild.roles, id=roles)
+    role = discord.utils.find(lambda r: r.name == str(roles), ctx.guild.roles)
+    
+    if role in ctx.author.roles:
+      allowed = True
+        
+  if allowed:
+    return True
+  else:
+    return False    
+
+def admin(ctx):
+  allowed = False
+  for roles in admins:
     roles = get(ctx.guild.roles, id=roles)
     role = discord.utils.find(lambda r: r.name == str(roles), ctx.guild.roles)
     

@@ -26,10 +26,6 @@ class factoids(commands.Cog):
         self.client = client
         self.writing_to_json = writing_to_json
 
-
-              
-
-
     @commands.command()
     async def add(self, ctx, name: str.lower = None, *, message=None):
         try:
@@ -65,7 +61,7 @@ class factoids(commands.Cog):
 
             with open('cogs/factoids_execution.py') as python_file:
               data = python_file.readlines()
-              data[8] = f'''\n    @commands.command()\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
+              data[8] = f'''\n    @commands.command(hidden=True)\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
             with open('cogs/factoids_execution.py', 'w') as file:
               file.writelines(data)   
 
@@ -114,7 +110,7 @@ class factoids(commands.Cog):
             
                 
 
-              data[8] = f'''\n    @commands.command()\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
+              data[8] = f'''\n    @commands.command(hidden=True)\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
             with open('cogs/factoids_execution.py', 'w') as file:
               file.writelines(data)   
 
@@ -248,7 +244,7 @@ class factoids(commands.Cog):
             
                 
 
-              data[8] = f'''\n    @commands.command()\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
+              data[8] = f'''\n    @commands.command(hidden=True)\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
             with open('cogs/factoids_execution.py', 'w') as file:
               file.writelines(data)   
 
