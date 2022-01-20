@@ -1,6 +1,6 @@
 from discord.ext.commands import Cog
-from editable.config import configure
-link_role_whitelist = configure.link_role_whitelist
+from editable.config import Config
+link_role_whitelist = Config.link_role_whitelist
 from discord.utils import get
 import discord
 import json
@@ -15,7 +15,7 @@ def writing_to_json(data):
     with open('editable/bad_users.json', 'w') as outfile:
       json.dump(data, outfile, indent=2)
 
-class at_everyone(Cog):
+class Mentions(Cog):
   def __init__(self, bot):
     self.bot = bot
 
@@ -82,7 +82,7 @@ class at_everyone(Cog):
       return
 
 def setup(client):
-    print("skipping") #client.add_cog(at_everyone(client))
+    client.add_cog(Mentions(client))
 
 async def deal_with_infractions(ctx, bot):
     with open("editable/bad_users.json") as json_file:

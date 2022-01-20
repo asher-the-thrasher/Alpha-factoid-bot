@@ -1,3 +1,8 @@
+/* created by lava, edited by asher */
+.body {
+  padding-left: 30%;
+}
+
 .Prefixlabel {
   padding-left: 10px;
 }
@@ -9,4 +14,183 @@
 .body {
   padding-top: 10px;
   padding-left: 10px;
+}
+
+.BotUsers {
+  background: rgba(0, 0, 0, 5%);
+  margin-left: 3%;
+  width: 95%;
+}
+
+.spacer {
+  height: 15px;
+}
+
+.settingsHeader {
+  margin-left: 3%;
+}
+
+.settingssubHeading {
+  margin-left: 3%;
+}
+
+.submit{
+    background-color: #717171;
+    border: 1px solid #0a0a0a;
+    border-radius: 5px;
+    color: #000000;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 3%;
+    cursor: pointer;
+}
+.submit:hover {
+  color: white;
+}
+
+.BotComamnderEditBox {
+  margin-left: 1.5%;
+  margin-bottom: 3%;
+}
+
+.BotComamnderBox {
+  border-radius: 5px;
+  border: 2px solid #ad4b4b;
+  background: rgba(0, 0, 0, 5%);
+  margin-left: 20px;
+  margin-bottom: 3%;
+  margin-right: 3%;
+}
+
+/* THIS IS WHAT WILL BREAK STUFF */
+input[type="text"] {
+  font-size: 0.9em;
+  margin-top: 1.5%;
+  border-radius: 5px;
+}
+
+hr {
+  margin-left: 3%;
+  width: 95%;
+	border: 0;
+	border-top: 1px solid #ad4b4b;
+}
+
+.CYBC {
+  padding-top: 3%;
+  padding-left: 1.5%;
+}
+
+.box2 {
+  background: rgba(0, 0, 0, 5%);
+  margin-left: 3%;
+  width: 95%;
+  /* height: 22.5%; */
+}
+
+.box3 {
+  background: rgba(0, 0, 0, 5%);
+  margin-left: 3%;
+  width: 95%;
+  height: 22.5%;
+}
+
+.ImmediateSpacer {
+  height: 500px;
+}
+
+.Emergency {
+  padding-left: 20px;
+}
+
+.EmergencyButton {
+  background-color: #ad4b4b;
+  border: 1px solid #521414;
+  border-radius: 5px;
+  color: #521414;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.EmergencyButton:hover {
+  color: white;
+}
+
+.EmergencySubHeading {
+  padding-left: 20px;
+}
+
+.EMObutton {
+  padding-left: 20px;
+}
+
+.BMContent {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 2px 2px 2px 2px;
+}
+.BCContent {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.UsersTitle {
+  padding-top: 10px;
+  margin-left: 10px;
+}
+
+.multiselect {
+  width: 200px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.selectBox {
+  position: relative;
+  font-size: 20px;
+  border-radius: 5px;
+  margin: 10px
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-top:5px
+
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #ad4b4b;
+}
+
+.dropdown-check-list {
+  border-radius: 5px;
+  font-size: 20px;
 }

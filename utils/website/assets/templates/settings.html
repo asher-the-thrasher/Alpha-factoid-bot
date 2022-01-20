@@ -1,3 +1,4 @@
+ <!-- base made by lava, edited by asher  -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,13 +8,45 @@
 	<link rel="stylesheet" type="text/css" href="assets/styles/navigation.css" />
  	<link rel="stylesheet" type="text/css" href="assets/styles/settings.css" />
     <link rel="icon" href="assets/images/AG.png">
+
+    <script type="text/javascript">
+
+function myFunction() {
+                document.getElementsByName("select_value")[0].value;
+
+
+        }
+
+      
+
+
+function confSubmit(form) {
+    if (confirm("Are you sure you want to shutdown the bot? \nRemember, this cannot be undone.")) {
+        form.submit();
+    }
+
+}
+
+function confirmationSubmit(form,new_commander) {
+
+  let selectedOption = new_commander.options[new_commander.selectedIndex];
+
+    if (confirm(`Are you sure you want to change the bot commander role to ${selectedOption.value }? \nRemember, this cannot be undone and you will need to contact asher_the_thrasher#5325 if you made an error.`)) {
+        form.submit();
+    }
+
+}
+
+
+
+    </script>
+
+
 <title>Dashboard</title>
   </head>
-  <body>
-	<!--<footer>
-	<p>Website created by Asher and Lava © All Rights Reserved</p>
-	</footer>-->
-<div class="wrapper">
+<body>
+
+  <div class="wrapper">
     <div class="sidebar">
         <h2>SenpaiBot</h2>
         <ul>
@@ -24,25 +57,91 @@
             <li><a href="custom"><i class="fas fa-address-book"></i>Custom Commands</a></li> -->
             <li><a href="settings"><i class="fas fa-address-book"></i>Settings</a></li>
             <li><a href="support"><i class="fas fa-address-book"></i>Support</a></li>
+            <li><a href="commands"><i class="fas fa-address-book"></i>Commands</a></li>
         </ul> 
     </div>
+
+
     <div class="main_content">
         <div class="header">Welcome to the SenpaiBot dashboard!</div>
-        <div class="body">
-        <div> Some simple settings for Senpaibot.</div>
-        <div> This will be updated as time goes on. </div>
-        </div>
+			<div class="body">
+        <h1 class="settingsHeader"> Settings </h1>
+        <div class="settingssubHeading"> Here you can adjust SenpaiBot </div>
+			</div>
         <br><br>
-        <form method='POST'>
-          <p>Bot Prefix:<br> 
-                <input type='text' name='prefix' id='prefix' placeholder={{bot_prefix}}></input>
-                <input type='submit' name='submit'></input>
-               </form>
-        <form method="POST" >
+    <div class="BotUsers">
+        <h2 class="UsersTitle">Bot Commanders</h2>
+        <div class="BotComamnderBox"><p class="BMContent">Bot Commanders can access your Dashboard and edit every command and plugin configuration.
+        <br>
+        <br>
+        Bot Commanders also bypass command role checks and are automatically considered moderators in the Moderator plugin!</p>
         
+        
+        </div>
+        <div class="spacer"></div>
+        
+    </div>
+    <hr>
+    <div class="box2">
+      <h2 class="CYBC">Choose your Bot Commanders</h2>
+		  <div id="list1" class="dropdown-check-list" tabindex="100"></div>
+	    <form method = "POST" id = "commander">
+        <input type="hidden" name="form-name" value="botcommander"></input>
+
+		    <div class="multiselect"></div>
+        
+        
+        <div class="BotComamnderEditBox">
+          <label class="BCContent" for="new_commander" onchange="myFunction()">Select a new Bot Commander role, your current one is {{bot_commander}} </label>
+        </div>
+        
+        <div class="selectBox">
+          <select name="new_commander"id="new_commander"> 
+            <option disabled="disabled" selected="selected">{{bot_commander}}</option>
+  
           
 
+            {% block content %}{% endblock %}
+
+
+          </select>
+        </div>
+        <input class="submit" type="submit"  name="botcommander" id='BotComamnderBox' value="Submit" onclick = "confirmationSubmit(form,new_commander)"></input>
+
+	    </form>
+      
+      <div class="spacer"></div>
     </div>
-</div>
- </body>
+
+    <hr>
+    <div class="box3">
+      <h2 class="CYBC">Bot Prefix</h2>
+      <div class="Prefixlabel">Change the prefix used to trigger the bot.
+        
+        <form method='POST'> 
+          <input type="hidden" name="form-name" value="prefix">
+          <input type='text' name='prefix' id='prefix' placeholder={{bot_prefix}}></input>
+        </form>
+      </div>
+    
+    </div>
+
+    <div class="ImmediateSpacer"></div>
+
+    <hr>
+    <h2 class="Emergency">Emergency Use Only!</h2>
+    <div class="EmergencySubHeading">An emergency shutdown button for use when the bot isn't acting the way it should. This will make the website stop working as well so please contact asher_the_thrasher#5325 to get the bot back up.</div>
+
+
+
+    <div class="EMObutton">
+      <form method='POST'>
+        <input type="hidden" name="form-name" value="EmergencyButton">  
+        <input class="EmergencyButton" type="submit"  name="EmergencyShutdown" id='EmergencyShutdown' value="Emergency Shutdown" onclick = "confSubmit(form)"> 
+        </input>
+
+      </form>
+    </div>
+  </wrapper>
+</body>
 </html>

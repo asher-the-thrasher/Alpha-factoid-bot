@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<title>OBS Bot Factoids</title>
+		<meta charset="utf-8">
+		<!-- TIL <script> is not self-enclosable -->
+		<!-- Also #YOLO using @latest -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/showdown@latest/dist/showdown.min.js"></script>
+		<style>
+			html {
+				font-family: arial, sans-serif;
+			}
+
+			#filter {
+				border: 1px solid #dddddd;
+				padding: 16px;
+				margin-bottom: 8px;
+				box-sizing: border-box;
+				width: 100%;
+				font-size: 12pt;
+			}
+
+			table {
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			th {
+				cursor: pointer;
+			}
+
+			td, th {
+				border: 1px solid #dddddd;
+				text-align: left;
+				padding: 8px;
+			}
+
+			tr:nth-child(even) {
+				background-color: #eeeeee;
+			}
+			
+			img {
+				max-width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="filter" placeholder="Search for command or alias" />
+		<table id="factoids">
+			<colgroup>
+				<col width="10%" />
+				<col width="15%" />
+				<col width="65%" />
+				<col width="5%" />
+				<col width="5%" />
+			</colgroup>
+			<tr>
+				<th>Command</th>
+				<th>Aliases</th>
+				<th>Text</th>
+				<th>Uses Embed</th>
+				<th>Uses</th>
+			</tr>
+		</table>
+		<script>
+			/*
+			Hey StreamElements, would be nice if you at least went through the effort of rewording the factoids or giving us credit when you lift them from our bot!
+			*/
+
+			const table = document.getElementById('factoids')
+
+			// lets get fucking wild
+			const converter = new showdown.Converter()
+			converter.setFlavor('github')
+			converter.setOption('simplifiedAutoLink', true)
+			converter.setOption('simpleLineBreaks', true)
+
+			// If you think this is shitty code you're more than welcome to submit a better idea because I don't know what I'm doing.
+			var xmlhttp = new XMLHttpRequest()
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var factoids = JSON.parse(this.responseText)
+					for (var idx in factoids) {
+						var row = table.insertRow(-1)
+						var fact = factoids[idx];
+						row.insertCell(0).innerHTML = fact.name;
+						row.insertCell(1).innerHTML = fact.aliases.join(', ')
+						var tmphtml = converter.makeHtml(fact.message)
+						// Unfortunately we can't simply remove all <p> tags since that will mess up \n\n...
+						// Really I wish this wasn't javascript so I had a better idea of what I'm doing.
+						if (fact.embed && fact.image_url) {
+							tmphtml += '<img src="' + fact.image_url + '">'
+						}
+						row.insertCell(2).innerHTML = tmphtml.replace('<p>', '').replace(/<\/p>$/, '')
+						row.insertCell(3).innerHTML = fact.embed ? 'Yes' : 'No'
+						row.insertCell(4).innerHTML = fact.uses
+					}
+				}
+			}
+			xmlhttp.open('GET', 'jsonforreadme.json', true)
+			xmlhttp.send()
+
+			// shamelessly stolen from stackoverflow
+			const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent
+
+			const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+				v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+				)(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx))
+
+			// do the work...
+			document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+				Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+					.sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+					.forEach(tr => table.appendChild(tr))
+			})))
+
+			// filtering
+			const filter = document.getElementById('filter')
+			filter.addEventListener('input', () => {
+				const term = filter.value
+
+				table.querySelectorAll('tr:nth-child(n+2)').forEach((tr) => {
+					const command = tr.getElementsByTagName('td')[0].innerText
+					const aliases = tr.getElementsByTagName('td')[1].innerText
+
+					if (command.indexOf(term.toLowerCase()) == -1 &&
+						aliases.indexOf(term.toLowerCase()) == -1) {
+						tr.style.display = 'none'
+					} else {
+						tr.style.display = ''
+					}
+				})
+			})
+
+			// input capture
+			window.addEventListener('load', () => {
+				filter.focus()
+			})
+		</script>
+	</body>
+</html>

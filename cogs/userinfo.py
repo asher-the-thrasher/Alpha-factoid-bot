@@ -1,9 +1,9 @@
 from discord.ext.commands import Cog, command
 import discord
 from discord_slash import  model,context, cog_ext
-from editable.config import configure
-link_role_whitelist=configure.link_role_whitelist
-guild_ids=configure.guild_ids
+from editable.config import Config
+link_role_whitelist=Config.link_role_whitelist
+guild_ids=Config.guild_ids
 from discord.utils import get
 
 

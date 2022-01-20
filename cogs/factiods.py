@@ -4,9 +4,9 @@ import discord
 from discord.ext import commands
 import os
 
-from editable.config import configure 
-another_role=configure.another_role
-bot_commander=configure.bot_commander
+from editable.config import Config 
+another_role=Config.another_role
+bot_commander=Config.bot_commander
 
 
 def writing_to_json(data):
@@ -21,7 +21,7 @@ async def reload(self):
       file = f"cogs.{file[:-3]}"
       self.client.reload_extension(file)
 
-class factoids(commands.Cog):
+class FactoidsCreation(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.writing_to_json = writing_to_json
@@ -61,7 +61,7 @@ class factoids(commands.Cog):
 
             with open('cogs/factoids_execution.py') as python_file:
               data = python_file.readlines()
-              data[8] = f'''\n    @commands.command(hidden=True)\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
+              data[8] = f'''\n    @commands.command(hidden=True)\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await FactoidsExecution.execute(self, message,factoid,extra_text)\n\n'''
             with open('cogs/factoids_execution.py', 'w') as file:
               file.writelines(data)   
 
@@ -110,7 +110,7 @@ class factoids(commands.Cog):
             
                 
 
-              data[8] = f'''\n    @commands.command(hidden=True)\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
+              data[8] = f'''\n    @commands.command(hidden=True)\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await FactoidsExecution.execute(self, message,factoid,extra_text)\n\n'''
             with open('cogs/factoids_execution.py', 'w') as file:
               file.writelines(data)   
 
@@ -244,7 +244,7 @@ class factoids(commands.Cog):
             
                 
 
-              data[8] = f'''\n    @commands.command(hidden=True)\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await factoids_execution.execute(self, message,factoid,extra_text)\n\n'''
+              data[8] = f'''\n    @commands.command(hidden=True)\n    async def {name}(self,message,*,extra_text=""):\n      factoid = """{message}"""\n      await FactoidsExecution.execute(self, message,factoid,extra_text)\n\n'''
             with open('cogs/factoids_execution.py', 'w') as file:
               file.writelines(data)   
 
@@ -274,4 +274,4 @@ class factoids(commands.Cog):
 
 
 def setup(client):
-  client.add_cog(factoids(client))
+  client.add_cog(FactoidsCreation(client))

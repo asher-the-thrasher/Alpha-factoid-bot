@@ -1,6 +1,9 @@
-/* created by lava, edited by asher */
-
+/* created by asher */
 .body {
   padding-top: 10px;
   padding-left: 10px;
+}
+
+.shortener{
+  margin:10px
 }

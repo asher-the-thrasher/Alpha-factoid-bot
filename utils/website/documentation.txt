@@ -1,0 +1,18 @@
+Overall Goal: to create a functioning dashboard for my discord bot
+
+subgoals:
+make it only accessible if the user has a  certain role in a specific discord server
+
+ability to change most things in the config file, start with command prefix, then work up to the rest of the things in the config file, later adding more things to the config file so more things are adjustable. 
+
+I started with a base code from something I found online so I could understand how flask worked and how discord_flask worked, now there is pretty much no code from that tutorial but it proved to be a useful base.
+
+Some issues that I ran into while working on this project were working with how to make calls to the discord API directly, running the bot and the website off the same replit (I ended up having to use threading to do this), configuring the checks to make sure that the user had the appropriate credentials to be making changes which used the discord_flask library to do, and making the forms work independently so that i could change the command prefix without changing the bot commander role. 
+
+
+To give credit where is due, one of my friends from discord, Lava#5491, helped to do the website frontend, they designed almost everything in the assets folder and I edited them to make them fit my vision. 
+
+
+I learned how to use HTML and CSS much better while creating this and I also learned how to make the HTML interact with the python code. Learning how to use divs correctly was hard and required me to watch a bunch of youtube videos and ask a bunch of questions to friends who have more experience. I also learned how to properly make an api call to the discord api and how to do stuff from that. 
+
+In the future I wish to expand on this by adding options to control more things in editable/config.py so that the mods on the server can control these options without me needing to intervene and do it. I also want to give the website option to add commands to the bot, which isnt hard at all and mostly like the command prefix, I just havent had the chance to do it properly.  

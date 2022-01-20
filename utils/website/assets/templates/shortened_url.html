@@ -1,0 +1,41 @@
+ <!-- base made by lava, edited by asher  -->
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	  <link rel="stylesheet" type="text/css" href="assets/styles/navigation.css" />
+ 	  <link rel="stylesheet" type="text/css" href="assets/styles/url.css" />
+    <link rel="icon" href="assets/images/AG.png">
+    <title>Dashboard</title>
+  </head>
+  <body>
+	
+    <div class="wrapper">
+      <div class="sidebar">
+        <h2>SenpaiBot</h2>
+        <ul>
+
+        </ul> 
+
+      </div>
+      <div class="main_content">
+        <div class="header">Welcome to the SenpaiBot dashboard!</div>
+        <div class="body">
+          <p class = "message">This is an amazon link shortener.</p>
+
+          <a href={{short_url}} target="_blank" rel="noopener noreferrer">{{short_url}}</a>
+
+
+          <form method='POST'> 
+          <input type="hidden" name="form-name" value="url_shortener">
+          <input type='text' name='url_shortener' id='url_shortener' placeholder="Please enter an Amazon URL"></input>
+        </form>
+
+        </div>
+
+      </div>
+    </div>
+ </body>
+</html>

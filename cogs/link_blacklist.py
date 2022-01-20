@@ -1,18 +1,16 @@
 import json
-import re
 
 import discord
-from discord.ext import commands
 from discord.ext.commands import Cog, command
 from discord.utils import get
 
 from discord_slash.utils.manage_components import create_select, create_select_option, create_actionrow
 from discord_slash.context import ComponentContext
 
-from editable.config import configure 
-link_role_whitelist=configure.link_role_whitelist 
-share_content=configure.share_content
-admins=configure.admins
+from editable.config import Config 
+link_role_whitelist=Config.link_role_whitelist 
+share_content=Config.share_content
+admins=Config.admins
 
 from cogs.mute import create_mute
 

@@ -1,0 +1,35 @@
+ <!-- base made by lava, edited by asher  -->
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	  <link rel="stylesheet" type="text/css" href="assets/styles/navigation.css" />
+ 	  <link rel="stylesheet" type="text/css" href="assets/styles/commands.css" />
+    <link rel="icon" href="assets/images/AG.png">
+    <title>Dashboard</title>
+  </head>
+  <body>
+	
+    <div class="wrapper">
+      <div class="sidebar">
+        <h2>SenpaiBot</h2>
+        <ul>
+
+        </ul> 
+
+      </div>
+      <div class="main_content">
+        <div class="header">Welcome to the SenpaiBot dashboard!</div>
+        <div class="body">
+          <p class = "message">These are all commands that can be used by SenpaiBot</p>
+
+
+          {% block content %}{% endblock %}
+        </div>
+
+      </div>
+    </div>
+ </body>
+</html>

@@ -1169,12 +1169,6 @@
       "content": "Having issues updating OBS? Make sure OBS and any applications/games that were being captured are closed before trying to run the update. Still getting an error? Reboot your PC and run the installer again. Be sure not to open OBS until after the install finishes."
     }
   ],
-  "usb": [
-    {
-      "name": "usb",
-      "content": "USB problems? Use the USBView program to identify which hubs your devices are connected to. Move bandwidth-hungry devices like webcams and capture cards to separate hubs by switching their USB ports."
-    }
-  ],
   "uvc": [
     {
       "name": "uvc",
@@ -1245,12 +1239,6 @@
     {
       "name": "voice",
       "content": "A basic guide to improve your microphone quality can be found here: https://obsproject.com/forum/resources/514/"
-    }
-  ],
-  "vs2017": [
-    {
-      "name": "vs2017",
-      "content": "Visual Studio 2019 runtimes are required by the plugins that come with OBS Studio.\nDownload and install both vc2019redist_x86.exe and vc2019redist_x64.exe from https://obsproject.com/visual-studio-2019-runtimes"
     }
   ],
   "vst": [
@@ -1629,6 +1617,18 @@
     {
       "name": "remote",
       "content": "If you'd like to control OBS Studio remotely, you have a few options.\n\nTo control from the web on any device (including phones and computers), use [OBS Tablet Remote](http://t2t2.github.io/obs-tablet-remote/) (requires [obs-websocket](https://obsproject.com/forum/resources/obs-websocket-remote-control-of-obs-studio-made-easy.466/ )).\n\nIf you'd prefer a mobile app that works like the Elgato Streamdeck, you can try [Touch Portal](https://obsproject.com/forum/resources/touch-portal.755/), [UP Deck](https://obsproject.com/forum/resources/up-deck.665/), or [Deckboard](https://obsproject.com/forum/resources/deckboard.704/)."
+    }
+  ],
+  "usb": [
+    {
+      "name": "usb",
+      "content": "USB problems? Use the [USBView](https://r1ch.net/blog/managing-usb-bandwidth-with-usbview) program to identify which hubs your devices are connected to. Move bandwidth-hungry devices like webcams and capture cards to separate hubs by switching their USB ports."
+    }
+  ],
+  "vs2019": [
+    {
+      "name": "vs2019",
+      "content": "\"\"Visual Studio 2019 runtimes are required by the plugins that come with OBS Studio.\\nDownload and install both vc2019redist_x86.exe and vc2019redist_x64.exe from https://obsproject.com/visual-studio-2019-runtimes\"\""
     }
   ]
 }

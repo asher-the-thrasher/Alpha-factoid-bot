@@ -7,16 +7,16 @@ from discord.ext.commands import command, Cog
 from discord.utils import get
 from datetime import datetime
 
-from editable.config import configure
-log_channel=configure.log_channel
-admins=configure.admins
-guild_id=configure.guild_id
-modmod=configure.modmod
+from editable.config import Config
+log_channel=Config.log_channel
+admins=Config.admins
+guild_id=Config.guild_id
+modmod=Config.modmod
 from discord.ext.tasks import loop
 from utils.bot_log import log_message
 
 
-class RaidProt(Cog):
+class RaidProtection(Cog):
     def __init__(self, client):
         self.client = client
 
@@ -71,31 +71,31 @@ class RaidProt(Cog):
 
     @loop(seconds=60)
     async def user_join_reset(self):
-        banlock = await RaidProt.reading_from_users_joined(banlock=True)
-        mods_warned = await RaidProt.reading_from_users_joined(mods_warned=True)
+        banlock = await RaidProtection.reading_from_users_joined(banlock=True)
+        mods_warned = await RaidProtection.reading_from_users_joined(mods_warned=True)
 
         if banlock is False and mods_warned is False:
-            await RaidProt.writing_to_users_joined(users_joined=0)
+            await RaidProtection.writing_to_users_joined(users_joined=0)
 
 
     """@command()
     async def joined(self, ctx):
-        file_content = await RaidProt.reading_from_users_joined(users_joined=True)
+        file_content = await RaidProtection.reading_from_users_joined(users_joined=True)
         users_joined = file_content + 3
-        await RaidProt.writing_to_users_joined(users_joined=users_joined)"""
+        await RaidProtection.writing_to_users_joined(users_joined=users_joined)"""
 
     @Cog.listener()
     async def on_member_join(self, member):
         if member.avatar_url == member.default_avatar_url:
-            users_joined = await RaidProt.reading_from_users_joined(users_joined=True)
+            users_joined = await RaidProtection.reading_from_users_joined(users_joined=True)
             users_joined = users_joined + 1
-            await RaidProt.writing_to_users_joined(users_joined=users_joined)
-        lock = await RaidProt.reading_from_users_joined(banlock=True)
-        users_joined = await RaidProt.reading_from_users_joined(users_joined=True)
-        mods_warned = await RaidProt.reading_from_users_joined(mods_warned=True)
+            await RaidProtection.writing_to_users_joined(users_joined=users_joined)
+        lock = await RaidProtection.reading_from_users_joined(banlock=True)
+        users_joined = await RaidProtection.reading_from_users_joined(users_joined=True)
+        mods_warned = await RaidProtection.reading_from_users_joined(mods_warned=True)
 
         if (users_joined == 4 and not lock) or (not mods_warned and users_joined >= 5):
-            await RaidProt.writing_to_users_joined(mods_warned=1)
+            await RaidProtection.writing_to_users_joined(mods_warned=1)
             emoji = '\N{THUMBS UP SIGN}'
             embed_builder = discord.Embed(title=f"Potential Bot Raid ({users_joined} Users)",
             description=f"An unusually high number of users with default profile pictures have joined the server in a 1 minute window, if you would like to turn on Ban Lock use ?banlock. If you believe this warning warning is a false positive, react with {emoji} so you get warned the next time there is a suspected raid.",
@@ -122,9 +122,9 @@ class RaidProt(Cog):
             result = True
 
             if result is True:
-                users_joined = await RaidProt.reading_from_users_joined(users_joined=True)
+                users_joined = await RaidProtection.reading_from_users_joined(users_joined=True)
 
-                await RaidProt.writing_to_users_joined(mods_warned=0, users_joined=0)
+                await RaidProtection.writing_to_users_joined(mods_warned=0, users_joined=0)
                 embed_builder = discord.Embed(title=f"Potential Bot Raid ({users_joined} Users)",
                 description="A Mod has marked the bot raid warning system as a false positive.")
                 
@@ -141,9 +141,9 @@ class RaidProt(Cog):
 
         if lock:
             if member.avatar_url == member.default_avatar_url:
-                users_banned = await RaidProt.reading_from_users_joined(users_banned=True)
+                users_banned = await RaidProtection.reading_from_users_joined(users_banned=True)
                 users_banned += 1
-                await RaidProt.writing_to_users_joined(users_banned=users_banned)
+                await RaidProtection.writing_to_users_joined(users_banned=users_banned)
 
                 if users_banned == 1:
                     embed_builder = discord.Embed(title="Ban Lock On", description=f"Users Banned: {users_banned}")
@@ -178,7 +178,7 @@ class RaidProt(Cog):
         if not allowed:
             await ctx.send('You do not have permissions to use that command')
             return
-        lock = await RaidProt.reading_from_users_joined(banlock=True)
+        lock = await RaidProtection.reading_from_users_joined(banlock=True)
         if lock:
             return await ctx.send('The ban lock is currently on, if you would like to turn it off use ?banunlock')
 
@@ -214,7 +214,7 @@ class RaidProt(Cog):
             return await message.edit(embed=embed_builder)
 
         if confirmation:
-            await RaidProt.writing_to_users_joined(banlock=1)
+            await RaidProtection.writing_to_users_joined(banlock=1)
             embed_builder = discord.Embed(title=f"Raid protection banning system",
             description=f"The raid protection system has been activated and will ban all new members with a default profile picture. To turn off the raid protection system, send ?banunlock")
             
@@ -236,7 +236,7 @@ class RaidProt(Cog):
             await ctx.send('You do not have permissions to use that command')
 
             return
-        lock = await RaidProt.reading_from_users_joined(banlock=True)
+        lock = await RaidProtection.reading_from_users_joined(banlock=True)
         if not lock:
             return await ctx.send('The ban lock is not currently on, if you would like to turn it on use ?banlock')
 
@@ -269,7 +269,7 @@ class RaidProt(Cog):
             return await message.edit(embed=embed_builder)
 
         if confirmation:
-            await RaidProt.writing_to_users_joined(banlock=0, users_banned=0, users_joined=0, mods_warned=0)
+            await RaidProtection.writing_to_users_joined(banlock=0, users_banned=0, users_joined=0, mods_warned=0)
 
             embed_builder = discord.Embed(title=f"Raid protection banning system",
             description=f"The raid protection system has been turned off. To turn the system back on send ?banlock")
@@ -278,4 +278,4 @@ class RaidProt(Cog):
 
 
 def setup(client):
-    client.add_cog(RaidProt(client))
+    client.add_cog(RaidProtection(client))

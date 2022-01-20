@@ -4,13 +4,13 @@ import datetime as dt
 from datetime import datetime
 
 from replit import db
-from editable.config import configure  
-Muted_role=configure.Muted_role
-guild_id=configure.guild_id
-link_role_whitelist=configure.link_role_whitelist
-bot_commander=configure.bot_commander
-another_role=configure.another_role
-alpha_mod=configure.alpha_mod
+from editable.config import Config  
+Muted_role=Config.Muted_role
+guild_id=Config.guild_id
+link_role_whitelist=Config.link_role_whitelist
+bot_commander=Config.bot_commander
+another_role=Config.another_role
+alpha_mod=Config.alpha_mod
 
 from discord.utils import get
 
@@ -49,7 +49,7 @@ async def create_mute(ctx, member: discord.Member=None, time=None, *, reason=Non
 
       db[f"!?!?!?!? {member_id}"] = str(unmute_time)
 
-class MuteCog(commands.cog.Cog):
+class Muting(commands.cog.Cog):
   def __init__(self, bot):
     self.bot = bot
 
@@ -89,7 +89,7 @@ class MuteCog(commands.cog.Cog):
 
       await log_message(self.bot, f"User Muted ({time})", f"**REASON:** {reason}", member, ctx.channel, ctx.author)
       
-class UnMuteCog(commands.Cog):
+class UnMuting(commands.Cog):
   def __init__(self, client):
       self.client = client
 
@@ -138,8 +138,8 @@ class UnMuteCog(commands.Cog):
           
             await log_message(client, "User Unmuted (Auto)", f"User {user.name} has been unmuted", user, color=0x00ff00)
           else:
-            user = client.fetch_user(member_id)
-            await log_message(client, "User Unmuted (Auto)", f"User <@{member_id}> has been unmuted",color=0x00ff00)
+            user = await client.fetch_user(member_id)
+            await log_message(client, "User Unmuted (Auto)", f"User {user.mention} has been unmuted",color=0x00ff00)
 
           del db[member]
 
@@ -174,5 +174,5 @@ class UnMuteCog(commands.Cog):
         return  
 
 def setup(client):
-  client.add_cog(UnMuteCog(client))
-  client.add_cog(MuteCog(client))
+  client.add_cog(UnMuting(client))
+  client.add_cog(Muting(client))

@@ -8,9 +8,9 @@ from discord_slash.context import ComponentContext
 import os
 
 import json
-from editable.config import configure 
-admins=configure.admins
-guild_id=configure.guild_id
+from editable.config import Config 
+admins=Config.admins
+guild_id=Config.guild_id
 
 
 async def reload(self):
@@ -22,7 +22,7 @@ async def reload(self):
       self.client.reload_extension(file)
 
 
-class Configure(commands.Cog):
+class ConfigurationUtilities(commands.Cog):
   def __init__(self, client):
     self.client = client
 
@@ -74,7 +74,7 @@ class Configure(commands.Cog):
     changing=prefix
     thing_to_change = "Bot Prefix"
     json_name = "command_prefix"
-    await Configure.changing_it(self,ctx,thing_to_change = thing_to_change,changing=changing,json_name=json_name)
+    await ConfigurationUtilities.changing_it(self,ctx,thing_to_change = thing_to_change,changing=changing,json_name=json_name)
     self.client.command_prefix = prefix
 
   @commands.command()
@@ -82,7 +82,7 @@ class Configure(commands.Cog):
     changing=bot_activity
     thing_to_change = "Bot Activity"
     json_name = "bot_activity"
-    await Configure.changing_it(self,ctx,thing_to_change = thing_to_change,changing=changing,json_name=json_name)
+    await ConfigurationUtilities.changing_it(self,ctx,thing_to_change = thing_to_change,changing=changing,json_name=json_name)
     game = discord.Game(changing)
     await self.client.change_presence( activity=game)
 
@@ -111,7 +111,7 @@ class Configure(commands.Cog):
       if str(channel.id) == str(channel_id):
         check = True
         message="Choose what channel to change the Channel ID for"
-        component_message = await ctx.send(message, components=[create_actionrow(Configure.channel_ids)])
+        component_message = await ctx.send(message, components=[create_actionrow(ConfigurationUtilities.channel_ids)])
         button_ctx: ComponentContext = await manage_components.wait_for_component(self.client, messages=component_message)
         await component_message.delete()
 
@@ -120,7 +120,7 @@ class Configure(commands.Cog):
         thing_to_change = f"{selected} channel ID"
         json_naming = selected=str(button_ctx.selected_options).replace("['","").replace("']","")
         json_name = json_naming
-        await Configure.changing_it(self,ctx,thing_to_change = thing_to_change,changing=changing,json_name=json_name)
+        await ConfigurationUtilities.changing_it(self,ctx,thing_to_change = thing_to_change,changing=changing,json_name=json_name)
     if check is False:
       await ctx.send(f"{channel_id} is not a valid channel id")
 
@@ -152,7 +152,7 @@ class Configure(commands.Cog):
       if str(role.id) == str(role_id):
         check = True
         message="Choose what role to change the role ID for"
-        component_message = await ctx.send(message, components=[create_actionrow(Configure.role_ids)])
+        component_message = await ctx.send(message, components=[create_actionrow(ConfigurationUtilities.role_ids)])
         button_ctx: ComponentContext = await manage_components.wait_for_component(self.client, messages=component_message)
         await component_message.delete()
 
@@ -161,7 +161,7 @@ class Configure(commands.Cog):
         thing_to_change = f"{selected} role ID"
         json_naming = selected=str(button_ctx.selected_options).replace("['","").replace("']","")
         json_name = json_naming
-        await Configure.changing_it(self,ctx,thing_to_change = thing_to_change,changing=changing,json_name=json_name)
+        await ConfigurationUtilities.changing_it(self,ctx,thing_to_change = thing_to_change,changing=changing,json_name=json_name)
     if check is False:
       await ctx.send(f"{role_id} is not a valid role ID")
 
@@ -183,5 +183,5 @@ def is_admin(ctx):
 
       
 def setup(client):
-    client.add_cog(Configure(client))
+    client.add_cog(ConfigurationUtilities(client))
 

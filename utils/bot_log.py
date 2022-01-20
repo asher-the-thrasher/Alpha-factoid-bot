@@ -1,6 +1,6 @@
 import discord
-from editable.config import configure
-log_channel=configure.log_channel
+from editable.config import Config
+log_channel=Config.log_channel
 from datetime import datetime
 
 async def log_message(bot, title, body, user=None, channel=None, moderator = None,color=0xFF0000):

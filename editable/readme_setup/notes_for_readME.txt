@@ -14,4 +14,14 @@
 
 8) copy the markdown results and paste into readME.md 
 
+9) use https://markdowntohtml.com/ and take the results and put it in utils/website/assets/templates/commands.html with 
+
+{% extends "basecommands.html" %} {% block content %} 
+
+on top and 
+
+{% endblock %}
+
+on the bottom
+
 9) commit and merge the results.

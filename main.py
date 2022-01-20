@@ -10,15 +10,16 @@ from discord.ext.commands.errors import CommandNotFound, MissingAnyRole
 from utils.website.dashboard import website
 
 
-from editable.config import configure
-bot_activity=configure.bot_activity 
-command_prefix=configure.command_prefix
-Muted_role=configure.Muted_role
-guild_id=configure.guild_id
-from cogs.bot_raid_prevention import RaidProt
+from editable.config import Config
+bot_activity=Config.bot_activity 
+command_prefix=Config.command_prefix
+Muted_role=Config.Muted_role
+guild_id=Config.guild_id
+botlogerrors = Config.botlogerrors
+from cogs.bot_raid_prevention import RaidProtection
 
 
-from cogs.mute import UnMuteCog
+from cogs.mute import UnMuting
 
 from replit import db
 from discord_slash import SlashCommand
@@ -44,11 +45,10 @@ client.load_extension(f"editable.config")
 async def on_ready():
     
 
-    names = ""
     try:
         members = (await client.application_info()).team.members
-        for member in members: 
-            names = f"{names}, {member}"
+        names = " and ".join(x.name for x in members)
+
     except:
         names = client.owner_id
     
@@ -57,9 +57,15 @@ async def on_ready():
     activity = discord.Activity(name=bot_activity, type=discord.ActivityType.listening)
     await client.change_presence(activity=activity)
     
-    UnMuteCog.doThisEveryTenSeconds.start(UnMuteCog, client)
-    RaidProt.user_join_reset.start(RaidProt)
-    await RaidProt.writing_to_users_joined(users_joined=0,mods_warned=0,users_banned = 0,banlock = 0)
+    for cog in client.cogs:
+      print(cog)
+
+
+
+    UnMuting.doThisEveryTenSeconds.start(UnMuting, client)
+
+    RaidProtection.user_join_reset.start(RaidProtection)
+    await RaidProtection.writing_to_users_joined(users_joined=0,mods_warned=0,users_banned = 0,banlock = 0)
 
 
 
@@ -73,7 +79,7 @@ async def on_command_error(ctx, error):
         await ctx.send('You do not have permissions to use that command')
         return
     else:
-        channel= await client.fetch_channel(894977926523666482)
+        channel= await client.fetch_channel(botlogerrors)
         await channel.send(f"An error has occured in the bot\n\n {error}")
     raise error
 
@@ -97,6 +103,9 @@ async def on_member_join(member):
     return
 
 website()
+
+
+
+
 client.run(token)
-  
-  
+

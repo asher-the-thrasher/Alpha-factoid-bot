@@ -1,9 +1,9 @@
 from discord.ext.commands import Cog, command
 import discord
 import random
-from editable.config import configure
-link_role_whitelist=configure.link_role_whitelist
-admins = configure.admins
+from editable.config import Config
+link_role_whitelist=Config.link_role_whitelist
+admins = Config.admins
 from discord.utils import get
 
 
@@ -16,7 +16,7 @@ potato_images = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcf4lvLnDjUNKkVBWKAfLb6X5QXS_VB1ZQag&usqp=CAU"
 ]
 
-class random_cogs(Cog):
+class RandomCogs(Cog):
   def __init__(self, bot):
     self.bot = bot
 
@@ -92,4 +92,4 @@ def admin(ctx):
     return False    
 
 def setup(client):
-  client.add_cog(random_cogs(client))
+  client.add_cog(RandomCogs(client))

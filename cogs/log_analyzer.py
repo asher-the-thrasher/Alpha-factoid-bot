@@ -6,8 +6,8 @@ from discord import Embed, Colour
 from discord.ext.commands import Cog
 from discord.ext.commands.bot import Bot
 
-from editable.config import configure
-channel_whitelist=configure.channel_whitelist
+from editable.config import Config
+channel_whitelist=Config.channel_whitelist
 from utils.rate_limit import RateLimiter
 
 
@@ -40,7 +40,6 @@ class LogAnalyzer(Cog):
             return
             # Returns if the message is not a log file
 
-        # print("Message has log file: " + str(Message.content))
 
         # list of candidate tuples consisting of (raw_url, web_url)
         log_candidates = []

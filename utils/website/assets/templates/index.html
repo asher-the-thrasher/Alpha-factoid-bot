@@ -1,3 +1,4 @@
+ <!-- base made by lava, edited by asher  -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" type="text/css" href="assets/styles/navigation.css" />
+  <link rel="stylesheet" type="text/css" href="assets/styles/home.css" />
     <link rel="icon" href="assets/images/AG.png">
 <title>Dashboard</title>
   </head>
@@ -23,6 +25,7 @@
             <li><a href="custom"><i class="fas fa-address-book"></i>Custom Commands</a></li> -->
             <li><a href="settings"><i class="fas fa-address-book"></i>Settings</a></li>
             <li><a href="support"><i class="fas fa-address-book"></i>Support</a></li>
+            <li><a href="commands"><i class="fas fa-address-book"></i>Commands</a></li>
         </ul> 
 		<!--<div class="social_media">
 		  <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -35,7 +38,9 @@
         <div class="header">Welcome to the SenpaiBot dashboard!</div>
         <p align="center">
         {% if not authorized %}
-        <a href="/login"><button>Login with discord</button></a>
+        <a href="/login">
+          <button  class = 'submit'>Login with discord</button>
+        </a>
         {% else %}
 
         <div class="body"> This is the dashboard for SenpaiBot to control the settings of the bot! </div>

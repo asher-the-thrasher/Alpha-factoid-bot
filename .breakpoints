@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "utils/website/assets/templates/commads.html": [
+      {
+        "id": "3f3e2df4-c53a-4101-97a4-0ec808946e03",
+        "line": 17,
+        "version": 117,
+        "index": 398
+      }
+    ]
+  }
 }

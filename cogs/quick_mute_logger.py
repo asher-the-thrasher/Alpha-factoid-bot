@@ -1,9 +1,9 @@
 from discord.ext.commands import Cog
 from discord_slash import  model,context, cog_ext
-from editable.config import configure
-watch_list=configure.watch_list
-guild_ids=configure.guild_ids
-link_role_whitelist=configure.link_role_whitelist
+from editable.config import Config
+watch_list=Config.watch_list
+guild_ids=Config.guild_ids
+link_role_whitelist=Config.link_role_whitelist
 from cogs.mute import create_mute
 import discord
 from discord.utils import get
@@ -11,7 +11,7 @@ from utils.bot_log import log_message
 
 
 
-class Slash(Cog):
+class ContextMenus(Cog):
   def __init__(self, bot):
     self.bot = bot
 
@@ -78,4 +78,4 @@ class Slash(Cog):
 
 
 def setup(bot):
-  bot.add_cog(Slash(bot))
+  bot.add_cog(ContextMenus(bot))

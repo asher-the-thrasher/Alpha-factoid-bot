@@ -1,7 +1,7 @@
 import json
 from discord.ext.commands import Cog
 
-class configure(Cog):
+class Config(Cog):
   with open("editable/config.json") as json_file:
       data = json.loads(json_file.read()) 
   command_prefix = data["command_prefix"]
@@ -43,11 +43,11 @@ class configure(Cog):
 
 
   # roles that can change the bot
-  bot_commander = 730975302167167108
+  bot_commander = data['bot_commander']
   another_role = 857766098732187658
 
   # Roles excempt from bot actions
-  botadmin = 857766098732187658
+  botadmin = 857766098732187658 #testing server
   smart_peepo = data["smart_peepo"]
   alpha_mod = data["alpha_mod"]
   unicorn_squad = 599870749271916556
@@ -77,5 +77,8 @@ class configure(Cog):
   _analysis_colour = 0x5a7474
   mod_color = 0xFF0000
 
+
+  botlogerrors = 894977926523666482
+
 def setup(client):
-  client.add_cog(configure(client))
+  client.add_cog(Config(client))

@@ -1,0 +1,26 @@
+/* created by asher */
+
+.body {
+   color: black;
+   margin: 10px
+}
+th {
+  border: 1px solid black
+}
+td {
+  border: 1px solid black;
+  margin: 30px;
+  padding: 10px;
+  border-spacing: 0px;
+}
+
+
+table {
+  border: 1px solid black;
+  font-size:1.5vw
+
+}
+
+.message {
+  padding:10px;
+}
